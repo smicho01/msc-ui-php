@@ -23,7 +23,7 @@
          <form id="loginform" action="/" >
             <div class="form-group">
                <label>User Name</label>
-               <input id='editUsername' type="text" class="form-control" placeholder="User Name" value="sever3d">
+               <input id='editUsername' type="text" class="form-control" placeholder="User Name" value="smicho01">
             </div>
             <div class="form-group">
                <label>Password</label>

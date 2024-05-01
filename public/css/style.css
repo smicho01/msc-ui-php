@@ -1,0 +1,222 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+hr {
+    border-bottom: 1px dashed #dedede;
+ 
+}
+
+.heading {
+    border-bottom: 1px solid #222;
+    padding-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+.main-head{
+    height: 150px;
+    background: #FFF;
+   
+}
+
+.sidenav {
+    height: 100%;
+    background-color: black;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
+.main {
+    padding: 0px 10px;
+}
+
+.search-bar {
+    margin-bottom: 10px;
+}
+
+.userbar * {
+    font-size: 12px !important;
+}
+
+tr.selected {
+    --bs-table-accent-bg: var(--bs-table-hover-bg);
+    color: var(--bs-table-hover-color);
+}
+tr.hidden {
+    display: none;
+    visibility: none;
+}
+
+#alert-floating {
+    position: relative;
+    display: block;
+}
+
+#details {
+    border-left: 1px dashed #dedede;
+}
+
+.border-left {
+    border-left: 1px solid #ddd;
+}
+
+.flag-box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #efefef;
+    margin-right: 5px;
+    position: relative;
+}
+
+.flag-box .flag-name {
+    position: absolute;
+    top:-30px;
+    border: 1px solid #dddddd;
+    padding: 2px 5px;
+    display: none;
+    background-color: #efefef;
+}
+.flag-box:hover .flag-name {
+    display: block;
+}
+
+.flag-box.flag-box-pink {
+    background-color: pink;
+}
+
+#flagslist .flag {
+   position: relative;
+   padding: 0;
+   margin: 0;
+   margin: 10px 0;
+   padding: 5px 5px;
+}
+#flagslist .flag-box  {
+    display: block;
+    padding: 0;
+    margin: 0;
+    top: 0px;
+    margin-right: none;
+    width: 30px;
+    height: 30px;
+}
+#flagslist .flag .flag-name {
+    position: absolute;
+    top: 9px;
+    left: 40px;
+    padding: 0;
+    margin: 0;
+}
+.hasFlag {
+    border: 1px solid #dedede;
+}
+
+#loginpage .form-group {
+    margin-top: 20px;
+}
+
+.login-main-text{
+    margin-top: 20%;
+    padding: 60px;
+    color: #fff;
+}
+
+.login-main-text h2{
+    font-weight: 300;
+}
+
+.btn-black{
+    background-color: #000 !important;
+    color: #fff;
+}
+
+
+.userbar * {
+    padding: 0px 20 !important;
+    font-size: 16px;
+    color: #999;
+}
+.userbar {
+    margin: 20px 0;
+    border-bottom: dashed 1px #ddd;
+}
+
+
+.form-error {
+    display: inline-block;
+    margin: 6px 0;
+    font-size: 16px;
+}
+
+/* Visit Detials */
+.visit-meta-data {
+    display: inline-block;
+    margin-right: 20px;
+    padding-bottom: 10px;
+}
+
+.card-visitnote {
+    margin-top: 30px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+}
+
+@media screen and (max-width:1380px) {
+    #details h1 {
+        font-size: 1.7rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 10%;
+    }
+
+    .register-form{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .main{
+        margin-left: 40%; 
+    }
+
+    .sidenav{
+        width: 40%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+    .login-form{
+        margin-top: 80%;
+    }
+
+    .register-form{
+        margin-top: 20%;
+    }
+    
+}
+
+@media screen and (max-width:767px){
+    .navbar-nav {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 10%;
+    }
+
+    .register-form{
+        margin-top: 10%;
+    }
+}

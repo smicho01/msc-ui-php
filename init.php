@@ -1,5 +1,10 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('session.save_handler', 'redis');
+ini_set('session.save_path', 'tcp://localhost:6379');
 session_start();
+
 date_default_timezone_set('Europe/Amsterdam');
 
 const PAGE_NAME = 'MSC PROJ';

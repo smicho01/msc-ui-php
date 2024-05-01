@@ -19,6 +19,9 @@ if(isset($_POST['urlcommand'])) {
 		break;
 
 		case 'setSessionToken':
+            // GET USER DATA FROM THE DATABASE
+            // MAP USER EMAIL TO USERNAME SET BY THE USER
+            // SO THAT REAL DETAILS OF THE USER WON'T BE SEEN BY OTHER PORTAL USERS
 			$_SESSION['academichain'] = array();
 			$_SESSION['academichain']['user'] = array();
 

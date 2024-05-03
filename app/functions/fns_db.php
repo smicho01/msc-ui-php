@@ -2,11 +2,11 @@
 
 function conn()
 {
-    $host = 'localhost';
-    $port = 5432;
-    $dbname = 'mscstudents';
-    $user = 'student';
-    $password = 'password';
+    $host = getenv("POSTGRESHOST");
+    $port = getenv("POSTGRESPORT");
+    $dbname = getenv("POSTGRESDBNAME");
+    $user = getenv("POSTGRESUSER");
+    $password = getenv("POSTGRESPASSWORD");
 
     // DSN (Data Source Name)
     $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password";

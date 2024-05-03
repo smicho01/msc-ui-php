@@ -8,6 +8,23 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
+    command: [ "redis-server", "--requirepass", "password" ]
+    networks:
+      - msc
+
+  phpui:
+    build: .
+    container_name: php-ui
+    ports:
+      - "80:80"
+    environment:
+      - POSTGRESHOST=postgres
+      - POSTGRESPORT=5432
+      - POSTGRESDBNAME=mscstudents
+      - POSTGRESUSER=student
+      - POSTGRESPASSWORD=password
+    networks:
+      - msc
 
   users-database-migrations:
     image: "liquibase/liquibase:4.15.0"

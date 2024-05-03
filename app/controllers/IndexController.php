@@ -25,6 +25,7 @@ switch ($VIEW) {
                 USER_SERVICE . "/user?username=" . $sessionUserName , $data = false, 'application/json',
             "Bearer " . $_SESSION['token']);
 
+
             if($foundUser) {
                 $data = json_decode($foundUser, true);
 

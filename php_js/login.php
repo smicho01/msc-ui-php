@@ -6,6 +6,7 @@ if(isset($_POST['urlcommand'])) {
 
 	$UrlCommand = $_POST['urlcommand'];
 
+
 	switch($UrlCommand){
         case 'setSessionToken':
 

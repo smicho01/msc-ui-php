@@ -1,27 +1,30 @@
 <?php
 
 function academichain_isUserLoggedIn() {
-	if( !isset($_SESSION['academichain']['token']) || !isset($_SESSION['academichain']['user'])) {
+	if( !isset($_SESSION['token']) || !isset($_SESSION['user'])) {
 		return false;
 	}
 	return true;
 }
 
 function require_login () {
-	if( !isset($_SESSION['academichain']['token'])) {
+	if( !isset($_SESSION['token'])) {
 		header("Location: index.php?c=login");
 	}
 }
 
+/*
+ * It gets session['user'] key given as function param
+ */
 function academichain_user($key) {
 	switch($key) {
 		case 'name':
-			return $_SESSION['academichain']['user']['name'];
+			return $_SESSION['user']['name'];
         case 'visibleUsername':
-            return $_SESSION['academichain']['user']['visibleUsername'];
+            return $_SESSION['user']['visibleUsername'];
 		case 'roles_list':
 			$out = "";
-			foreach ($_SESSION['academichain']['user']['roles'] as $role){
+			foreach ($_SESSION['user']['roles'] as $role){
 				$out .= $role . " ";
 			}
 			return $out;
@@ -29,6 +32,9 @@ function academichain_user($key) {
 	}
 }
 
+/*
+ * Get token from keycloak
+ */
 function getJwtToken($username, $password) {
 				$url = "http://sever3d.synology.me:7080/auth/realms/academichain/protocol/openid-connect/token";
 				$headers = [

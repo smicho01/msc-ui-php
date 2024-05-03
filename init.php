@@ -5,21 +5,17 @@ ini_set('display_startup_errors', 1);
 ini_set('log_errors', 1);
 
 ini_set('session.save_handler', 'redis');
-ini_set('session.save_path', 'tcp://localhost:6379');
+ini_set('session.save_path', "tcp://redis:6379?auth=password");
 session_start();
 
 date_default_timezone_set('Europe/Amsterdam');
 
 $FULL_PAGE = false;
-$SESSION_NAME = "academichain";
 
 /* Error reporting (update for prod env) */
 //const MODE = 'dev';
-const MODE = 'prod';
-if(MODE == 'dev'){
-	// TODO: move error settings for dev mode
-}
-
+//const MODE = 'prod';
+$ENV = getenv("ACADEMICHAIN_ENV");
 
 
 $reqScheme = "http://";

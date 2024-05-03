@@ -6,9 +6,9 @@
                       <span data-feather="home"></span>Dashboard</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/?c=patients&v=add">
+                  <a class="nav-link" href="/?c=questions">
                       <span data-feather="github"></span>
-                      Add Patient
+                      Questions
                   </a>
               </li>
 

@@ -62,7 +62,7 @@
                     ?>
                 </div>
                 <!--   LEFT -->
-                <div class="col-12 <?php if($FULL_PAGE != true) { echo 'col-lg-6'; } ?>  ">
+                <div class="col-12 <?php if($FULL_PAGE != true) { echo 'col-lg-8'; } ?>  ">
                     <?php if (MODE == 'dev') { print_r ($_SESSION); } ?>    
                     
                     <div id="view">
@@ -72,7 +72,7 @@
                 <!-- end LEFT -->
 
                 <!--   RIGHT -->
-                <div id="details" class="col-12  col-lg-6">
+                <div id="details" class="col-12  col-lg-4">
                 
                 </div>
                  <!-- end RIGHT -->

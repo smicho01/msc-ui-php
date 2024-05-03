@@ -31,6 +31,7 @@ switch ($VIEW) {
                 // User found in keycloak but not in portal db. User must update his details
                 // like visible username etc.
                 if (count($data) == 0) {
+                    $_SESSION['academichain']['user']['needProfile'] = true; // Indicate that user must create his profile first
                     header("Location: index.php?c=user&v=updatedata");
                 }
                 // if more than 1 user is returned then it is an error

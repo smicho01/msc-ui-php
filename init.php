@@ -15,7 +15,7 @@ $SESSION_NAME = "academichain";
 
 /* Error reporting (update for prod env) */
 //const MODE = 'dev';
-const MODE = 'dev';
+const MODE = 'prod';
 if(MODE == 'dev'){
 	// TODO: move error settings for dev mode
 }

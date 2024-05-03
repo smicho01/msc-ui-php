@@ -25,3 +25,18 @@ To configure database, below environment variables are needed:
 - $password = getenv("POSTGRESPASSWORD");
 
 File `docker-compose.yml` and service `phpui` introducing how they should be set.
+
+
+### MampPro local dev env Additional parameters for <VirtualHost>
+
+SetEnv ACADEMICHAIN_ENV dev
+
+SetEnv POSTGRESHOST localhost
+
+SetEnv POSTGRESPORT 5432
+
+SetEnv POSTGRESDBNAME mscstudents
+
+SetEnv POSTGRESUSER student
+
+SetEnv POSTGRESPASSWORD password

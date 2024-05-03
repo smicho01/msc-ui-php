@@ -5,11 +5,7 @@ $VIEW = isset($VIEW) ? $VIEW : 'index';
 
 switch ($VIEW) {
 
-	case 'clientcode':
-		echo 'logowanie';
-        break;
-	
-	default:
+    default:
 		// code...
 	break;
 }

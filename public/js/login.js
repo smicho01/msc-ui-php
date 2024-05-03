@@ -41,11 +41,6 @@ function login_user(uName, uPass, forma) {
                 }
                 else
                     console.log('Missing JWT Token');
-
-                //document.cookie = "accesstoken" + '=; Max-Age=0'
-                //var host = window.location.protocol + "//" + window.location.host;
-                //console.log(host);
-                
                 $(forma).unbind('submit').submit();
 
             },

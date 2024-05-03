@@ -6,15 +6,23 @@ require_login ();
 switch ($VIEW) {
 
 	case 'index':
-		   	$name = "Adam Kowalski";
-		   	$patients = $USERS;
-
-			// Attach js files to the footer
+            // Attach js files to the footer
 			$jsfiles = [
-				'patient_fns',
-				'patients'
+				'users'
 			];
             $FULL_PAGE = true;
+
+            // Get logged in user
+            $USER = $_SESSION[$SESSION_NAME]['user'];
+            //print_r($USER);
+            $foundUser = rest_call('GET',
+            "http://localhost:9091/api/v1/user?username=johndo01" ,
+                $data = false, 'application/json',
+            "Bearer " . $_SESSION[$SESSION_NAME]['token']);
+
+            if($foundUser) {
+                $data = json_decode($foundUser, true);
+            }
 	break;
 
 	case 'logout':

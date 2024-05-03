@@ -1,27 +1,26 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+ini_set('log_errors', 1);
+
 ini_set('session.save_handler', 'redis');
 ini_set('session.save_path', 'tcp://localhost:6379');
 session_start();
 
 date_default_timezone_set('Europe/Amsterdam');
 
-const PAGE_NAME = 'MSC PROJ';
-
 $FULL_PAGE = false;
+$SESSION_NAME = 'academichain';
 
 /* Error reporting (update for prod env) */
 //const MODE = 'dev';
-const MODE = 'prod';
+const MODE = 'dev';
 if(MODE == 'dev'){
 	// TODO: move error settings for dev mode
 }
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-ini_set('log_errors', 1);
-error_reporting(E_ALL);
+
 
 
 
@@ -80,7 +79,5 @@ const VISITS_SERVICE = API_GATEWAY . "visit-service";
 include_once('fns_session.php');
 include_once('fns_login.php');
 
-
-global $USERS;
 
 //print_r($_SESSION);

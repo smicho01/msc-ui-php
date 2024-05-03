@@ -1,6 +1,6 @@
 <?php
 function session_add_key($key, $value) {
-	$_SESSION['academichain'][$key] = $value;
+	$_SESSION[$key] = $value;
 }
 
 function my_session_start() {

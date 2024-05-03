@@ -11,7 +11,6 @@ session_start();
 date_default_timezone_set('Europe/Amsterdam');
 
 $FULL_PAGE = false;
-$SESSION_NAME = "academichain";
 
 /* Error reporting (update for prod env) */
 //const MODE = 'dev';

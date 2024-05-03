@@ -25,7 +25,7 @@ function disconnect ($pdo)
 
 function insertDbLogData($level, $module, $eventType, $message, $json = null) {
     $level =  strtoupper($level);
-    $userId = $_SESSION['academichain']['user']['email']; // may change to user id later
+    $userId = $_SESSION['user']['email']; // may change to user id later
     $IP =  get_client_ip();
 
 

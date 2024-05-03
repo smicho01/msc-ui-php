@@ -7,21 +7,38 @@ switch ($VIEW) {
 
 	case 'index':
             // Attach js files to the footer
-			$jsfiles = [
-				'users'
-			];
+			$jsfiles = ['users'];
+            // Use full page layout
             $FULL_PAGE = true;
-
             // Get logged in user
             $USER = $_SESSION[$SESSION_NAME]['user'];
-            //print_r($USER);
+
+            // Log user login by presence of session variable 'justLoggedIn'
+            if(isset($_SESSION['academichain']['justLoggedIn'])) {
+                insertDbLogData('INFO', 'IndexController::index', 'user login', 'new user login');
+                unset($_SESSION['academichain']['justLoggedIn']); // unset variable so new log are not created
+            }
+
+            // Use curl to get data from API
+            $sessionUserName = $_SESSION[$SESSION_NAME]['user']['username'];
             $foundUser = rest_call('GET',
-            "http://localhost:9091/api/v1/user?username=johndo01" ,
-                $data = false, 'application/json',
+                USER_SERVICE . "/user?username=" . $sessionUserName , $data = false, 'application/json',
             "Bearer " . $_SESSION[$SESSION_NAME]['token']);
 
             if($foundUser) {
                 $data = json_decode($foundUser, true);
+
+                // User found in keycloak but not in portal db. User must update his details
+                // like visible username etc.
+                if (count($data) == 0) {
+                    header("Location: index.php?c=user&v=updatedata");
+                }
+                // if more than 1 user is returned then it is an error
+                if(count($data) > 1) {
+                    insertDbLogData('ERROR', 'IndexController::index', 'multiple users', count($data) . ' users found');
+                    header("Location: index.php?v=logout");
+                }
+                $_SESSION[$SESSION_NAME]['user']['visibleUsername'] = $data[0]['visibleUsername'];
             }
 	break;
 

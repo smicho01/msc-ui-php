@@ -1,14 +1,5 @@
 <?php
-
-function display_session_message($sessionField) {
-	if(isset($_SESSION[$sessionField])) {
-		echo $_SESSION[$sessionField];
-	}
-
-	//unset($_SESSION[$sessionField]);
-}
-
-function academichain_session_add($key, $value) {
+function session_add_key($key, $value) {
 	$_SESSION['academichain'][$key] = $value;
 }
 
@@ -33,7 +24,6 @@ function my_session_start() {
   
   function my_session_save() {
 	global $sessfile;
-  
 	file_put_contents($sessfile, serialize($_SESSION));
   }
   

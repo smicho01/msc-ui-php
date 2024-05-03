@@ -11,7 +11,7 @@ session_start();
 date_default_timezone_set('Europe/Amsterdam');
 
 $FULL_PAGE = false;
-$SESSION_NAME = 'academichain';
+$SESSION_NAME = "academichain";
 
 /* Error reporting (update for prod env) */
 //const MODE = 'dev';
@@ -19,8 +19,6 @@ const MODE = 'dev';
 if(MODE == 'dev'){
 	// TODO: move error settings for dev mode
 }
-
-
 
 
 
@@ -68,16 +66,15 @@ set_include_path(get_include_path() . PATH_SEPARATOR . FNS_DIR);
 
 /* Settings */
 
-const API_GATEWAY = "http://89.40.0.27:8082/";
-const PATIENT_SERVICE = API_GATEWAY . "patient-service";
-const ADMIN_SERVICE = API_GATEWAY . "admin-service";
-const VISITS_SERVICE = API_GATEWAY . "visit-service";
+const USER_SERVICE = "http://localhost:9091/api/v1";
+const ITEM_SERVICE  = "http://localhost:9092/api/v1";
 
 
 /* Include basic files */
 
 include_once('fns_session.php');
 include_once('fns_login.php');
+include_once('fns_db.php');
 
 
 //print_r($_SESSION);

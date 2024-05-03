@@ -1,4 +1,5 @@
 <?php
+
 function academichain_isUserLoggedIn() {
 	if( !isset($_SESSION['academichain']['token']) || !isset($_SESSION['academichain']['user'])) {
 		return false;
@@ -16,8 +17,8 @@ function academichain_user($key) {
 	switch($key) {
 		case 'name':
 			return $_SESSION['academichain']['user']['name'];
-		break;
-
+        case 'visibleUsername':
+            return $_SESSION['academichain']['user']['visibleUsername'];
 		case 'roles_list':
 			$out = "";
 			foreach ($_SESSION['academichain']['user']['roles'] as $role){

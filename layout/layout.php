@@ -39,7 +39,7 @@
                 <?php if(academichain_isUserLoggedIn()): ?>
                     <div class="row userbar">
                         <div class="col-3">
-                        <h4>User: <?php echo academichain_user('name') ?></h4>
+                        <h4>User: <?php echo academichain_user('name') ?> seen as: <?php echo academichain_user('visibleUsername'); ?></h4>
                         </div>
                         <div class="col-9">
                             roles: <?php echo academichain_user('roles_list'); ?>

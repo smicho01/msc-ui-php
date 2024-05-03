@@ -8,9 +8,28 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
-#    environment:
-#      - REDIS_PASSWORD=yourStrongPassword123!  # Set the password for Redis
-#    command: redis-server --requirepass ${REDIS_PASSWORD}  # Start Redis with password requirement
+
+  users-database-migrations:
+    image: "liquibase/liquibase:4.15.0"
+    volumes:
+      - ./db/changelog:/liquibase/changelog
+      - ./db/sql:/liquibase/sql
+    command:
+      - "--url=jdbc:postgresql://postgres:5432/mscstudents"
+      - "--username=student"
+      - "--password=password"
+      - "--changeLogFile=changelog/db.changelog-main.yml"
+      - "--liquibaseSchemaName=uilogs"
+      - "update"
+    networks:
+      - msc
+
+networks:
+  msc:
+    name: msc-localdev_msc
+    driver: bridge
+    external: true
+
 
 volumes:
   redis_data:

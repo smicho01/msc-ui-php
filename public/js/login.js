@@ -2,20 +2,12 @@ function set_php_session_token(jwtToken) {
     var host = window.location.protocol + "//" + window.location.host;
     $.post(
         host + "/php_js/login.php",
-        {
-            urlcommand: 'setSessionToken',
-            token: jwtToken
-        }
+        {  urlcommand: 'setSessionToken',  token: jwtToken }
     )
-        .done(function(data){
-            console.log('Attempt to set PHP Session Token: ' + data);
-        })
+        .done(function(data){})
         .fail(function(data){
-            console.log('some fail with jQuery post');
+            console.log('jQuery post FAIL');
         })
-        .always(function() {
-
-        });
 }
 
 function login_user(uName, uPass, forma) {
@@ -33,10 +25,8 @@ function login_user(uName, uPass, forma) {
             },
             dataType: 'json',
             success: function (data) {
-                console.info(data);
                 if(data.access_token != null) {
                     document.cookie = "accesstoken=" + data.access_token;
-                    //console.log(data.access_token);
                     set_php_session_token(data.access_token);
                 }
                 else
@@ -45,8 +35,6 @@ function login_user(uName, uPass, forma) {
 
             },
             error: function(data) {
-                //console.log(data);
-                //console.log(data.statusText);
                 const err = data.responseJSON.error_description
                 alert(err);
                 return false;

@@ -7,21 +7,7 @@ if(isset($_POST['urlcommand'])) {
 	$UrlCommand = $_POST['urlcommand'];
 
 	switch($UrlCommand){
-		case 'getallitems':
-
-			// $token = "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjIyM2IyNTQ1MTQwOWNiZWNkN2QwMjQyIiwidXNlcl9yb2xlcyI6WyJ1c2VyIl0sInVzZXJfdXNlcm5hbWUiOiJNYXJ5IiwiaWF0IjoxNjQ2NTg2MTQzLCJleHAiOjE2NDc0NTAxNDN9.rlOVUzzPGHV9ZHp_NBlXjghEHMctEJg9XmOqwt62ZlcClrGGaWM0_oR9jaO4HmsTseXcpIlBo9_KpmNJ73Cjfg";
-
-			// $url = 'http://localhost:3000/api/items';
-			// $jsonResponse = rest_call("GET",$url, false, 'application/json', $token);
-			// $items = json_decode($jsonResponse);
-
-			// echo json_encode(['items'=> $items]);
-		break;
-
-		case 'setSessionToken':
-            // GET USER DATA FROM THE DATABASE
-            // MAP USER EMAIL TO USERNAME SET BY THE USER
-            // SO THAT REAL DETAILS OF THE USER WON'T BE SEEN BY OTHER PORTAL USERS
+        case 'setSessionToken':
 			$_SESSION['academichain'] = array();
 			$_SESSION['academichain']['user'] = array();
 
@@ -35,10 +21,9 @@ if(isset($_POST['urlcommand'])) {
 
 			$_SESSION['academichain']['tokenexpiry'] = $decodedToken->exp;
 
-			//echo $_SESSION['academichain']['token'];
-			//print_r($_SESSION);
+            $_SESSION['academichain']['justLoggedIn'] = 1;
 
-			echo "Session set";
+            echo "Session set";
 			
 		break;
 

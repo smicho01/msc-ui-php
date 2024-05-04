@@ -40,3 +40,7 @@ SetEnv POSTGRESDBNAME mscstudents
 SetEnv POSTGRESUSER student
 
 SetEnv POSTGRESPASSWORD password
+
+SetEnv USER_SERVICE_URI http://localhost:9091/api/v1
+
+SetEnv REDIS_URL tcp://localhost:6379

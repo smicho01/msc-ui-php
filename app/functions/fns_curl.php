@@ -44,7 +44,7 @@ function rest_call($method, $url, $data = false, $contentType = false, $token = 
     $header = substr($response, 0, $header_size);
     $body = substr($response, $header_size);
 
-    $status_line= strtok($response, "\n");
+    $status_line= strtok($response, "\n");    // this extracts the first line
 
     list($version, $status_code, $status_text) = explode(' ', $status_line, 3);
 

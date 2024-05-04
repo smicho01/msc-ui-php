@@ -2,7 +2,7 @@
 // Get environment variables
 define("ENV", getenv("ACADEMICHAIN_ENV"));
 define("USER_SERVICE_URI" , getenv("USER_SERVICE_URI"));
-define("ITEM_SERVICE_URI" , getenv("USER_SERVICE_URI"));
+define("ITEM_SERVICE_URI" , getenv("ITEM_SERVICE_URI"));
 define("REDIS_URL", getenv("REDIS_URL"));
 
 // PHP settings

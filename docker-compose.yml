@@ -24,8 +24,9 @@ services:
       - POSTGRESUSER=student
       - POSTGRESPASSWORD=password
       - USER_SERVICE_URI=http://localhost:9091/api/v1
-      - USER_SERVICE_URI=http://localhost:9092/api/v1
+      - ITEM_SERVICE_URI=http://localhost:9092/api/v1
       - REDIS_URL=tcp://sever3d.synology.me:6379?auth=password
+      - ACADEMICHAIN_ENV=dev
     networks:
       - msc
 
@@ -49,7 +50,6 @@ networks:
     name: msc-localdev_msc
     driver: bridge
     external: true
-
 
 volumes:
   redis_data:

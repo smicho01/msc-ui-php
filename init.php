@@ -1,19 +1,20 @@
 <?php
 $ENV = getenv("ACADEMICHAIN_ENV");
 
+date_default_timezone_set('Europe/Amsterdam');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 ini_set('log_errors', 1);
 
 ini_set('session.save_handler', 'redis');
-ini_set('session.save_path', "tcp://redis:6379?auth=password");
+ini_set('session.save_path', "tcp://sever3d.synology.me:6379?auth=password");
 if($ENV == "dev") {
     ini_set('session.save_path', "tcp://localhost:6379");
 }
 session_start();
 
-date_default_timezone_set('Europe/Amsterdam');
+
 
 $FULL_PAGE = false;
 

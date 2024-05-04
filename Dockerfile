@@ -15,9 +15,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-enable redis \
     && docker-php-ext-install pdo_pgsql
 
-# Change php.ini for Redis session
-RUN echo "session.save_handler redis" >> /usr/local/etc/php/conf.d/sessions.ini && \
-    echo "session.save_path tcp://redis:6379?auth=password" >> /usr/local/etc/php/conf.d/sessions.ini
+## Change php.ini for Redis session
+#RUN echo "session.save_handler redis" >> /usr/local/etc/php/conf.d/sessions.ini && \
+#    echo "session.save_path tcp://redis:6379?auth=password" >> /usr/local/etc/php/conf.d/sessions.ini
 
 # Copy your PHP application code into the container
 COPY . .

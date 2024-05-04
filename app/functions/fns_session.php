@@ -2,25 +2,25 @@
 /*
  * Used to store session on physical disc
  */
-//function my_session_start()
-//{
-//    global $phpsessid, $sessfile;
-//
-//    if (!isset($_COOKIE['PHPSESSID']) || empty($_COOKIE['PHPSESSID'])) {
-//        $phpsessid = my_base32_encode(my_random_bytes(16));
-//        setcookie('PHPSESSID', $phpsessid, ini_get('session.cookie_lifetime'), ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure'), ini_get('session.cookie_httponly'));
-//    } else {
-//        $phpsessid = substr(preg_replace('/[^a-z0-9]/', '', $_COOKIE['PHPSESSID']), 0, 26);
-//    }
-//
-//    $sessfile = ini_get('session.save_path') . '/sess_' . $phpsessid;
-//    if (is_file($sessfile)) {
-//        $_SESSION = unserialize(file_get_contents($sessfile));
-//    } else {
-//        $_SESSION = array();
-//    }
-//    register_shutdown_function('my_session_save');
-//}
+function my_session_start()
+{
+    global $phpsessid, $sessfile;
+
+    if (!isset($_COOKIE['PHPSESSID']) || empty($_COOKIE['PHPSESSID'])) {
+        $phpsessid = my_base32_encode(my_random_bytes(16));
+        setcookie('PHPSESSID', $phpsessid, ini_get('session.cookie_lifetime'), ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure'), ini_get('session.cookie_httponly'));
+    } else {
+        $phpsessid = substr(preg_replace('/[^a-z0-9]/', '', $_COOKIE['PHPSESSID']), 0, 26);
+    }
+
+    $sessfile = ini_get('session.save_path') . '/sess_' . $phpsessid;
+    if (is_file($sessfile)) {
+        $_SESSION = unserialize(file_get_contents($sessfile));
+    } else {
+        $_SESSION = array();
+    }
+    register_shutdown_function('my_session_save');
+}
 
 /*
  * Add key and value to SESSION

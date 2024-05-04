@@ -29,13 +29,14 @@ if(isset($_POST['urlcommand'])) {
 		break;
 
 		case 'logout':
-			
-			if(isset($_SESSION['token'])) {
-				unset($_SESSION['token']);
+            if(isset($_SESSION['token'])) {
+                unset($_SESSION['token']);
+            }
+			if(isset($_SESSION['user'])) {
 				unset($_SESSION['user']);
 			}
-			session_unset();
-			session_destroy();
+			//session_unset();
+			//session_destroy();
 		break;
 	}
 }

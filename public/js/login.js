@@ -44,6 +44,7 @@ function login_user(uName, uPass, forma) {
 
 
 $(document).ready(function() {
+
     $('#loginform').submit(function(env) {
         const forma = this;
         env.preventDefault();
@@ -61,6 +62,7 @@ $(document).ready(function() {
 
     // Logout user
     $('.btnLogout').on('click', function() {
+        console.log('Logout')
         $.post(
                 "/php_js/login.php",
                 {

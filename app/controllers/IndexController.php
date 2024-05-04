@@ -21,13 +21,18 @@ switch ($VIEW) {
 
             // Use curl to get data from API
             $sessionUserName = $_SESSION['user']['username'];
-            $foundUser = rest_call('GET',
-                USER_SERVICE . "/user?username=" . $sessionUserName , $data = false, 'application/json',
+
+            // Find user using User API
+            $foundUserResponse = rest_call('GET',
+                USER_SERVICE_URI . "/user?username=" . $sessionUserName , $data = false, 'application/json',
             "Bearer " . $_SESSION['token']);
 
+            $statusCode = $foundUserResponse['status_code'];
+            $responseBody = $foundUserResponse['body'];
 
-            if($foundUser) {
-                $data = json_decode($foundUser, true);
+
+            if($responseBody) {
+                $data = json_decode($responseBody, true);
 
                 // User found in keycloak but not in portal db. User must update his details
                 // like visible username etc.

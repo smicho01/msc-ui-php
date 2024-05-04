@@ -1,20 +1,21 @@
 <?php
-$ENV = getenv("ACADEMICHAIN_ENV");
+// Get environment variables
+define("ENV", getenv("ACADEMICHAIN_ENV"));
+define("USER_SERVICE_URI" , getenv("USER_SERVICE_URI"));
+define("ITEM_SERVICE_URI" , getenv("USER_SERVICE_URI"));
+define("REDIS_URL", getenv("REDIS_URL"));
 
+// PHP settings
 date_default_timezone_set('Europe/Amsterdam');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 ini_set('log_errors', 1);
 
-ini_set('session.save_handler', 'redis');
-ini_set('session.save_path', "tcp://sever3d.synology.me:6379?auth=password");
-if($ENV == "dev") {
-    ini_set('session.save_path', "tcp://localhost:6379");
-}
+ini_set('session.save_handler', 'redis'); // Session handler set to Redis
+ini_set('session.save_path', REDIS_URL);
+
 session_start();
-
-
 
 $FULL_PAGE = false;
 
@@ -59,18 +60,8 @@ set_include_path(get_include_path() . PATH_SEPARATOR . PUBLIC_DIR);
 set_include_path(get_include_path() . PATH_SEPARATOR . JS_DIR);
 set_include_path(get_include_path() . PATH_SEPARATOR . FNS_DIR);
 
-
-/* Settings */
-
-const USER_SERVICE = "http://localhost:9091/api/v1";
-const ITEM_SERVICE  = "http://localhost:9092/api/v1";
-
-
-/* Include basic files */
+/* Include functions files */
 
 include_once('fns_session.php');
 include_once('fns_login.php');
 include_once('fns_db.php');
-
-
-//print_r($_SESSION);

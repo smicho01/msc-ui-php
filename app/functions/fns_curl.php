@@ -14,7 +14,6 @@ function rest_call($method, $url, $data = false, $contentType = false, $token = 
     {
     	case "GET":
     		curl_setopt($curl, CURLOPT_URL, TRUE);
-
     	break;
         case "POST":
             curl_setopt($curl, CURLOPT_POST, 1);
@@ -38,11 +37,20 @@ function rest_call($method, $url, $data = false, $contentType = false, $token = 
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 
-    $result = curl_exec($curl);
+    curl_setopt($curl, CURLOPT_HEADER, 1);
+    $response = curl_exec($curl);
+
+    $header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
+    $header = substr($response, 0, $header_size);
+    $body = substr($response, $header_size);
+
+    $status_line= strtok($response, "\n");
+
+    list($version, $status_code, $status_text) = explode(' ', $status_line, 3);
 
     curl_close($curl);
 
-    return $result;
+    return array('header' => $header, 'body' => $body, 'status_code' => $status_code);
 }
 
 

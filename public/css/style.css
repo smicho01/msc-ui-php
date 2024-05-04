@@ -161,6 +161,13 @@ tr.hidden {
     margin-top: 30px;
 }
 
+.servicenotfound {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    margin: 50px;
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
 }
@@ -176,7 +183,6 @@ tr.hidden {
         font-size: 12px !important;
     }
 }
-
 
 @media screen and (max-width: 450px) {
     .login-form{

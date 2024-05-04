@@ -23,6 +23,9 @@ services:
       - POSTGRESDBNAME=mscstudents
       - POSTGRESUSER=student
       - POSTGRESPASSWORD=password
+      - USER_SERVICE_URI=http://localhost:9091/api/v1
+      - USER_SERVICE_URI=http://localhost:9092/api/v1
+      - REDIS_URL=tcp://sever3d.synology.me:6379?auth=password
     networks:
       - msc
 

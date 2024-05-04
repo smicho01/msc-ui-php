@@ -64,11 +64,7 @@
                     }
                     ?>
                 </div>
-                <?php if($ENV == 'dev'): ?>
-                    <div class="col-6">
-                    <?php print_r($_SESSION); ?>
-                        </div>
-                <?php endif; ?>
+
                 <?php include_once(VIEWS_DIR . DS . $CONTROLLER . DS . $VIEW . ".php"); ?>
             </div>
 

@@ -8,12 +8,18 @@ $ControllerName = ucfirst($CONTROLLER) . "Controller";
 
 include_once(CTRL_DIR . DS . $ControllerName . ".php");
 
-switch($ControllerName) {
-	case 'LoginController':
-		include_once(LAYOUT_DIR . DS . "login_layout.php");
-	break;
-
-	default:
-		include_once(LAYOUT_DIR . DS . "layout.php");
-	break;
+switch ($ControllerName) {
+    case 'ErrorController':
+        include_once(LAYOUT_DIR . DS . "404.php");
+        break;
+    case 'LoginController':
+        include_once(LAYOUT_DIR . DS . "login_layout.php");
+        break;
+    default:
+        include_once(LAYOUT_DIR . DS . "layout.php");
+        break;
 }
+
+if (ENV == 'dev'):
+    //print_r($_SESSION);
+endif;

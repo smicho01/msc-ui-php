@@ -63,8 +63,6 @@ function getJwtToken($username, $password) {
 				$result = curl_exec($curl);
 				curl_close($curl);
 
-				print_r($result);
-
 				$data = json_decode($result);
 				return $data->access_token;
 }

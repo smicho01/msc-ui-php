@@ -1,6 +1,23 @@
 <?php
 include_once 'fns_curl.php';
 
+class User {
+    public $id;
+    public $name;
+    public $username;
+    public $visibleUsername;
+    public $email;
+
+    public function __construct()
+    {
+        $this->id = $_SESSION['user']['id'];
+        $this->username = $_SESSION['user']['username'];
+        $this->name = $_SESSION['user']['name'];
+        $this->email = $_SESSION['user']['email'];
+        $this->visibleUsername = $_SESSION['user']['visibleUsername'];
+    }
+}
+
 function user_checkIfExists($sessionUserName) {
     // Find user using User API
     $foundUserResponse = rest_call('GET',

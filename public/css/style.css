@@ -168,6 +168,15 @@ tr.hidden {
     margin: 50px;
 }
 
+.sidebar-main {
+    padding: 15px;
+    background-color: #dedede !important;
+}
+
+.sidebar-box.user-sidebar {
+    text-align: center;
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
 }

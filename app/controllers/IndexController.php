@@ -30,10 +30,13 @@ switch ($VIEW) {
                 $insertResult = user_insert_from_session();
                 $insertedUser = json_decode(insertResult['body'], true);
                 $_SESSION['user']['visibleUsername'] = $insertedUser['visibleUsername'];
+                $_SESSION['user']['id'] = $insertedUser['id'];
             } else {
                 $_SESSION['user']['visibleUsername'] = $userExists['visibleUsername'];
+                $_SESSION['user']['id'] = $userExists['id'];
             }
 
+            $MAIN_USER = new User();
 
 	break;
 

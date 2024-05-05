@@ -9,7 +9,7 @@ switch ($VIEW) {
             // Attach js files to the footer
 			$jsfiles = ['users'];
             // Use full page layout
-            $FULL_PAGE = true;
+
             // Get logged in user
             $USER = $_SESSION['user'];
 

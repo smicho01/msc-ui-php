@@ -1,17 +1,6 @@
 version: '3.8'
 
 services:
-#  redis:
-#    image: redis:latest
-#    container_name: my_redis
-#    ports:
-#      - "6379:6379"
-#    volumes:
-#      - redis_data:/data
-#    command: [ "redis-server", "--requirepass", "password" ]
-#    networks:
-#      - msc
-
   phpui:
     build: .
     container_name: php-ui
@@ -23,9 +12,10 @@ services:
       - POSTGRESDBNAME=mscstudents
       - POSTGRESUSER=student
       - POSTGRESPASSWORD=password
-      - USER_SERVICE_URI=http://localhost:9091/api/v1
+      - USER_SERVICE_URI=http://user-service:9091/api/v1
       - ITEM_SERVICE_URI=http://localhost:9092/api/v1
       - REDIS_URL=tcp://sever3d.synology.me:6379?auth=password
+      #SetEnv REDIS_URL tcp://localhost:6379
       - ACADEMICHAIN_ENV=dev
     networks:
       - msc
@@ -50,6 +40,3 @@ networks:
     name: msc-localdev_msc
     driver: bridge
     external: true
-
-volumes:
-  redis_data:

@@ -1,10 +1,3 @@
-const API_GATEWAY = 'http://89.40.0.27:8082/';
-const PATIENT_SERVICE = API_GATEWAY + "patient-service";
-const ADMIN_SERVICE = API_GATEWAY + "admin-service";
-const VISITS_SERVICE = API_GATEWAY + "visit-service";
-const MEDICALDATA_SERVICE = API_GATEWAY + "medicaldata-service";
-
-
 /** COOKIES **/
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();

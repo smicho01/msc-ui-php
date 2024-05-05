@@ -1,5 +1,6 @@
 <?php
 include_once 'fns_curl.php';
+include_once 'fns_user.php';
 
 $VIEW = isset($VIEW) ? $VIEW : 'index';
 require_login ();
@@ -22,31 +23,18 @@ switch ($VIEW) {
             // Use curl to get data from API
             $sessionUserName = $_SESSION['user']['username'];
 
-            // Find user using User API
-            $foundUserResponse = rest_call('GET',
-                USER_SERVICE_URI . "/user?username=" . $sessionUserName , $data = false, 'application/json',
-            "Bearer " . $_SESSION['token']);
-
-            $statusCode = $foundUserResponse['status_code'];
-            $responseBody = $foundUserResponse['body'];
-
-
-            if($responseBody) {
-                $data = json_decode($responseBody, true);
-
-                // User found in keycloak but not in portal db. User must update his details
-                // like visible username etc.
-                if (count($data) == 0) {
-                    $_SESSION['user']['needProfile'] = true; // Indicate that user must create his profile first
-                    header("Location: index.php?c=user&v=updatedata");
-                }
-                // if more than 1 user is returned then it is an error
-                if(count($data) > 1) {
-                    insertDbLogData('ERROR', 'IndexController::index', 'multiple users', count($data) . ' users found');
-                    header("Location: index.php?v=logout");
-                }
-                $_SESSION['user']['visibleUsername'] = $data[0]['visibleUsername'];
+            $userExists = user_checkIfExists($sessionUserName);
+            if(!$userExists) {
+                // User exists in Keycloak but not in service database
+                // Insert user to service db
+                $insertResult = user_insert_from_session();
+                $insertedUser = json_decode(insertResult['body'], true);
+                $_SESSION['user']['visibleUsername'] = $insertedUser['visibleUsername'];
+            } else {
+                $_SESSION['user']['visibleUsername'] = $userExists['visibleUsername'];
             }
+
+
 	break;
 
 	case 'logout':

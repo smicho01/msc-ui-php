@@ -1,3 +1,25 @@
 <div class="row">
-   <h3>Home</h3>
+    <div class="col-md-9">
+        <h3>Home</h3>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+        <?php print_r($_SESSION); ?>
+
+    </div>
+    <!-- SIDEBAR -->
+    <div class="col-md-3 sidebar-main">
+        <!-- USER SIDEBAR -->
+        <?php if(isUserLoggedIn()):?>
+        <div class="sidebar-box user-sidebar">
+            <h4>About You</h4>
+            <h5><?php echo $MAIN_USER->visibleUsername; ?></h5>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at, beatae commodi debitis dolor dolore ducimus, eos iure, libero nisi numquam obcaecati pariatur quas qui rerum ut vel vero voluptatum.
+            </p>
+        </div>
+        <?php endif; ?>
+        <!-- //USER_SIDEBAR -->
+    </div>
+    <!-- //SIDEBAR -->
 </div>

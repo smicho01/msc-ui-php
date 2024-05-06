@@ -12,12 +12,22 @@
                   </a>
               </li>
 
-              <li class="nav-item">
-                  <a class="nav-link btnLogout" href="#">
-                      <span data-feather="layers"></span>
-                      Sign out
-                  </a>
-              </li>
+              <?php if (isUserLoggedIn()): ?>
+                  <li class="nav-item">
+                      <a class="nav-link btnLogout" href="#">
+                          <span data-feather="layers"></span>
+                          Sign out
+                      </a>
+                  </li>
+              <?php else: ?>
+                  <li class="nav-item">
+                      <a class="nav-link" href="index.php?c=login">
+                          <span data-feather="layers"></span>
+                          Sign in
+                      </a>
+                  </li>
+              <?php endif; ?>
+
           </ul>
 
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -30,13 +40,13 @@
               <li class="nav-item">
                   <a class="nav-link" href="#">
                       <span data-feather="file-text"></span>
-                      Visits Today
+                      Recent questions
                   </a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="#">
                       <span data-feather="file-text"></span>
-                      Visits this Week
+                      Recent items
                   </a>
               </li>
 

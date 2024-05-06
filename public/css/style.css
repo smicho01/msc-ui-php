@@ -7,6 +7,9 @@ hr {
  
 }
 
+#page {
+    margin-top: 10px;
+}
 .heading {
     border-bottom: 1px solid #d6d6d6;
     padding-bottom: 20px;
@@ -37,6 +40,7 @@ hr {
 
 .userbar * {
     font-size: 12px !important;
+    padding-bottom: 8px;
 }
 
 tr.selected {
@@ -166,6 +170,15 @@ tr.hidden {
     color: #fff;
     padding: 20px;
     margin: 50px;
+}
+
+.sidebar-main {
+    padding: 15px;
+    background-color: #dedede !important;
+}
+
+.sidebar-box.user-sidebar {
+    text-align: center;
 }
 
 @media screen and (max-height: 450px) {

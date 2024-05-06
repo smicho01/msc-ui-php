@@ -1,6 +1,6 @@
 <?php
 
-function academichain_isUserLoggedIn() {
+function isUserLoggedIn() {
 	if( !isset($_SESSION['token']) || !isset($_SESSION['user'])) {
 		return false;
 	}

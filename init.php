@@ -62,8 +62,6 @@ const CSS_DIR = BASE_URL . "/public/css";
 
 const FNS_DIR = APP_DIR . "/functions";
 
-
-
 /* Set include paths */
 
 set_include_path(get_include_path() . PATH_SEPARATOR . BASEDIR);
@@ -80,3 +78,4 @@ set_include_path(get_include_path() . PATH_SEPARATOR . FNS_DIR);
 include_once('fns_session.php');
 include_once('fns_login.php');
 include_once('fns_db.php');
+include_once ('fns_user.php');

@@ -24,7 +24,11 @@
     </button>
 
     <div class="navbar-nav">
-        <button class="btnLogout btn btn-danger btn-sm" style="margin-right:20px;">Sign out</button>
+        <?php if(isUserLoggedIn()): ?>
+            <a class="btnLogout btn btn-danger btn-sm" style="margin-right:20px;">Sign out</a>
+        <?php else: ?>
+            <a href="index.php?c=login" class="btn btn-success btn-sm" style="margin-right:20px;">Sign in</a>
+        <?php endif; ?>
     </div>
 </header>
 <!-- end header -->
@@ -37,16 +41,13 @@
         <?php include_once("_sidebar_nav.php"); ?>
         <!-- end Sidebar Nav -->
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="page">
             <div class="row">
-                <?php if (academichain_isUserLoggedIn()): ?>
+                <?php if (isUserLoggedIn()): ?>
                     <div class="row userbar">
-                        <div class="col-3">
-                            <h4>User: <?php echo academichain_user('name') ?> seen
-                                as: <?php echo academichain_user('visibleUsername'); ?></h4>
-                        </div>
-                        <div class="col-9">
-                            roles: <?php echo academichain_user('roles_list'); ?>
+                        <div class="col-12">
+                            <h4>User: <?php echo academichain_user('name') ?> visible
+                                as: <b><?php echo academichain_user('visibleUsername'); ?></b></h4>
                         </div>
                     </div>
                 <?php endif; ?>

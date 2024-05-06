@@ -23,21 +23,20 @@ switch ($VIEW) {
             // Use curl to get data from API
             $sessionUserName = $_SESSION['user']['username'];
 
-            $userExists = user_checkIfExists($sessionUserName);
+            $userExists = user_get('username', $sessionUserName);
             if(!$userExists) {
                 // User exists in Keycloak but not in service database
                 // Insert user to service db
                 $insertResult = user_insert_from_session();
-                $insertedUser = json_decode(insertResult['body'], true);
+                $insertedUser = json_decode($insertResult['body'], true);
                 $_SESSION['user']['visibleUsername'] = $insertedUser['visibleUsername'];
                 $_SESSION['user']['id'] = $insertedUser['id'];
             } else {
                 $_SESSION['user']['visibleUsername'] = $userExists['visibleUsername'];
                 $_SESSION['user']['id'] = $userExists['id'];
             }
-
+            print_r($_SESSION);
             $MAIN_USER = new User();
-
 	break;
 
 	case 'logout':

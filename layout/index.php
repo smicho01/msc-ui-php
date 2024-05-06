@@ -16,7 +16,7 @@
     <div class="container">
       <?php if (MODE == 'dev') { print_r($_SESSION); } ?>
       
-      <?php if(academichain_isUserLoggedIn()): ?>
+      <?php if(isUserLoggedIn()): ?>
       <div class="row">
           <div class="col-6">
              <h4>User: <?php echo academichain_user('name') ?></h4>

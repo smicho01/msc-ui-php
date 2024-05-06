@@ -45,12 +45,9 @@
             <div class="row">
                 <?php if (isUserLoggedIn()): ?>
                     <div class="row userbar">
-                        <div class="col-3">
-                            <h4>User: <?php echo academichain_user('name') ?> seen
-                                as: <?php echo academichain_user('visibleUsername'); ?></h4>
-                        </div>
-                        <div class="col-9">
-                            roles: <?php echo academichain_user('roles_list'); ?>
+                        <div class="col-12">
+                            <h4>User: <?php echo academichain_user('name') ?> visible
+                                as: <b><?php echo academichain_user('visibleUsername'); ?></b></h4>
                         </div>
                     </div>
                 <?php endif; ?>

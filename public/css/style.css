@@ -40,6 +40,7 @@ hr {
 
 .userbar * {
     font-size: 12px !important;
+    padding-bottom: 8px;
 }
 
 tr.selected {

@@ -2,11 +2,13 @@
 include_once 'fns_curl.php';
 
 class User {
-    public $id;
-    public $name;
-    public $username;
-    public $visibleUsername;
-    public $email;
+    private $id;
+    private $name;
+    private $username;
+    private $visibleUsername;
+    private $email;
+    private $walletPublicKey;
+    private $walletPrivateKey;
     private $tokens;
 
     public function __construct()
@@ -22,6 +24,16 @@ class User {
         $this->visibleUsername = $_SESSION['user']['visibleUsername'];
     }
 
+    public function createUserDatabaseData($data) {
+        $this->id = $data['id'];
+        $this->username = $data['username'];
+        $this->name = $data['firstName'] . " " . $data['lastName'];
+        $this->email = $data['email'];
+        $this->visibleUsername = $data['visibleUsername'];
+        $this->walletPublicKey = $data['pubKey'];
+        $this->tokens = $data['tokens'];
+    }
+
 
     public function setTokens($tokens) {
         $this->tokens = $tokens;
@@ -29,6 +41,121 @@ class User {
     public function getTokens() {
         return $this->tokens;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVisibleUsername()
+    {
+        return $this->visibleUsername;
+    }
+
+    /**
+     * @param mixed $visibleUsername
+     */
+    public function setVisibleUsername($visibleUsername)
+    {
+        $this->visibleUsername = $visibleUsername;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWalletPublicKey()
+    {
+        return $this->walletPublicKey;
+    }
+
+    /**
+     * @param mixed $walletPublicKey
+     */
+    public function setWalletPublicKey($walletPublicKey)
+    {
+        $this->walletPublicKey = $walletPublicKey;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWalletPrivateKey()
+    {
+        return $this->walletPrivateKey;
+    }
+
+    /**
+     * @param mixed $walletPrivateKey
+     */
+    public function setWalletPrivateKey($walletPrivateKey)
+    {
+        $this->walletPrivateKey = $walletPrivateKey;
+    }
+
+
+
 }
 
 function user_get($field , $value) {

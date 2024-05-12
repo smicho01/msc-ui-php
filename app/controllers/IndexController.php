@@ -1,6 +1,7 @@
 <?php
 include_once 'fns_curl.php';
 include_once 'fns_user.php';
+include_once 'fns_crypto.php';
 
 $VIEW = isset($VIEW) ? $VIEW : 'index';
 
@@ -37,11 +38,28 @@ switch ($VIEW) {
                     $_SESSION['user']['id'] = $userExists['id'];
                 }
 
+                $userExists = user_get('username', $sessionUserName);
+
+                /* SET USER DATA */
+                // Key used to decrypt data received from the REST API [services]
+
+                $decryptedPubKey = "";
+                $encryptedUserPublicKeyAsBase64String = $userExists['pubKey'];
+                if($encryptedUserPublicKeyAsBase64String != "" || $encryptedUserPublicKeyAsBase64String != null) {
+                    $ENCRYPTION_KEY_BASE64 = getenv("ENCRYPTION_KEY");
+                    $decryptedPubKey =  CryptoUtil::decrypt($encryptedUserPublicKeyAsBase64String, $ENCRYPTION_KEY_BASE64);
+                }
+
                 $MAIN_USER = new User();
                 $MAIN_USER->createUserFromSession();
                 $MAIN_USER->setTokens($userExists['tokens']);
+                $MAIN_USER->setWalletPublicKey($decryptedPubKey);
 
-                //print_r( $userExists);
+                //print_r($userExists);
+
+
+
+
 
 
             }
@@ -57,3 +75,4 @@ switch ($VIEW) {
 		// code...
 	break;
 }
+

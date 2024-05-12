@@ -3,7 +3,7 @@
         <div>
             <div class="user-icon-wrapper">
                 <i class="fa-regular fa-circle-user fa-6x large-user-icon"></i>
-                <h5><?php echo $MAIN_USER->visibleUsername; ?></h5>
+                <h5><?php echo $MAIN_USER->getVisibleUsername(); ?></h5>
                 <p>
                     This is the name other users see you under. Your true identity is hidden.
                 </p>
@@ -16,7 +16,7 @@
     </li>
     <li class="list-group-item">
         <div>
-            <img src="public/img/academi-token.png" class="small-token" />
+            <img src="public/img/academi-token.png" width="50"  />
             <span class="token-qty"><?php echo $MAIN_USER->getTokens(); ?> tokens</span>
         </div>
     </li>

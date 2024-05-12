@@ -16,6 +16,24 @@ if($USER_SERVICE->getServiceStatusCode() != 200) {
 // Create Controller file name
 $ControllerName = ucfirst($CONTROLLER) . "Controller";
 
+
+if(isUserLoggedIn() && isset($_SESSION['user']['visibleUsername'])) {
+    $sessionUserName = $_SESSION['user']['username'];
+    $foundLoggedInUser = user_get('username', $sessionUserName);
+    //print_r($foundLoggedInUser);
+
+    /* SET USER DATA */
+    // Key used to decrypt data received from the REST API [services]
+    $ENCRYPTION_KEY_BASE64 = getenv("ENCRYPTION_KEY");
+
+    $encryptedUserPublicKeyAsBase64String = $foundLoggedInUser['pubKey'];
+    $decryptedPubKey =  CryptoUtil::decrypt($encryptedUserPublicKeyAsBase64String, $ENCRYPTION_KEY_BASE64);
+
+    $MAIN_USER = new User();
+    $MAIN_USER->createUserDatabaseData($foundLoggedInUser);
+    $MAIN_USER->setWalletPublicKey($decryptedPubKey);
+}
+
 // Include controller file
 include_once(CTRL_DIR . DS . $ControllerName . ".php");
 

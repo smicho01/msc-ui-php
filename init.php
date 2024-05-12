@@ -53,6 +53,8 @@ const APP_DIR = BASEDIR . DS . "app";
 const CTRL_DIR = APP_DIR . DS . "controllers";
 
 const LAYOUT_DIR = BASEDIR . DS . "layout";
+
+const COMPONENTS_DIR = LAYOUT_DIR . DS . "components";
 const VIEWS_DIR = BASEDIR . DS . "views";
 
 const PUBLIC_DIR = BASEDIR . DS . "public";
@@ -68,6 +70,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . BASEDIR);
 set_include_path(get_include_path() . PATH_SEPARATOR . APP_DIR);
 set_include_path(get_include_path() . PATH_SEPARATOR . CTRL_DIR);
 set_include_path(get_include_path() . PATH_SEPARATOR . LAYOUT_DIR);
+set_include_path(get_include_path() . PATH_SEPARATOR . COMPONENTS_DIR);
 set_include_path(get_include_path() . PATH_SEPARATOR . VIEWS_DIR);
 set_include_path(get_include_path() . PATH_SEPARATOR . PUBLIC_DIR);
 set_include_path(get_include_path() . PATH_SEPARATOR . JS_DIR);

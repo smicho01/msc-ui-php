@@ -7,14 +7,27 @@ class User {
     public $username;
     public $visibleUsername;
     public $email;
+    private $tokens;
 
     public function __construct()
     {
+
+    }
+
+    public function createUserFromSession() {
         $this->id = $_SESSION['user']['id'];
         $this->username = $_SESSION['user']['username'];
         $this->name = $_SESSION['user']['name'];
         $this->email = $_SESSION['user']['email'];
         $this->visibleUsername = $_SESSION['user']['visibleUsername'];
+    }
+
+
+    public function setTokens($tokens) {
+        $this->tokens = $tokens;
+    }
+    public function getTokens() {
+        return $this->tokens;
     }
 }
 

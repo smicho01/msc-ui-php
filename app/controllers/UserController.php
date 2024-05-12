@@ -18,6 +18,15 @@ switch ($VIEW) {
         $generatedUserNames = json_decode($foundUserResponse['body'], true);
         break;
 
+    case 'account':
+        // Attach js files to the footer
+        //$jsfiles = ['users'];
+        $foundUserResponse = rest_call('GET',
+            USER_SERVICE_URI . "/generatenames?count=80", $data = false, 'application/json',
+            "Bearer " . $_SESSION['token']);
+        $generatedUserNames = json_decode($foundUserResponse['body'], true);
+        break;
+
     default:
         // code...
         break;

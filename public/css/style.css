@@ -38,10 +38,7 @@ hr {
     margin-bottom: 10px;
 }
 
-.userbar * {
-    font-size: 12px !important;
-    padding-bottom: 8px;
-}
+
 
 tr.selected {
     --bs-table-accent-bg: var(--bs-table-hover-bg);
@@ -172,13 +169,34 @@ tr.hidden {
     margin: 50px;
 }
 
-.sidebar-main {
-    padding: 15px;
-    background-color: #dedede !important;
+.view-wrap {
+    padding-top: 20px;
 }
 
-.sidebar-box.user-sidebar {
+/* Sidebar Right */
+.fa-regular {
+    color: #c3d1dd;
+}
+.sidebar-list-group {}
+
+.sidebar-list-group .user-box .user-icon-wrapper {
     text-align: center;
+}
+.large-user-icon {
+    margin-bottom: 10px;
+}
+
+img.small-token {
+    width: 50px;
+}
+
+.token-qty {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sidebar-list-group {
+    margin-bottom: 20px;
 }
 
 @media screen and (max-height: 450px) {

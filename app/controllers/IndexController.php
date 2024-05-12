@@ -38,6 +38,12 @@ switch ($VIEW) {
                 }
 
                 $MAIN_USER = new User();
+                $MAIN_USER->createUserFromSession();
+                $MAIN_USER->setTokens($userExists['tokens']);
+
+                //print_r( $userExists);
+
+
             }
 	break;
 

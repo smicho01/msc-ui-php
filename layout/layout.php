@@ -7,6 +7,8 @@
     <title th:text="#{app.name}">AcademiChain</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
     <link href="<?php echo CSS_DIR; ?>/dashboard.css" rel="stylesheet">
     <link href="<?php echo CSS_DIR; ?>/style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -25,9 +27,9 @@
 
     <div class="navbar-nav">
         <?php if(isUserLoggedIn()): ?>
-            <a class="btnLogout btn btn-danger btn-sm" style="margin-right:20px;">Sign out</a>
+            <a class="btnLogout btn btn-danger btn-sm" style="margin-right:20px;"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out</a>
         <?php else: ?>
-            <a href="index.php?c=login" class="btn btn-success btn-sm" style="margin-right:20px;">Sign in</a>
+            <a href="index.php?c=login" class="btn btn-success btn-sm" style="margin-right:20px;"><i class="fa-solid fa-arrow-right-to-bracket"></i> Sign in</a>
         <?php endif; ?>
     </div>
 </header>
@@ -42,16 +44,6 @@
         <!-- end Sidebar Nav -->
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="page">
-            <div class="row">
-                <?php if (isUserLoggedIn()): ?>
-                    <div class="row userbar">
-                        <div class="col-12">
-                            <h4>User: <?php echo academichain_user('name') ?> visible
-                                as: <b><?php echo academichain_user('visibleUsername'); ?></b></h4>
-                        </div>
-                    </div>
-                <?php endif; ?>
-            </div>
 
             <div class="row">
                 <div id="alerts" class="col-12">
@@ -66,7 +58,9 @@
                     ?>
                 </div>
 
-                <?php include_once(VIEWS_DIR . DS . $CONTROLLER . DS . $VIEW . ".php"); ?>
+                <div class="col-12 view-wrap">
+                    <?php include_once(VIEWS_DIR . DS . $CONTROLLER . DS . $VIEW . ".php"); ?>
+                </div>
             </div>
 
         </main>

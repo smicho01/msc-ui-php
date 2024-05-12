@@ -78,4 +78,6 @@ set_include_path(get_include_path() . PATH_SEPARATOR . FNS_DIR);
 include_once('fns_session.php');
 include_once('fns_login.php');
 include_once('fns_db.php');
-include_once ('fns_user.php');
+include_once('fns_user.php');
+include_once('fns_service.php');
+

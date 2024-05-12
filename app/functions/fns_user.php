@@ -19,6 +19,7 @@ class User {
 }
 
 function user_get($field , $value) {
+
     // Find user using User API
     $foundUserResponse = rest_call('GET',
         USER_SERVICE_URI . "/user?field=".$field ."&value=" . $value , $data = false, 'application/json',

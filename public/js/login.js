@@ -31,9 +31,8 @@ function login_user(uName, uPass, forma) {
                 set_php_session_token(data.access_token);
             } else
                 console.log('Missing JWT Token');
-            $(forma).unbind('submit').submit();
-
-        },
+                $(forma).unbind('submit').submit();
+            },
         error: function (data) {
             const err = data.responseJSON.error_description
             alert(err);

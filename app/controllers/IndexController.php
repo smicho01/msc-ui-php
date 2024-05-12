@@ -12,7 +12,6 @@ switch ($VIEW) {
             // Use full page layout
 
             if(isUserLoggedIn()) {
-
                 // Get logged in user
                 $USER = $_SESSION['user'];
 

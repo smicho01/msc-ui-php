@@ -1,6 +1,5 @@
 <?php
 
-
 function curl_post($url, $data, $token)
 {
     // JSON encode the data

@@ -31,7 +31,7 @@
             </div>
             <div class="form-group d-grid gap-2 d-md-flex justify-content-md-end">
               <button id="btnLogout" class="btn btn-red" type="button">Clear Session</button>
-              <button id="btnLoginx" class="btn btn-black" type="submit">Login</button>
+              <button id="btnLogin" class="btn btn-black" type="submit">Login</button>
             </div>
          </form>
       </div>

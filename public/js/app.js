@@ -33,7 +33,6 @@ function create_alert_box_class (alertText, className) {
 }
 
 function create_alert_box_class_element (alertText, className, elementId) {
-  //$(document.getElementById(elementId)).html('aiusfiasgfiasugfaifgiuFGaskfgksaf');
   $('#'+elementId).html('<div id="alert-floating" class="alert alert-'+className+'" role="alert">' + alertText + '</div>')
   setTimeout( function(){
     $('#'+elementId).html('');

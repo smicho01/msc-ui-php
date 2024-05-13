@@ -1,14 +1,13 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title th:text="#{app.name}">AcademiChain</title>
+    <title>AcademiChain</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-
     <link href="<?php echo CSS_DIR; ?>/dashboard.css" rel="stylesheet">
     <link href="<?php echo CSS_DIR; ?>/style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -44,7 +43,6 @@
         <!-- end Sidebar Nav -->
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="page">
-
             <div class="row">
                 <div id="alerts" class="col-12">
                     <?php

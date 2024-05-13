@@ -16,7 +16,7 @@
    <div class="col-md-6 col-sm-12">
       <div class="login-form">
         <div id="logo-wrapper">
-            <img src="public/img/icon-logo.png" width="350" />
+            <img src="public/img/academi-chain-logo.webp" width="350" />
         </div>
         <div class="col-md-6 col-sm-12"><h1>AcademiChain</h1> </div>
           <?php

@@ -29,7 +29,7 @@ $session_id = session_id();
 //    ]
 //);
 
-$FULL_PAGE = false;
+$APPLICATION_NAME = "AcademiChain";
 
 $reqScheme = "http://";
 if($_SERVER['REQUEST_SCHEME'] == 'https') {

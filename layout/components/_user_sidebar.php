@@ -16,7 +16,7 @@
     </li>
     <li class="list-group-item">
         <div>
-            <img src="public/img/academi-token.png" width="50"  />
+            <img src="public/img/academi-token.webp" width="40"  />
             <span class="token-qty"><?php echo $MAIN_USER->getTokens(); ?> tokens</span>
         </div>
     </li>

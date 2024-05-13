@@ -51,5 +51,8 @@
               </li>
 
           </ul>
+          <div>
+              <img src="public/img/academi-chain-logo-inversed.webp" class="img-fluid" style="opacity: 0.5;"  />
+          </div>
       </div>
   </nav>

@@ -27,7 +27,10 @@ To configure database, below environment variables are needed:
 File `docker-compose.yml` and service `phpui` introducing how they should be set.
 
 
-### MampPro local dev env Additional parameters for <VirtualHost>
+### Environment variables
+
+Here is example for MampPro local dev env Additional parameters for <VirtualHost>.
+(In prod values will change of course): 
 
 SetEnv ACADEMICHAIN_ENV dev
 
@@ -44,3 +47,5 @@ SetEnv POSTGRESPASSWORD password
 SetEnv USER_SERVICE_URI http://localhost:9091/api/v1
 
 SetEnv REDIS_URL tcp://localhost:6379
+
+SetEnv ENCRYPTION_KEY vjLFfQoanpJtwu8M2VIAJdJessqw2UKAANdU+Z0t1nI=

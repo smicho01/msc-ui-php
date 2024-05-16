@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-lg-9">
+    <div class=" col-xl-9 col-lg-9 ">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Home</li>
@@ -11,7 +11,7 @@
         </p>
 
         <p>
-            <img class="img-fluid" src="public/img/student-books-struggling.jpg" alt="Student struggling with study materials" />
+            <img class="img-fluid" src="public/img/struggling-student.webp" width="100%" alt="Student struggling with study materials" />
         </p>
 
         <h2>How to get Tokens</h2>

@@ -1,10 +1,17 @@
 body {
-    font-family: "Lato", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 300;
+    font-size: 1.1em;
 }
 
 hr {
     border-bottom: 1px dashed #dedede;
  
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+    font-weight: 600;
+    font-style: normal;
 }
 
 #page {
@@ -20,6 +27,12 @@ hr {
     height: 150px;
     background: #FFF;
    
+}
+
+.app-name {
+    font-size: 1.3em;
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+    font-weight: 400;
 }
 
 .sidenav {
@@ -203,6 +216,12 @@ img.small-token {
     .sidenav {padding-top: 15px;}
 }
 
+@media screen and (max-width:1600px) {
+    body {
+        font-size: 14px !important;
+    }
+}
+
 @media screen and (max-width:1380px) {
     #details h1 {
         font-size: 1.7rem;
@@ -211,7 +230,7 @@ img.small-token {
 
 @media screen and (max-width:1200px) {
     #sidebarMenu {
-        font-size: 12px !important;
+        font-size: 14px !important;
     }
 }
 

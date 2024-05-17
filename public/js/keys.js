@@ -20,10 +20,11 @@ $(document).ready(function () {
 
     });
 
+    // Get user wallet keys
+    // PHP script will get encrypted values and decrypts it locally
     $('#btn-get-key').on('click', function (e) {
         $.post("/php_js/wallet.php", { urlcommand: 'getkeys' })
             .done(function (data) {
-                console.log(data)
                 let dataJson = JSON.parse(data);
                 const puk = dataJson['publicKey'];
                 const prk =  dataJson['privateKey'];

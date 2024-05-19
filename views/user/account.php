@@ -3,17 +3,39 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">User account</li>
+                <li class="breadcrumb-item active" aria-current="page">Your account</li>
             </ol>
         </nav>
 
     </div>
+    <h1>Your Account</h1>
 </div>
 
 <div class="row">
-   <div class="col-12">
-       <p>
-           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consectetur incidunt iusto magnam molestiae, molestias nihil provident recusandae? Aperiam corporis debitis dignissimos dolor dolore esse eum id labore laborum magnam maiores nobis nulla officia quaerat, quis reiciendis, similique sunt tenetur velit voluptates. Autem doloribus, ipsam quod sapiente tempore velit? A accusamus autem blanditiis dicta earum esse, eum, facere hic, maxime molestias nesciunt nisi nobis non obcaecati quaerat rerum sequi tempora tempore. Animi exercitationem harum nostrum omnis, optio quas rem voluptates voluptatum! Accusamus facilis iusto quis ullam? Doloremque eligendi explicabo, fuga iste maiores modi necessitatibus possimus ratione reprehenderit rerum tempora tempore.
-       </p>
-   </div>
+
+    <div class="col-xs-6 col-sm-4 col-lg-3 col-xl-2">
+        <!-- box -->
+        <div class="card icon-card" style="width: 18rem;">
+            <img src="/public/img/question-icon.webp"  class="card-img-top img-fluid" alt="Encryption icon">
+            <div class="card-body d-grid gap-2">
+                <h5 class="card-title">Your Questions</h5>
+                <p class="card-text">Questions you asked</p>
+                <a href="?c=user&v=questions" class="btn btn-primary">Explore</a>
+            </div>
+        </div>
+        <!-- /box -->
+    </div>
+
+    <div class="col-xs-6 col-sm-4 col-lg-3 col-xl-2">
+        <!-- box -->
+        <div class="card icon-card" style="width: 18rem;">
+            <img src="/public/img/encryption-icon.webp" class="card-img-top" alt="Encryption icon">
+            <div class="card-body d-grid gap-2">
+                <h5 class="card-title">Your Wallet keys</h5>
+                <p class="card-text">In case you need to transfer them</p>
+                <a href="?c=user&v=walletkeys" class="btn btn-primary">Explore</a>
+            </div>
+        </div>
+        <!-- /box -->
+    </div>
 </div>

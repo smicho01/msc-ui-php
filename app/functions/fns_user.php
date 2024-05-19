@@ -7,8 +7,6 @@ class User {
     private $username;
     private $visibleUsername;
     private $email;
-    private $walletPublicKey;
-    private $walletPrivateKey;
     private $tokens;
 
     public function __construct()
@@ -30,7 +28,6 @@ class User {
         $this->name = $data['firstName'] . " " . $data['lastName'];
         $this->email = $data['email'];
         $this->visibleUsername = $data['visibleUsername'];
-        $this->walletPublicKey = $data['pubKey'];
         $this->tokens = $data['tokens'];
     }
 
@@ -121,51 +118,31 @@ class User {
     {
         $this->email = $email;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getWalletPublicKey()
-    {
-        return $this->walletPublicKey;
-    }
-
-    /**
-     * @param mixed $walletPublicKey
-     */
-    public function setWalletPublicKey($walletPublicKey)
-    {
-        $this->walletPublicKey = $walletPublicKey;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getWalletPrivateKey()
-    {
-        return $this->walletPrivateKey;
-    }
-
-    /**
-     * @param mixed $walletPrivateKey
-     */
-    public function setWalletPrivateKey($walletPrivateKey)
-    {
-        $this->walletPrivateKey = $walletPrivateKey;
-    }
-
-
-
 }
 
 function user_get($field , $value) {
-
     // Find user using User API
     $foundUserResponse = rest_call('GET',
         USER_SERVICE_URI . "/user?field=".$field ."&value=" . $value , $data = false, 'application/json',
         "Bearer " . $_SESSION['token']);
+    //$statusCode = $foundUserResponse['status_code'];
+    $responseBody = $foundUserResponse['body'];
+    if(!$responseBody) {
+        return false;
+    }
+    $data = json_decode($responseBody, true);
+    if (count($data) == 0) {
+        return false;
+    }
+    return $data;
+}
 
-    $statusCode = $foundUserResponse['status_code'];
+function user_get_keys($userId) {
+    // Find user using User API
+    $foundUserResponse = rest_call('GET',
+        USER_SERVICE_URI . "/user/getkeys/" . $userId , $data = false, 'application/json',
+        "Bearer " . $_SESSION['token']);
+    //$statusCode = $foundUserResponse['status_code'];
     $responseBody = $foundUserResponse['body'];
     if(!$responseBody) {
         return false;
@@ -180,15 +157,12 @@ function user_get($field , $value) {
 function user_insert_from_session() {
     $sessionUser = $_SESSION['user'];
     $explodeUserName = explode(" ", $sessionUser['name']);
-
     $data = [
         'username' => $sessionUser['username'],
         'firstName' => $explodeUserName[0],
         'lastName' => $explodeUserName[1],
         'email' => $sessionUser['email']
     ];
-
     $insertUserResponse = curl_post(USER_SERVICE_URI . "/user", $data, "Bearer " . $_SESSION['token']);
-
     return $insertUserResponse;
 }

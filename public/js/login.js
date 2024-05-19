@@ -49,6 +49,7 @@ function login_user(uName, uPass, forma) {
 
 
 $(document).ready(function () {
+    // Used for async login without page reload
     $('#loginform').submit(function (env) {
         // console.log("Form submitted");
         // env.preventDefault();

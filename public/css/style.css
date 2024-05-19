@@ -51,8 +51,6 @@ h1,h2,h3,h4,h5,h6 {
     margin-bottom: 10px;
 }
 
-
-
 tr.selected {
     --bs-table-accent-bg: var(--bs-table-hover-bg);
     color: var(--bs-table-hover-color);
@@ -73,58 +71,6 @@ tr.hidden {
 
 .border-left {
     border-left: 1px solid #ddd;
-}
-
-.flag-box {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #efefef;
-    margin-right: 5px;
-    position: relative;
-}
-
-.flag-box .flag-name {
-    position: absolute;
-    top:-30px;
-    border: 1px solid #dddddd;
-    padding: 2px 5px;
-    display: none;
-    background-color: #efefef;
-}
-.flag-box:hover .flag-name {
-    display: block;
-}
-
-.flag-box.flag-box-pink {
-    background-color: pink;
-}
-
-#flagslist .flag {
-   position: relative;
-   padding: 0;
-   margin: 0;
-   margin: 10px 0;
-   padding: 5px 5px;
-}
-#flagslist .flag-box  {
-    display: block;
-    padding: 0;
-    margin: 0;
-    top: 0px;
-    margin-right: none;
-    width: 30px;
-    height: 30px;
-}
-#flagslist .flag .flag-name {
-    position: absolute;
-    top: 9px;
-    left: 40px;
-    padding: 0;
-    margin: 0;
-}
-.hasFlag {
-    border: 1px solid #dedede;
 }
 
 #loginpage .form-group {
@@ -164,24 +110,6 @@ tr.hidden {
     font-size: 16px;
 }
 
-/* Visit Detials */
-.visit-meta-data {
-    display: inline-block;
-    margin-right: 20px;
-    padding-bottom: 10px;
-}
-
-.card-visitnote {
-    margin-top: 30px;
-}
-
-.servicenotfound {
-    background-color: #000;
-    color: #fff;
-    padding: 20px;
-    margin: 50px;
-}
-
 .view-wrap {
     padding-top: 20px;
 }
@@ -210,6 +138,21 @@ img.small-token {
 
 .sidebar-list-group {
     margin-bottom: 20px;
+}
+
+.icon-card {
+    width: 100% !important;
+}
+
+.icon-card h5 {
+    font-size: 1.2em;
+    height: 40px;
+}
+.icon-card .card-text {
+    height: 50px;
+}
+.icon-card:hover {
+    border: 1px solid #999;
 }
 
 @media screen and (max-height: 450px) {

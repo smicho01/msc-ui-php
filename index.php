@@ -5,33 +5,26 @@ include_once('init.php');
 $CONTROLLER = isset($_GET['c']) ? $_GET['c'] : 'index';
 $VIEW = isset($_GET['v']) ? $_GET['v'] : 'index';
 
-// Check services health status
-$USER_SERVICE = new Service('User Service', USER_SERVICE_URI);
-if($USER_SERVICE->getServiceStatusCode() != 200) {
-    $CONTROLLER = 'error';
-    $VIEW = 'service';
-    $_SESSION['errorMessage'] = 'Service User not Found';
-}
+// Check API services health status
+include_once "check_services_health.php";
 
 // Create Controller file name
 $ControllerName = ucfirst($CONTROLLER) . "Controller";
-
 
 if(isUserLoggedIn() && isset($_SESSION['user']['visibleUsername'])) {
     $sessionUserName = $_SESSION['user']['username'];
     $foundLoggedInUser = user_get('username', $sessionUserName);
     //print_r($foundLoggedInUser);
 
-    /* SET USER DATA */
-    // Key used to decrypt data received from the REST API [services]
-    $ENCRYPTION_KEY_BASE64 = getenv("ENCRYPTION_KEY");
-
-    $encryptedUserPublicKeyAsBase64String = $foundLoggedInUser['pubKey'];
-    $decryptedPubKey =  CryptoUtil::decrypt($encryptedUserPublicKeyAsBase64String, $ENCRYPTION_KEY_BASE64);
+//    /* SET USER DATA */
+//    // Key used to decrypt data received from the REST API [services]
+//    $ENCRYPTION_KEY_BASE64 = getenv("ENCRYPTION_KEY");
+//
+//    $encryptedUserPublicKeyAsBase64String = $foundLoggedInUser['pubKey'];
+//    $decryptedPubKey =  CryptoUtil::decrypt($encryptedUserPublicKeyAsBase64String, $ENCRYPTION_KEY_BASE64);
 
     $MAIN_USER = new User();
     $MAIN_USER->createUserDatabaseData($foundLoggedInUser);
-    $MAIN_USER->setWalletPublicKey($decryptedPubKey);
 }
 
 // Include controller file

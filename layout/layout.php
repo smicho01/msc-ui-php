@@ -63,7 +63,16 @@
                 </div>
 
                 <div class="col-12 view-wrap">
-                    <?php include_once(VIEWS_DIR . DS . $CONTROLLER . DS . $VIEW . ".php"); ?>
+                    <?php
+                    // include view file if present , otherwise fallback view file
+                    $viewFilePath = VIEWS_DIR . DS . $CONTROLLER . DS . $VIEW . ".php";
+                    if(file_exists($viewFilePath)) {
+                        include_once(VIEWS_DIR . DS . $CONTROLLER . DS . $VIEW . ".php");
+                    } else {
+                        include_once(VIEWS_DIR . DS . "no-view-file.php");
+                    }
+
+                    ?>
                 </div>
             </div>
 

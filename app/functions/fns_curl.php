@@ -78,7 +78,12 @@ function rest_call($method, $url, $data = false, $contentType = false, $token = 
 
     $status_line = strtok($response, "\n");    // this extracts the first line
 
-    list($version, $status_code, $status_text) = explode(' ', $status_line, 3);
+    if($status_line == "" || $status_line == null) {
+        $status_code = 400;
+    } else {
+        list($version, $status_code, $status_text) = explode(' ', $status_line, 3);
+    }
+
 
     curl_close($curl);
 

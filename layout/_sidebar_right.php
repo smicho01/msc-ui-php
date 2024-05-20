@@ -1,5 +1,10 @@
 <!-- SIDEBAR RIGHT -->
 <div class=" col-xl-3 col-lg-3  sidebar-main">
+
+    <div class="col-12 d-grid gap-2 mb-3">
+        <a href="/index.php?c=questions&v=add" class="btn btn-primary">Ask Question</a>
+    </div>
+
     <!-- USER SIDEBAR -->
     <?php if(isUserLoggedIn()):?>
         <?php include("_user_sidebar.php"); ?>

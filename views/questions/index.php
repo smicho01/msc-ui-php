@@ -19,7 +19,7 @@
                 <h3>Questions</h3>
             </div>
             <div class="col-4 d-flex flex-row-reverse bd-highlight">
-                <a href="/index.php?c=questions&v=add" class="btn btn-primary float-right">Add Question</a>
+                <a href="/index.php?c=questions&v=add" class="btn btn-primary float-right">Ask Question</a>
             </div>
         </div>
 

@@ -22,7 +22,7 @@
                 </h3>
             </div>
             <div class="col-4 d-flex flex-row-reverse bd-highlight">
-                <a href="/index.php?c=questions&v=add" class="btn btn-primary">Add Question</a>
+                <a href="/index.php?c=questions&v=add" class="btn btn-primary">Ask Question</a>
             </div>
         </div>
 

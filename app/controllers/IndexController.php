@@ -41,18 +41,23 @@ switch ($VIEW) {
                     $_SESSION['user']['id'] = $userExists['id'];
                 }
 
-                /* SET USER DATA */
-                // Key used to decrypt data received from the REST API [services]
-//                $decryptedPubKey = "";
-//                $encryptedUserPublicKeyAsBase64String = $userExists['pubKey'];
-//                if($encryptedUserPublicKeyAsBase64String != "" || $encryptedUserPublicKeyAsBase64String != null) {
-//                    $ENCRYPTION_KEY_BASE64 = getenv("ENCRYPTION_KEY");
-//                    $decryptedPubKey =  CryptoUtil::decrypt($encryptedUserPublicKeyAsBase64String, $ENCRYPTION_KEY_BASE64);
-//                }
-
                 $MAIN_USER = new User();
                 $MAIN_USER->createUserFromSession();
                 $MAIN_USER->setTokens($userExists['tokens']);
+
+                // Get user questions and questions count
+                $userQuestions = user_get_questions($MAIN_USER->getId());
+                if($userQuestions) {
+                    $_SESSION['user']['questions-size'] = count($userQuestions);
+                }
+                $MAIN_USER->setQuestions($userQuestions);
+
+                // TODO: Get user answers count
+                $userAnswers = user_get_answers($MAIN_USER->getId());
+                if($userAnswers) {
+                    $_SESSION['user']['answers-size'] = count($userAnswers);
+                }
+                $MAIN_USER->setAnswers($userAnswers);
 
             }
 	break;

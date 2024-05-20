@@ -9,6 +9,9 @@ class User {
     private $email;
     private $tokens;
 
+    private $questions = [];
+    private $answers = [];
+
     public function __construct()
     {
 
@@ -118,40 +121,34 @@ class User {
     {
         $this->email = $email;
     }
+
+    public function setQuestions($questions) {
+        $this->questions = $questions;
+    }
+
+    public function getQuestions() {
+        return $this->questions;
+    }
+
+    public function getQuestionsCount() {
+        return count($this->questions);
+    }
+
+    public function setAnswers($answers) {
+        $this->answers = $answers;
+    }
+
+    public function getAnswers() {
+        return $this->answers;
+    }
+    public function getAnswersCount() {
+        return count($this->answers);
+    }
 }
 
 function user_get($field , $value) {
-    // Find user using User API
-    $foundUserResponse = rest_call('GET',
-        USER_SERVICE_URI . "/user?field=".$field ."&value=" . $value , $data = false, 'application/json',
-        "Bearer " . $_SESSION['token']);
-    //$statusCode = $foundUserResponse['status_code'];
-    $responseBody = $foundUserResponse['body'];
-    if(!$responseBody) {
-        return false;
-    }
-    $data = json_decode($responseBody, true);
-    if (count($data) == 0) {
-        return false;
-    }
-    return $data;
-}
-
-function user_get_keys($userId) {
-    // Find user using User API
-    $foundUserResponse = rest_call('GET',
-        USER_SERVICE_URI . "/user/getkeys/" . $userId , $data = false, 'application/json',
-        "Bearer " . $_SESSION['token']);
-    //$statusCode = $foundUserResponse['status_code'];
-    $responseBody = $foundUserResponse['body'];
-    if(!$responseBody) {
-        return false;
-    }
-    $data = json_decode($responseBody, true);
-    if (count($data) == 0) {
-        return false;
-    }
-    return $data;
+    $uri = USER_SERVICE_URI . "/user?field=".$field ."&value=" . $value;
+    return get_data_from_api($uri);
 }
 
 function user_insert_from_session() {
@@ -189,4 +186,36 @@ function user_login($username, $password) {
     }
     curl_close($ch);
     return json_decode($response, true);
+}
+
+/*
+ * Get data form API endpoint give in $uri param
+ */
+function get_data_from_api($uri) {
+    $foundUserResponse = rest_call('GET', $uri, $data = false, 'application/json',
+        "Bearer " . $_SESSION['token']);
+    $responseBody = $foundUserResponse['body'];
+    if(!$responseBody) {
+        return false;
+    }
+    $data = json_decode($responseBody, true);
+    if (count($data) == 0) {
+        return false;
+    }
+    return $data;
+}
+
+function user_get_questions($userId) {
+    $uri = ITEM_SERVICE_URI . "/question/user/" . $userId;
+    return get_data_from_api($uri);
+}
+
+function user_get_answers($userId) {
+    $uri = ITEM_SERVICE_URI . "/answer/user/" . $userId;
+    return get_data_from_api($uri);
+}
+
+function user_get_keys($userId) {
+    $uri = USER_SERVICE_URI . "/user/getkeys/" . $userId;
+    return  get_data_from_api($uri);
 }

@@ -1,7 +1,7 @@
 body {
     font-family: "IBM Plex Sans", sans-serif;
     font-weight: 300;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 hr {
@@ -207,6 +207,14 @@ img.small-token {
 
 .rounded-pill {
     font-weight: 300;
+}
+
+/* recent questions sidebar */
+.recent-questions-sidebar {
+    font-size: 0.8em;
+}
+.recent-questions-sidebar h5 {
+    font-size: 1.3em;
 }
 
 @media screen and (max-height: 450px) {

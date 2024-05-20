@@ -25,9 +25,12 @@ function disconnect ($pdo)
 
 function insertDbLogData($level, $module, $eventType, $message, $json = null) {
     $level =  strtoupper($level);
-    $userId = $_SESSION['user']['email']; // may change to user id later
-    $IP =  get_client_ip();
+    $userId = 'anonymous';
+    if(isset($_SESSION['user']['email'])) {
+        $userId = $_SESSION['user']['email']; // may change to user id later
+    }
 
+    $IP =  get_client_ip();
 
     $sql = "INSERT INTO uilogs.logs (Timestamp, Level, Source, UserID, EventType, Message, IPAddress, SessionID) 
                 VALUES ( NOW(), ?,?,?,?,?,?,?)";

@@ -17,6 +17,12 @@ switch ($VIEW) {
         $jsfiles = ['keys'];
     break;
 
+    case 'questions':
+        $userQuestions  = [
+            ['id'=>'q1', 'title'=>'How does the RNN works ?', 'content'=>'I wish to know how the RNN works ...']
+        ];
+        break;
+
     default:
         // code...
         break;

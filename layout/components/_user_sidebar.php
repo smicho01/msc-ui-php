@@ -1,5 +1,5 @@
-<ul class="list-group sidebar-list-group">
-    <li class="list-group-item user-box">
+<div class="list-group sidebar-list-group">
+    <div class="list-group-item user-box">
         <div>
             <div class="user-icon-wrapper">
                 <i class="fa-regular fa-circle-user fa-6x large-user-icon"></i>
@@ -13,13 +13,22 @@
             </div>
 
         </div>
-    </li>
-    <li class="list-group-item">
+    </div>
+    <div class="list-group-item">
         <div>
             <img src="public/img/academi-token.webp" width="40"  />
             <span class="token-qty"><?php echo $MAIN_USER->getTokens(); ?> tokens</span>
         </div>
-    </li>
-    <li class="list-group-item">My questions</li>
-    <li class="list-group-item">My answers</li>
-</ul>
+    </div>
+    <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-start"
+       href="/index.php?c=user&v=questions">
+        <div class="ms-2 me-auto">Your questions</div>
+        <span class="badge bg-primary rounded-pill">14</span>
+    </a>
+
+    <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-start"
+       href="/index.php?c=user&v=answers">
+        <div class="ms-2 me-auto">Your answers</div>
+        <span class="badge bg-primary rounded-pill">178</span>
+    </a>
+</div>

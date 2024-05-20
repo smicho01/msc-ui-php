@@ -7,7 +7,8 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Questions</li>
+                        <li class="breadcrumb-item"><a href="/?v=questions">Questions</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Add</li>
                     </ol>
                 </nav>
 
@@ -16,11 +17,9 @@
 
         <div class="row heading">
             <div class="col-8">
-                <h3>Questions</h3>
+                <h3>Add Question</h3>
             </div>
-            <div class="col-4 d-flex flex-row-reverse bd-highlight">
-                <a href="/index.php?c=questions&v=add" class="btn btn-primary float-right">Add Question</a>
-            </div>
+
         </div>
 
 

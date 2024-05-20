@@ -166,3 +166,27 @@ function user_insert_from_session() {
     $insertUserResponse = curl_post(USER_SERVICE_URI . "/user", $data, "Bearer " . $_SESSION['token']);
     return $insertUserResponse;
 }
+
+function user_login($username, $password) {
+    $url = 'http://sever3d.synology.me:7080/auth/realms/academichain/protocol/openid-connect/token';
+    $data = [
+        'grant_type' => 'password',
+        'client_id' => 'academichain_ui',
+        'username' => $username,
+        'password' => $password
+    ];
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Only use this in a trusted network
+    $response = curl_exec($ch);
+
+    if (!$response) {
+        die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
+    }
+    curl_close($ch);
+    return json_decode($response, true);
+}

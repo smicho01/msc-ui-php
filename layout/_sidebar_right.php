@@ -7,7 +7,9 @@
     <!-- //USER_SIDEBAR -->
 
     <ul class="list-group sidebar-list-group">
-        <li class="list-group-item">Recent question number 1</li>
+        <a class="list-group-item list-group-item-action" href="/index.php?c=questions&v=show&id=1">
+            How to train RNN
+        </a>
         <li class="list-group-item">How to train RNN</li>
         <li class="list-group-item">Help with B+ Trees indexes</li>
     </ul>

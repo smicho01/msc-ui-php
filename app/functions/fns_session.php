@@ -24,7 +24,7 @@ function my_session_start()
 
 /*
  * Add key and value to SESSION
- * If key already exists and is array, they add new element to that array
+ * If key already exists and is array, they add.php new element to that array
  */
 function session_add_key($key, $value)
 {

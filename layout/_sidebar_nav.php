@@ -6,7 +6,7 @@
                       <span data-feather="home"></span>Dashboard</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/?c=questions">
+                  <a class="nav-link" href="/index.php?c=questions">
                       <span data-feather="github"></span>
                       Questions
                   </a>

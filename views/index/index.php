@@ -1,10 +1,5 @@
 <div class="row">
     <div class=" col-xl-9 col-lg-9 ">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Home</li>
-            </ol>
-        </nav>
         <h3>Welcome to AcademiChain</h3>
         <p>
             A place where you can ask questions, provide answers and earn tokens!

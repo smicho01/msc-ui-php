@@ -155,6 +155,60 @@ img.small-token {
     border: 1px solid #999;
 }
 
+/* Question card */
+.one-half {
+    width: 49%;
+    display: inline-block;
+    margin-right: 1%;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.one-half-last {
+    width: 49%;
+    display: inline-block;
+}
+
+.question-card {
+    margin-bottom: 10px;
+}
+.question-card .card-header {
+    font-size: 0.8em;
+    font-weight: 400;
+}
+
+.question-card .card-title a {
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+
+.question-summary-box {
+    font-size: 0.7em;
+}
+.question-summary-box .entry {
+    margin-right: 40px;
+}
+
+.light-txt {
+    color: #727272;
+}
+
+.breadcrumb {
+    font-size: 0.9em;
+}
+.breadcrumb a {
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+}
+
+.rounded-pill {
+    font-weight: 300;
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
 }

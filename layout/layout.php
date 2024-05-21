@@ -84,7 +84,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js"></script>
+
+
+<?php
+if(isset($jsfilesExternal)) {
+    foreach ($jsfilesExternal as $file) {
+        echo '<script src="' . $file . '"></script>';
+        }
+}
+?>
 
 <script src="<?php echo JS_DIR; ?>/login.js"></script>
 <?php

@@ -17,19 +17,6 @@ session_start();
 
 $session_id = session_id();
 
-//setcookie(
-//    'accesstoken',
-//    $session_id,
-//    [
-//        'expires' => time() + 3600,
-//        'path' => '/',
-//        'domain' => 'localhost',
-//        'secure' => false, // Not using HTTPS
-//        'httponly' => true,
-//        'samesite' => 'Lax' // or 'Strict'
-//    ]
-//);
-
 $APPLICATION_NAME = "AcademiChain";
 
 $reqScheme = "http://";

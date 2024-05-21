@@ -30,7 +30,7 @@
 <!-- end header -->
 
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <main class="col-12">
             <?php if(isset($_SESSION['errorMessage'])): ?>

@@ -229,6 +229,14 @@ label.error {
     margin-top: 10px;
 }
 
+#tagsContainer {
+    margin: 10px 0;
+}
+span.tag.badge.rounded-pill  {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
 }

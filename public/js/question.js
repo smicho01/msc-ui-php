@@ -1,7 +1,7 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     // Add custom validation method to check if entered text is a valid English text.
-    $.validator.addMethod("isValidEnglishText", function(value, element){
+    $.validator.addMethod("isValidEnglishText", function (value, element, params) {
         // Parse the sentence with Compromise
         const doc = nlp(value);
         // Check for the presence of a subject (noun) and a predicate (verb)
@@ -35,27 +35,47 @@ $(document).ready(function() {
                 required: 'Please, specify your problem. It should contain as much information as possible.'
             }
         },
-        submitHandler: function(form) {
+        submitHandler: function (form) {
+
+            // Final validation that was hard to impl. with $.validator
+            // Relates mostly to dynamic or 'outside-form' elements
+            let otherErrors = []
+            // Validate min number of question tags
+            let count = $('input[type="hidden"][name="tags[]"]').length;
+            if(count < 2) {
+               otherErrors.push("Min 2 tags required")
+            }
+
+            // If any error , then do display alert and do not submit form
+            if (otherErrors.length > 0) {
+                // Display the other errors
+                otherErrors.forEach(function (error) {
+                    let alertHtml = $('<div>').addClass('alert alert-danger').text(error);
+                    $('#form-errors').html(alertHtml);
+                });
+                // Prevent form submission
+                return false;
+            }
+
+            // Submit form if no errors
             form.submit();
         }
     })
 
 
-
-    // TAGS
-    $('#form_question_tags_input').on('keydown', function(e) {
-        // Check if the comma key (key code 188) is pressed
+    /*
+        Creates tags each time user press coma or space within #form_question_tags_input
+     */
+    $('#form_question_tags_input').on('keydown', function (e) {
+        // Check if the comma key (key code 188) or space bar [188] was pressed
         if (e.keyCode === 32 || e.keyCode === 188) {
-            console.log("coma pressed!")
             // Get the value of the input field
             let currentValue = $(this).val().trim();
             currentValue = currentValue.replace(/^,|,$/g, '');
-
             // If the current value is not empty, add it to the tags string
             if (currentValue !== '') {
                 // Call the function to add tags to the form
-                addTag(currentValue, 'form-ask-question');
-
+                addTag(currentValue, 'form-ask-question'); // Actual function to add tag
                 // Clear the input field
                 $(this).val('');
             }
@@ -63,16 +83,15 @@ $(document).ready(function() {
         }
     });
 
-    // Event delegation to handle click on dynamically created tag elements
-    $('#tagsContainer').on('click', '.tag', function() {
+    /*
+        Remove tag by clicking on tag
+     */
+    $('#tagsContainer').on('click', '.tag', function () {
         const tag = $(this).attr('data-tag');
-
         // Remove the hidden input element with the same value
         $('input[type="hidden"][value="' + tag + '"]').remove();
-
         // Remove the tag element
         $(this).remove();
-
         // Hide the limit message if the number of tags is less than 5
         if ($('input[name="tags[]"]').length < 5) {
             $('#limitMessage').hide();
@@ -80,7 +99,6 @@ $(document).ready(function() {
     });
 
 });
-
 
 /*
     Simple sentence validation function
@@ -99,48 +117,28 @@ function validateSentence(sentence) {
     return hasSubject && hasPredicate;
 }
 
-function addTagsToForm(tag, formId) {
-    // Create a hidden input element
-    const hiddenInput = $('<input>').attr({
-        type: 'hidden',
-        name: 'tags[]',
-        value: tag.trim()
-    });
-
-    // Append the hidden input element to the form
-    $('#' + formId).append(hiddenInput);
-
-    // Create a tag element
-    const tagElement = $('<span>').addClass('tag badge rounded-pill bg-primary').text(tag.trim()).attr('data-tag', tag.trim());
-
-    // Append the tag element to the tags container
-    $('#tagsContainer').append(tagElement);
-}
-
+/*
+    Add tags to a form as hidden field and also display selected tags to UI
+    so that they can be removed by clicking on them
+ */
 function addTag(tag, formId) {
     // Check if the number of existing tags is less than 5
     if ($('input[name="tags[]"]').length >= 5) {
         $('#limitMessage').show();
         return;
     }
-
     $('#limitMessage').hide();
-
     // Create a hidden input element
     const hiddenInput = $('<input>').attr({
         type: 'hidden',
         name: 'tags[]',
         value: tag.trim()
     });
-
     // Append the hidden input element to the form
     $('#' + formId).append(hiddenInput);
-
     // Create a tag element
     const tagElement = $('<span>').addClass('tag badge rounded-pill bg-primary').text(tag.trim()).attr('data-tag', tag.trim());
-
     // Append the tag element to the tags container
     $('#tagsContainer').append(tagElement);
 }
 
-// Event delegation to handle click on dynamically created tag elements

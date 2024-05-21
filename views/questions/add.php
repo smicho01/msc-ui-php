@@ -39,15 +39,19 @@
             </div>
             <div class="mb-3">
                 <label for="form_question_tags_input" class="form-label">Tags</label>
-                <input type="text" class="form-control" id="form_question_tags_input" name="form_question_tags_input"
+                <input type="text" class="form-control" id="form_question_tags_input"
                        value="java"/>
                 <div id="form_question_tags_input-help" class="form-text">
                     Specify tags. Use coma (`,`) or space (` `) to separate tags. e.g. java,spring boot,rest,api <br />
-                    Click on tag to remove it from the list. For longer tags user hyphen (`-`) to separate words. e.g. machine-learning
+                    Click on tag to remove it from the list. For longer tags user hyphen (`-`) to separate words. e.g. machine-learning <br />
+                    Min 2 max 5 tags allowed
                 </div>
                 <div id="tagsContainer"></div>
-                <div id="limitMessage">Just 5 tags allowed</div>
+                <div id="limitMessage"></div>
             </div>
+
+            <div id="form-errors"></div>
+
             <button type="submit" class="btn btn-primary" id="btn-submit-question">Submit question</button>
         </form>
         <!-- /form -->

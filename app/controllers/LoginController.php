@@ -22,6 +22,7 @@ switch ($VIEW) {
             $_SESSION['user']['email'] = $decodedToken->email;
             $_SESSION['user']['roles'] = $decodedToken->realm_access->roles;
             $_SESSION['tokenexpiry'] = $decodedToken->exp;
+            $_SESSION['user']['college'] = $decodedToken->college;
             $_SESSION['justLoggedIn'] = 1;
             header("Location: index.php");
         } else {

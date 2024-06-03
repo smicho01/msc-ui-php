@@ -8,7 +8,7 @@ class User {
     private $visibleUsername;
     private $email;
     private $tokens;
-
+    private $college;
     private $questions = [];
     private $answers = [];
 
@@ -23,6 +23,7 @@ class User {
         $this->name = $_SESSION['user']['name'];
         $this->email = $_SESSION['user']['email'];
         $this->visibleUsername = $_SESSION['user']['visibleUsername'];
+        $this->college = $_SESSION['user']['college'];
     }
 
     public function createUserDatabaseData($data) {
@@ -144,6 +145,24 @@ class User {
     public function getAnswersCount() {
         return count($this->answers);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCollege()
+    {
+        return $this->college;
+    }
+
+    /**
+     * @param mixed $college
+     */
+    public function setCollege($college)
+    {
+        $this->college = $college;
+    }
+
+
 }
 
 function user_get($field , $value) {
@@ -158,7 +177,8 @@ function user_insert_from_session() {
         'username' => $sessionUser['username'],
         'firstName' => $explodeUserName[0],
         'lastName' => $explodeUserName[1],
-        'email' => $sessionUser['email']
+        'email' => $sessionUser['email'],
+        'college' => isset($sessionUser['college']) ? $sessionUser['college'] : 'nie mam',
     ];
     $insertUserResponse = curl_post(USER_SERVICE_URI . "/user", $data, "Bearer " . $_SESSION['token']);
     return $insertUserResponse;

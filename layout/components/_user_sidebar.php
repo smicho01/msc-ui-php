@@ -4,6 +4,7 @@
             <div class="user-icon-wrapper">
                 <i class="fa-regular fa-circle-user fa-6x large-user-icon"></i>
                 <h5><?php echo $MAIN_USER->getVisibleUsername(); ?></h5>
+                <p class="font-small" ><?php echo $MAIN_USER->getCollege(); ?></p>
                 <p>
                     This is the name other users see you under. Your true identity is hidden.
                 </p>

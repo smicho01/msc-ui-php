@@ -1,0 +1,11 @@
+SetEnv ACADEMICHAIN_ENV dev
+SetEnv POSTGRESHOST localhost
+SetEnv POSTGRESPORT 5432
+SetEnv POSTGRESDBNAME mscstudents
+SetEnv POSTGRESUSER student
+SetEnv POSTGRESPASSWORD password
+SetEnv CORE_SERVICE_URI http://localhost:9090/api/v1
+SetEnv USER_SERVICE_URI http://localhost:9091/api/v1
+SetEnv ITEM_SERVICE_URI http://localhost:9092/api/v1
+SetEnv REDIS_URL tcp://localhost:6379
+SetEnv ENCRYPTION_KEY vjLFfQoanpJtwu8M2VIAJdJessqw2UKAANdU+Z0t1nI=

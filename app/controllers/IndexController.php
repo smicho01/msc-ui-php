@@ -2,6 +2,7 @@
 include_once 'fns_curl.php';
 include_once 'fns_user.php';
 include_once 'fns_crypto.php';
+include_once 'fns_module_college.php';
 
 $VIEW = isset($VIEW) ? $VIEW : 'index';
 
@@ -52,8 +53,9 @@ switch ($VIEW) {
 
                 // Get user questions and questions count
                 $userQuestions = user_get_questions($MAIN_USER->getId());
-                if($userQuestions) {
+                if(count($userQuestions)>0) {
                     $_SESSION['user']['questions-size'] = count($userQuestions);
+                    $_SESSION['user']['questions'] = $userQuestions;
                 }
                 $MAIN_USER->setQuestions($userQuestions);
 
@@ -61,8 +63,16 @@ switch ($VIEW) {
                 $userAnswers = user_get_answers($MAIN_USER->getId());
                 if($userAnswers) {
                     $_SESSION['user']['answers-size'] = count($userAnswers);
+                    $_SESSION['user']['answers'] = $userAnswers;
                 }
                 $MAIN_USER->setAnswers($userAnswers);
+
+
+                if(!isset($_SESSION['user']['college_modules'])){
+                    // Set user college modules as Session var to limit APi calls
+                    $_SESSION['user']['college_modules'] = modules_get_by_college_id($MAIN_USER->getCollegeId());
+                }
+
 
             }
 	break;

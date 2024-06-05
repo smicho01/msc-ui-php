@@ -1,5 +1,19 @@
 $(document).ready(function () {
 
+    let userCollegeModules = [];
+
+    $.post("/php_js/user.php", { urlcommand: 'getUserCollegeModules'})
+        .done(function (data) {
+            console.log(data);
+            let a = JSON.parse(data)
+            $('#form_question_module').val(a[1].name);
+        })
+        .fail(function (data) {
+            console.log('Fail when getting user modules');
+        });
+
+
+
     // Add custom validation method to check if entered text is a valid English text.
     $.validator.addMethod("isValidEnglishText", function (value, element, params) {
         // Parse the sentence with Compromise

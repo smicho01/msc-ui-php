@@ -19,8 +19,8 @@ switch ($VIEW) {
 
         // Get college modules
         // $ALL_MODULES = module_get_all(); // get all modules
-    print_r($_SESSION);
 
+        $USER_COLLEGE_MODULES = modules_get_by_college_id($_SESSION['user']['collegeId']);
 
         break;
 

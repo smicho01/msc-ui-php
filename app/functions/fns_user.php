@@ -34,6 +34,10 @@ class User {
         $this->email = $data['email'];
         $this->visibleUsername = $data['visibleUsername'];
         $this->tokens = $data['tokens'];
+        $this->college = $data['college'];
+        $this->collegeId = $data['collegeid'];
+        $this->questions = user_get_questions($data['id']);
+        $this->answers = user_get_answers($data['id']);
     }
 
 
@@ -196,7 +200,7 @@ function user_insert_from_session() {
         'firstName' => $explodeUserName[0],
         'lastName' => $explodeUserName[1],
         'email' => $sessionUser['email'],
-        'college' => isset($sessionUser['college']) ? $sessionUser['college'] : 'nie mam',
+        'college' => isset($sessionUser['college']) ? $sessionUser['college'] : 'No college yet',
     ];
     $insertUserResponse = curl_post(USER_SERVICE_URI . "/user", $data, "Bearer " . $_SESSION['token']);
     return $insertUserResponse;
@@ -256,4 +260,13 @@ function user_get_answers($userId) {
 function user_get_keys($userId) {
     $uri = USER_SERVICE_URI . "/user/getkeys/" . $userId;
     return  get_data_from_api($uri);
+}
+
+
+/*
+Re-write user data to Session so index.php does not need to make api calls with each page reload
+$_SESSION['user_data_rewritten'] set to true will indicate that rewrite has been done and all required user data is in the session
+*/
+function user_data_to_session($user){
+    $_SESSION['user']['user_data_rewritten'] = true; // Set to true if user data has been rewritten to Session. So no API call is required next time
 }

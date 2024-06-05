@@ -44,6 +44,11 @@ switch ($VIEW) {
                 $MAIN_USER = new User();
                 $MAIN_USER->createUserFromSession();
                 $MAIN_USER->setTokens($userExists['tokens']);
+                $MAIN_USER->setCollege($userExists['college']);
+                $MAIN_USER->setCollegeId($userExists['collegeid']);
+
+                // Add User Session values
+                $_SESSION['user']['collegeId'] = $MAIN_USER->getCollegeId();
 
                 // Get user questions and questions count
                 $userQuestions = user_get_questions($MAIN_USER->getId());

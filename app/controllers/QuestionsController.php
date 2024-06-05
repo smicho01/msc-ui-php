@@ -1,4 +1,6 @@
 <?php
+include_once 'fns_curl.php';
+include_once 'fns_module_college.php';
 
 $VIEW = isset($VIEW) ? $VIEW : 'index';
 
@@ -14,6 +16,12 @@ switch ($VIEW) {
             'https://unpkg.com/compromise@13.11.0/builds/compromise.min.js'
         ];
         $jsfiles = ['question']; // will add corresponding *.js files from `/public/js` dir
+
+        // Get college modules
+        // $ALL_MODULES = module_get_all(); // get all modules
+    print_r($_SESSION);
+
+
         break;
 
     case 'process':

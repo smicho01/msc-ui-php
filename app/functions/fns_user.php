@@ -9,6 +9,7 @@ class User {
     private $email;
     private $tokens;
     private $college;
+    private $collegeId;
     private $questions = [];
     private $answers = [];
 
@@ -161,6 +162,23 @@ class User {
     {
         $this->college = $college;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCollegeId()
+    {
+        return $this->collegeId;
+    }
+
+    /**
+     * @param mixed $collegeId
+     */
+    public function setCollegeId($collegeId)
+    {
+        $this->collegeId = $collegeId;
+    }
+
 
 
 }

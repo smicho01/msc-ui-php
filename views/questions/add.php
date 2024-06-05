@@ -50,6 +50,24 @@
                 <div id="limitMessage"></div>
             </div>
 
+            <div class="mb-3">
+                <label for="form_question_college" class="form-label">Your College</label>
+                <input type="text" class="form-control" id="form_question_college" name="form_question_college"
+                       value="<?php echo $_SESSION['user']['college']; ?>" disabled />
+                <div id="form-question-college-help" class="form-text">
+                    Select college module name or category. e.g. Information Security
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="form_question_module" class="form-label">Module</label>
+                <input type="text" class="form-control" id="form_question_module" name="form_question_module"
+                       value="Advances in Data Management"/>
+                <div id="form-question-module-help" class="form-text">
+                    Select college module name or category. e.g. Information Security
+                </div>
+            </div>
+
             <div id="form-errors"></div>
 
             <button type="submit" class="btn btn-primary" id="btn-submit-question">Submit question</button>

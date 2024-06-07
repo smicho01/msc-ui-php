@@ -8,7 +8,7 @@ if(isset($_POST['urlcommand'])) {
     switch($UrlCommand){
 
         case 'getUserCollegeModules':
-            // Get user college modules saved in the session. They can be ret
+            // Get user college modules saved in the session
             $collegeModuless = isset($_SESSION['user']['college_modules']) ? $_SESSION['user']['college_modules'] : [];
             //print_r($collegeModuless);
             echo json_encode($collegeModuless);

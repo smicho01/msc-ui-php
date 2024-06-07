@@ -69,4 +69,3 @@ include_once('fns_db.php');
 include_once('fns_user.php');
 include_once('fns_service.php');
 include_once 'fns_crypto.php';
-?>

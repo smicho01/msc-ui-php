@@ -1,6 +1,7 @@
 <?php
 include_once 'fns_curl.php';
 include_once 'fns_module_college.php';
+include_once 'fns_question.php';
 
 $VIEW = isset($VIEW) ? $VIEW : 'index';
 

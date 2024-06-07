@@ -168,12 +168,6 @@ function addTag(tag, formId) {
 }
 
 
-
-
-
-
-
-
 // AUTOCOMPLETE
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,

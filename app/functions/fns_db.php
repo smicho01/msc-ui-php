@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Connects to the database [here Postgres] using the provided environment variables
+ * and returns a PDO (PHP Data Object) instance.
+ *
+ * @return PDO|void Returns an instance of PDO if the connection is successful, otherwise terminates the script.
+ */
 function conn()
 {
     $host = getenv("POSTGRESHOST");
@@ -23,6 +29,17 @@ function disconnect ($pdo)
     $pdo = null;
 }
 
+/**
+ * Inserts a log entry into the database.
+ *
+ * @param string $level The log level (e.g. ERROR, WARNING, INFO).
+ * @param string $module The module or source of the log.
+ * @param string $eventType The type of event being logged.
+ * @param string $message The log message.
+ * @param mixed|null $json Optional JSON data to associate with the log entry.
+ *
+ * @return void
+ */
 function insertDbLogData($level, $module, $eventType, $message, $json = null) {
     $level =  strtoupper($level);
     $userId = 'anonymous';
@@ -59,10 +76,3 @@ function get_client_ip() {
         $ipaddress = 'UNKNOWN';
     return $ipaddress;
 }
-
-//$query = 'SELECT * FROM users.user';
-//$statement = $pdo->query($query);
-//
-//while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-//    echo $row['username'] . '<br>';
-//}

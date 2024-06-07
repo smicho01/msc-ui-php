@@ -11,22 +11,21 @@ include_once "check_services_health.php";
 // Create Controller file name
 $ControllerName = ucfirst($CONTROLLER) . "Controller";
 
+// Create globally visible var for logged in user
 $MAIN_USER = new User();
 
+
 if(isUserLoggedIn() && isset($_SESSION['user']['visibleUsername'])) {
-    $sessionUserName = $_SESSION['user']['username'];
-    $foundLoggedInUser = user_get('username', $sessionUserName);
+    // Get user from DB by username
+    $foundLoggedInUser = user_get('username', $_SESSION['user']['username']);
 
     // If user db data hasn't been written to SESSION for fast access, then read user data from DB
     if (!isset($_SESSION['user']['user_data_rewritten']) || $_SESSION['user']['user_data_rewritten'] != true) {
         // Get user from Database and set its properties
-        echo "MAKING ALL API CALLS FOR USER";
         $MAIN_USER->createUserDatabaseData($foundLoggedInUser);
     }
-
     // Re-write User data to session data to improve speed and avoid calls to API
     user_data_to_session($MAIN_USER);
-
 }
 
 // Include controller file

@@ -3,8 +3,8 @@
         <div>
             <div class="user-icon-wrapper">
                 <i class="fa-regular fa-circle-user fa-6x large-user-icon"></i>
-                <h5><?php echo $MAIN_USER->getVisibleUsername(); ?></h5>
-                <p class="font-small" ><?php echo $MAIN_USER->getCollege(); ?></p>
+                <h5><?php echo $MAIN_USER->visibleUsername; ?></h5>
+                <p class="font-small" ><?php echo $MAIN_USER->college; ?></p>
                 <p>
                     This is the name other users see you under. Your true identity is hidden.
                 </p>
@@ -18,7 +18,7 @@
     <div class="list-group-item">
         <div>
             <img src="public/img/academi-token.webp" width="40"  />
-            <span class="token-qty"><?php echo $MAIN_USER->getTokens(); ?> tokens</span>
+            <span class="token-qty"><?php echo $MAIN_USER->tokens; ?> tokens</span>
         </div>
     </div>
     <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-start"

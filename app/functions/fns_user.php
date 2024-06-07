@@ -2,190 +2,55 @@
 include_once 'fns_curl.php';
 
 class User {
-    private $id;
-    private $name;
-    private $username;
-    private $visibleUsername;
-    private $email;
-    private $tokens;
-    private $college;
-    private $collegeId;
-    private $questions = [];
-    private $answers = [];
+    private $properties = [];
 
-    public function __construct()
-    {
+    public function __construct(){}
 
+    /* Using Magic Methods to limit number of setters and getters [lines of code] */
+    public function __get($property) {
+        if (array_key_exists($property, $this->properties)) {
+            return $this->properties[$property];
+        }
     }
 
+    public function __set($property, $value) {
+        $this->properties[$property] = $value;
+    }
+
+    /* Set User field from according PHP SESSION fields */
     public function createUserFromSession() {
-        $this->id = $_SESSION['user']['id'];
-        $this->username = $_SESSION['user']['username'];
-        $this->name = $_SESSION['user']['name'];
-        $this->email = $_SESSION['user']['email'];
-        $this->visibleUsername = $_SESSION['user']['visibleUsername'];
-        $this->college = $_SESSION['user']['college'];
+        // Assume $_SESSION['user'] is an associative array with keys matching your property names
+        foreach ($_SESSION['user'] as $property => $value) {
+            $this->$property = $value;
+        }
     }
 
+    /* Set User fields from data retrieved from the DB */
     public function createUserDatabaseData($data) {
-        $this->id = $data['id'];
-        $this->username = $data['username'];
+        // Assume $data is an associative array with keys matching your property names
+        foreach ($data as $property => $value) {
+            if (array_key_exists($property, $this->properties)) {
+                $this->$property = $value;
+            }
+        }
+
+        // Special Cases
         $this->name = $data['firstName'] . " " . $data['lastName'];
-        $this->email = $data['email'];
-        $this->visibleUsername = $data['visibleUsername'];
-        $this->tokens = $data['tokens'];
-        $this->college = $data['college'];
-        $this->collegeId = $data['collegeid'];
         $this->questions = user_get_questions($data['id']);
         $this->answers = user_get_answers($data['id']);
     }
 
-
-    public function setTokens($tokens) {
-        $this->tokens = $tokens;
-    }
-    public function getTokens() {
-        return $this->tokens;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @param mixed $username
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getVisibleUsername()
-    {
-        return $this->visibleUsername;
-    }
-
-    /**
-     * @param mixed $visibleUsername
-     */
-    public function setVisibleUsername($visibleUsername)
-    {
-        $this->visibleUsername = $visibleUsername;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    public function setQuestions($questions) {
-        $this->questions = $questions;
-    }
-
-    public function getQuestions() {
-        return $this->questions;
-    }
-
-    public function getQuestionsCount() {
-        return count($this->questions);
-    }
-
-    public function setAnswers($answers) {
-        $this->answers = $answers;
-    }
-
-    public function getAnswers() {
-        return $this->answers;
-    }
+    // is identical to getQuestionsCount()
     public function getAnswersCount() {
         return count($this->answers);
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCollege()
-    {
-        return $this->college;
+    // is identical to getAnswersCount()
+    public function getQuestionsCount() {
+        return count($this->questions);
     }
-
-    /**
-     * @param mixed $college
-     */
-    public function setCollege($college)
-    {
-        $this->college = $college;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCollegeId()
-    {
-        return $this->collegeId;
-    }
-
-    /**
-     * @param mixed $collegeId
-     */
-    public function setCollegeId($collegeId)
-    {
-        $this->collegeId = $collegeId;
-    }
-
-
-
 }
+
 
 function user_get($field , $value) {
     $uri = USER_SERVICE_URI . "/user?field=".$field ."&value=" . $value;
@@ -202,12 +67,11 @@ function user_insert_from_session() {
         'email' => $sessionUser['email'],
         'college' => isset($sessionUser['college']) ? $sessionUser['college'] : 'No college yet',
     ];
-    $insertUserResponse = curl_post(USER_SERVICE_URI . "/user", $data, "Bearer " . $_SESSION['token']);
-    return $insertUserResponse;
+    return curl_post(USER_SERVICE_URI . "/user", $data, "Bearer " . $_SESSION['token']);
 }
 
 function user_login($username, $password) {
-    $url = 'http://sever3d.synology.me:7080/auth/realms/academichain/protocol/openid-connect/token';
+    $url = KEYCLOAK_AUTH_URL;
     $data = [
         'grant_type' => 'password',
         'client_id' => 'academichain_ui',

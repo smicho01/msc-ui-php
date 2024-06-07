@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Send a POST request using cURL.
+ *
+ * @param string $url The URL to send the request to.
+ * @param array $data The data to be sent with the request.
+ * @param string $token The authorization token.
+ * @return array An associative array containing the response header, body, and status code.
+ */
+
 function curl_post($url, $data, $token)
 {
     // JSON encode the data
@@ -33,6 +42,18 @@ function curl_post($url, $data, $token)
     return array('header' => $header, 'body' => $body, 'status_code' => $status_code);
 }
 
+
+/**
+ * Sends HTTP request using cURL.
+ *
+ * @param string $method The HTTP method to be used (GET, POST, PUT).
+ * @param string $url The URL to send the request to.
+ * @param mixed $data The data to be sent with the request. Default is false.
+ * @param string $contentType The content type of the request. Default is false.
+ * @param string $token The authorization token. Default is false.
+ * @return array An associative array containing the response header, body, and status code.
+ *                If the status line is empty or null, a status code of 400 is returned.
+ */
 function rest_call($method, $url, $data = false, $contentType = false, $token = false)
 {
     $curl = curl_init();

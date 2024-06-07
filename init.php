@@ -3,6 +3,7 @@ define("ENV", getenv("ACADEMICHAIN_ENV"));
 define("USER_SERVICE_URI" , getenv("USER_SERVICE_URI"));
 define("ITEM_SERVICE_URI" , getenv("ITEM_SERVICE_URI"));
 define("CORE_SERVICE_URI" , getenv("CORE_SERVICE_URI"));
+define("KEYCLOAK_AUTH_URL" , getenv("KEYCLOAK_AUTH_URL"));
 define("REDIS_URL", getenv("REDIS_URL"));
 // PHP settings
 date_default_timezone_set('Europe/Amsterdam');

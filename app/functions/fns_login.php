@@ -1,5 +1,10 @@
 <?php
 
+
+/**
+ * Checks if user is logged in by checking the PHP Session vars
+ * @return bool
+ */
 function isUserLoggedIn() {
 	if( !isset($_SESSION['token']) || !isset($_SESSION['user'])) {
 		return false;
@@ -7,8 +12,12 @@ function isUserLoggedIn() {
 	return true;
 }
 
+/**
+ * Enforces user login by checking if token and user vars are present in session
+ * @return void
+ */
 function require_login () {
-	if( !isset($_SESSION['token'])) {
+	if( !isset($_SESSION['token']) || !isset($_SESSION['user'])) {
 		header("Location: index.php?c=login");
 	}
 }
@@ -36,7 +45,7 @@ function academichain_user($key) {
  * Get token from keycloak
  */
 function getJwtToken($username, $password) {
-				$url = "http://sever3d.synology.me:7080/auth/realms/academichain/protocol/openid-connect/token";
+				$url = KEYCLOAK_AUTH_URL;
 				$headers = [
 					'Content-Type: application/x-www-form-urlencoded',
 					'Cookie: AUTH_SESSION_ID=51311a8f-8277-4617-83d7-3780ad9607e4.3qql',

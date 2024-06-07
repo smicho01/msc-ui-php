@@ -29,7 +29,7 @@ switch ($VIEW) {
                 // Check if user exists in DB
                 // Keycloak user is not equal DB user.
                 // If DB user not exist then register him using Session data
-                $userExists = user_get('username', $sessionUserName);
+                $userExists = $USER_SERVICE->getUser('username', $sessionUserName);
                 if (!$userExists) {
                     $insertResult = user_insert_from_session(); // Create user in DB
                     $insertedUser = json_decode($insertResult['body'], true);
@@ -52,7 +52,7 @@ switch ($VIEW) {
                 $_SESSION['user']['collegeId'] = $MAIN_USER->colegeId;
 
                 // Get user questions and questions count
-                $userQuestions = user_get_questions($MAIN_USER->id);
+                $userQuestions = $USER_SERVICE->user_get_questions($MAIN_USER->id);
                 if(count($userQuestions)>0) {
                     $_SESSION['user']['questions-size'] = count($userQuestions);
                     $_SESSION['user']['questions'] = $userQuestions;
@@ -60,7 +60,7 @@ switch ($VIEW) {
                 $MAIN_USER->questions = $userQuestions;
 
                 // TODO: Get user answers count
-                $userAnswers = user_get_answers($MAIN_USER->id);
+                $userAnswers = $USER_SERVICE->user_get_answers($MAIN_USER->id);
                 if($userAnswers) {
                     $_SESSION['user']['answers-size'] = count($userAnswers);
                     $_SESSION['user']['answers'] = $userAnswers;

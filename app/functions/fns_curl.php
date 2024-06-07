@@ -42,6 +42,23 @@ function curl_post($url, $data, $token)
     return array('header' => $header, 'body' => $body, 'status_code' => $status_code);
 }
 
+/*
+* GET data form API endpoint give in $uri param using GET request
+*/
+function get_data_from_api($uri) {
+    $foundUserResponse = rest_call('GET', $uri, $data = false, 'application/json',
+        "Bearer " . $_SESSION['token']);
+    $responseBody = $foundUserResponse['body'];
+    if(!$responseBody) {
+        return false;
+    }
+    $data = json_decode($responseBody, true);
+    if (count($data) == 0) {
+        return false;
+    }
+    return $data;
+}
+
 
 /**
  * Sends HTTP request using cURL.

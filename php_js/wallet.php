@@ -1,12 +1,14 @@
 <?php
 include_once('../init.php');
 
+$USER_SERVICE = new UserService();
+
 if(isset($_POST['urlcommand'])) {
 
     switch($_POST['urlcommand']){
         case 'getkeys':
             // It will return wallet with encrypted keys
-            $userWalletDTO = user_get_keys($_SESSION['user']['id']);
+            $userWalletDTO = $USER_SERVICE->user_get_keys($_SESSION['user']['id']);
             // Encrypt keys
             $ENCRYPTION_KEY_BASE64 = getenv("ENCRYPTION_KEY");
             if($userWalletDTO['publicKeyEncrypted'] !='' && $userWalletDTO['privateKeyEncrypted'] != '') {

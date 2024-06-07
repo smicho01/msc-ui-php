@@ -4,7 +4,6 @@
  * The CryptoUtil class provides encryption and decryption functionality using the AES-256-CBC algorithm.
  */
 class CryptoUtil {
-
     private static $algorithm = "aes-256-cbc";
     private static $key;
     private static $iv;

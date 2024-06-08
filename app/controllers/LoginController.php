@@ -8,7 +8,14 @@ switch ($VIEW) {
             unset($_SESSION['user']);
         }
 
-        $responseData = $USER_SERVICE->user_login($_POST['username'], $_POST['password']);
+        print_r($_POST);
+
+        try {
+            $responseData = $USER_SERVICE->user_login($_POST['username'], $_POST['password']);
+        } catch(ErrorException $e) {
+            print_r($e);
+        }
+
 
         // If user was logged in
         if (isset($responseData['access_token'])) {

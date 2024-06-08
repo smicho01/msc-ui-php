@@ -26,6 +26,17 @@ To configure database, below environment variables are needed:
 
 File `docker-compose.yml` and service `phpui` introducing how they should be set.
 
+### Local Development
+#### MAMP config
+
+In case of missing PDO extension for Postgres, add those to php.ini file
+
+- extension=pgsql.so
+- extension=pdo_pgsql
+
+#### PHP version
+
+Used version 7.4.X as this one contain Redis extension for local development.
 
 ### Environment variables
 

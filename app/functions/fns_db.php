@@ -20,6 +20,7 @@ function conn()
     try {
         $pdo = new PDO($dsn);
     } catch (PDOException $e) {
+        print_r($e);
         die($e->getMessage());
     }
     return $pdo;

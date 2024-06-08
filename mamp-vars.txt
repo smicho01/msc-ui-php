@@ -9,3 +9,4 @@ SetEnv USER_SERVICE_URI http://localhost:9091/api/v1
 SetEnv ITEM_SERVICE_URI http://localhost:9092/api/v1
 SetEnv REDIS_URL tcp://localhost:6379
 SetEnv ENCRYPTION_KEY vjLFfQoanpJtwu8M2VIAJdJessqw2UKAANdU+Z0t1nI=
+SetEnv KEYCLOAK_AUTH_URL http://sever3d.synology.me:7080/auth/realms/academichain/protocol/openid-connect/token

@@ -41,7 +41,7 @@ Used version 7.4.X as this one contain Redis extension for local development.
 ### Environment variables
 
 Here is example for MampPro local dev env Additional parameters for <VirtualHost>.
-(In prod values will change of course): 
+(In prod values will change of course): Read more in file `mamp-vars.txt`
 
 SetEnv ACADEMICHAIN_ENV dev
 

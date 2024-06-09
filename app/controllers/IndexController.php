@@ -52,7 +52,7 @@ switch ($VIEW) {
 
                 // Get user questions and questions count
                 $_SESSION['user']['questions-size'] = 0;
-                $userQuestions = $USER_SERVICE->user_get_questions($MAIN_USER->id);
+                $userQuestions = $USER_SERVICE->user_get_questions_short($MAIN_USER->id);
                 if(!is_null($userQuestions) && !empty($userQuestions) ) {
                     $_SESSION['user']['questions-size'] = count($userQuestions);
                     $_SESSION['user']['questions'] = $userQuestions;

@@ -4,23 +4,6 @@
 
         <div class="row">
 
-            <div id="alerts" class="col-12">
-                <?php
-                if (isset($_SESSION['flash']))
-                {
-
-                    $flash_message = $_SESSION['flash']['message'];
-                    $flash_type = $_SESSION['flash']['type'];
-                    unset ($_SESSION['flash']);
-                    echo '<div class="alert alert-'.$flash_type.' alert-dismissible fade show" role="alert">';
-                    echo $flash_message;
-                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-                    echo '</div>';
-
-                }
-                ?>
-            </div>
-
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -48,12 +31,14 @@
         <div class="row">
             <?php if(!empty($userQuestions)): ?>
 
+                <?php foreach($userQuestions as $question): ?>
                 <!-- question box -->
                 <div class="col-12">
                     <div class="card question-card">
                         <div class="card-header">
                             <div class="one-half">
-                                Applied Machine Learning - <span class="date">2024-02-12</span>
+                                <?php echo trim($question['moduleName']); ?> - <span class="date">2024-02-12</span>
+                                - <span class="status status-<?php echo  strtolower($question['status']); ?>"><?php echo $question['status']; ?></span>
                             </div>
                             <div class="one-half-last text-right">
                                 20 answers
@@ -61,34 +46,18 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title"><a href="/index.php?c=questions&v=show&id=1">
-                                    <?php echo substr("How to set weights for RNN", 0,50); ?>
+                                    <?php echo trimString($question['title'], 50); ?>
                                 </a></h5>
                             <p class="card-text">
-                                <?php echo substr("How to set weights for RNN", 0,50); ?>
+                                <?php echo trimString($question['content'], 100); ?>
                                 </p>
                         </div>
                     </div>
                 </div>
                <!-- /question-box -->
+                <?php endforeach; ?>
 
-               <!-- question box -->
-                <div class="col-12">
-                    <div class="card question-card">
-                        <div class="card-header">
-                            <div class="one-half">
-                                ADM - <span class="date">2024-02-10</span>
-                            </div>
-                            <div class="one-half-last text-right">
-                                8 answers
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="">Need help with B+ Tree Indexing</a></h5>
-                            <p class="card-text">I need some help with removing values from B+ Tree index</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- /question-box -->
+
 
             <?php else: ?>
                 <p>No questions yet</p>

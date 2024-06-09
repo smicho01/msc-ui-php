@@ -184,6 +184,18 @@ img.small-token {
     font-size: 0.9em;
 }
 
+span.status {
+    padding: 0px 10px;
+    color: #fff;
+    border-radius: 5%;
+}
+span.status.status-pending {
+    background-color: darkorange;
+}
+
+span.status.status-rejected {
+    background-color: red;
+}
 
 .question-summary-box {
     font-size: 0.7em;

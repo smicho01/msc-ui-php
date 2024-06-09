@@ -1,5 +1,7 @@
 <?php
 include_once 'fns_curl.php';
+include_once 'fns_flash.php';
+include_once 'fns_utils.php';
 
 $VIEW = isset($VIEW) ? $VIEW : 'index';
 require_login ();
@@ -18,9 +20,8 @@ switch ($VIEW) {
     break;
 
     case 'questions':
-        $userQuestions  = [
-            ['id'=>'q1', 'title'=>'How does the RNN works ?', 'content'=>'I wish to know how the RNN works ...']
-        ];
+        $userQuestions = UserService::user_get_questions_short($_SESSION['user']['id']);
+        //$userQuestions  = $_SESSION['user']['questions'];
         break;
 
     default:

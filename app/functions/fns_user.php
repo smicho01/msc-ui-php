@@ -42,7 +42,7 @@ class User {
 
         // Special Cases
         $this->name = $data['firstName'] . " " . $data['lastName'];
-        $this->questions = $this->USER_SERVICE->user_get_questions($data['id']);
+        $this->questions = $this->USER_SERVICE->user_get_questions_short($data['id']);
         $this->answers = $this->USER_SERVICE->user_get_answers($data['id']);
     }
 
@@ -101,17 +101,22 @@ class UserService {
         return json_decode($response, true);
     }
 
-    function user_get_questions($userId) {
+    static function user_get_questions($userId) {
         $uri = ITEM_SERVICE_URI . "/question/user/" . $userId;
         return get_data_from_api($uri);
     }
 
-    function user_get_answers($userId) {
+    static function user_get_questions_short($userId) {
+        $uri = ITEM_SERVICE_URI . "/question/user/" . $userId . "/short";
+        return get_data_from_api($uri);
+    }
+
+    static function user_get_answers($userId) {
         $uri = ITEM_SERVICE_URI . "/answer/user/" . $userId;
         return get_data_from_api($uri);
     }
 
-    function user_get_keys($userId) {
+    static function user_get_keys($userId) {
         $uri = USER_SERVICE_URI . "/user/getkeys/" . $userId;
         return  get_data_from_api($uri);
     }

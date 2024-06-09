@@ -2,6 +2,7 @@
 include_once 'fns_curl.php';
 include_once 'fns_module_college.php';
 include_once 'fns_question.php';
+include_once  'fns_flash.php';
 
 $VIEW = isset($VIEW) ? $VIEW : 'index';
 
@@ -44,12 +45,13 @@ switch ($VIEW) {
         $insertResult  = $QUESTION_SERVICE->insertQuestion($question);
 
         if($insertResult['status_code'] == 201) {
-            $_SESSION['flash']['message'] = 'Question added successfully. The status is: PENDING';
-            $_SESSION['flash']['type'] = 'success';
+            new FlashMessage('Question added successfully. The status is: PENDING', 'success');
         } else {
-            $_SESSION['flash']['message'] = 'Unable to add the question. Please try again later.';
-            $_SESSION['flash']['type'] = 'danger';
+            new FlashMessage('Unable to add the question. Please try again later.', 'danger');
         }
+
+        $FLASH = false; // toggle FLASH as this will remove flash message form the session for next page
+
         header("Location: index.php?c=user&v=questions");
         break;
 

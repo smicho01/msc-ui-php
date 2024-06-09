@@ -14,6 +14,8 @@ ini_set('log_errors', 1);
 ini_set('session.save_handler', 'redis'); // Session handler set to Redis
 ini_set('session.save_path', REDIS_URL);
 
+$FLASH = true; // toggle display flash messages
+
 session_start();
 
 $session_id = session_id();
@@ -69,4 +71,5 @@ include_once('fns_login.php');
 include_once('fns_db.php');
 include_once('fns_user.php');
 include_once('fns_service.php');
-include_once 'fns_crypto.php';
+include_once('fns_crypto.php');
+include_once('fns_flash.php');

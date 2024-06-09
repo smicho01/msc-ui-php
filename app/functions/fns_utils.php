@@ -70,3 +70,14 @@ function sanitizeInput($data, $type = 'string') {
             return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
     }
 }
+
+
+function trimString($string, $maxLength) {
+    $truncatedString = substr($string, 0, $maxLength);
+
+    if (strlen($string) > $maxLength) {
+        $truncatedString .= '...';
+    }
+
+    echo $truncatedString;
+}

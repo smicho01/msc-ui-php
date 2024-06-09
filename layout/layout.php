@@ -60,6 +60,9 @@
                         echo '</div>';
                     }
                     ?>
+                    <?php if($FLASH) {
+                        FlashMessage::read();
+                    } ?>
                 </div>
 
                 <div class="col-12 view-wrap">
@@ -71,7 +74,6 @@
                     } else {
                         include_once(VIEWS_DIR . DS . "no-view-file.php");
                     }
-
                     ?>
                 </div>
             </div>

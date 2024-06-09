@@ -60,3 +60,5 @@ SetEnv USER_SERVICE_URI http://localhost:9091/api/v1
 SetEnv REDIS_URL tcp://localhost:6379
 
 SetEnv ENCRYPTION_KEY vjLFfQoanpJtwu8M2VIAJdJessqw2UKAANdU+Z0t1nI=
+
+SetEnv KEYCLOAK_AUTH_URL <keycloak_url>

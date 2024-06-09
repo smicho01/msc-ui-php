@@ -3,6 +3,24 @@
     <div class="col-xl-9 col-lg-9">
 
         <div class="row">
+
+            <div id="alerts" class="col-12">
+                <?php
+                if (isset($_SESSION['flash']))
+                {
+
+                    $flash_message = $_SESSION['flash']['message'];
+                    $flash_type = $_SESSION['flash']['type'];
+                    unset ($_SESSION['flash']);
+                    echo '<div class="alert alert-'.$flash_type.' alert-dismissible fade show" role="alert">';
+                    echo $flash_message;
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                    echo '</div>';
+
+                }
+                ?>
+            </div>
+
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">

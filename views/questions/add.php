@@ -21,7 +21,6 @@
             </div>
         </div>
 
-
         <!-- form -->
         <form id="form-ask-question" method="post" action="index.php?c=questions&v=process">
             <div class="mb-3">

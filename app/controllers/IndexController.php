@@ -48,18 +48,19 @@ switch ($VIEW) {
                 $MAIN_USER->college  = $userExists['college'];
                 $MAIN_USER->collegeId = $userExists['collegeid'];
 
-                // Add User Session values
-                $_SESSION['user']['collegeId'] = $MAIN_USER->colegeId;
+                $_SESSION['user']['collegeId'] = $userExists['collegeid'];
 
                 // Get user questions and questions count
+                $_SESSION['user']['questions-size'] = 0;
                 $userQuestions = $USER_SERVICE->user_get_questions($MAIN_USER->id);
-                if(count($userQuestions)>0) {
+                if(!is_null($userQuestions) && !empty($userQuestions) ) {
                     $_SESSION['user']['questions-size'] = count($userQuestions);
                     $_SESSION['user']['questions'] = $userQuestions;
                 }
                 $MAIN_USER->questions = $userQuestions;
 
                 // TODO: Get user answers count
+                $_SESSION['user']['answers-size'] = 0;
                 $userAnswers = $USER_SERVICE->user_get_answers($MAIN_USER->id);
                 if($userAnswers) {
                     $_SESSION['user']['answers-size'] = count($userAnswers);
@@ -67,12 +68,7 @@ switch ($VIEW) {
                 }
                 $MAIN_USER->answers  = $userAnswers;
 
-
-                if(!isset($_SESSION['user']['college_modules'])){
-                    // Set user college modules as Session var to limit APi calls
-                    $_SESSION['user']['college_modules'] = modules_get_by_college_id($MAIN_USER->collegeId);
-                }
-
+                $_SESSION['user']['college_modules'] = modules_get_by_college_id($_SESSION['user']['collegeId']);
 
             }
 	break;

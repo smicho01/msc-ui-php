@@ -37,8 +37,20 @@ switch ($VIEW) {
             header("Location: index.php?c=error"); // bad request ; skip processing
         }
 
-        // TODO: process add question
-        print_r($_POST);
+        /* Insert question */
+        $question = new Question();
+        $question->fromPostData($_POST);
+        $QUESTION_SERVICE = new QuestionService();
+        $insertResult  = $QUESTION_SERVICE->insertQuestion($question);
+
+        if($insertResult['status_code'] == 201) {
+            $_SESSION['flash']['message'] = 'Question added successfully. The status is: PENDING';
+            $_SESSION['flash']['type'] = 'success';
+        } else {
+            $_SESSION['flash']['message'] = 'Unable to add the question. Please try again later.';
+            $_SESSION['flash']['type'] = 'danger';
+        }
+        header("Location: index.php?c=user&v=questions");
         break;
 
     case 'show':

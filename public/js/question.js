@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     let userCollegeModules = [];
 
+    /* Get user college modules */
     $.post("/php_js/user.php", { urlcommand: 'getUserCollegeModules'})
         .done(function (data) {
             userCollegeModules = JSON.parse(data)
@@ -13,7 +14,7 @@ $(document).ready(function () {
         });
 
 
-    // Add custom validation method to check if entered text is a valid English text.
+    /* Add custom validation method to check if entered text is a valid English text. */
     $.validator.addMethod("isValidEnglishText", function (value, element, params) {
         // Parse the sentence with Compromise
         const doc = nlp(value);

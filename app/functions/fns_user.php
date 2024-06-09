@@ -6,6 +6,7 @@ class User {
     private $USER_SERVICE;
 
     public function __construct(){
+        // TODO: remove counpling with UserService. Inject via constr. or method
         $this->USER_SERVICE = new UserService();
     }
 
@@ -25,6 +26,7 @@ class User {
         // Assume $_SESSION['user'] is an associative array with keys matching your property names
         foreach ($_SESSION['user'] as $property => $value) {
             $this->$property = $value;
+            //$this->properties[$property] = $value;
         }
     }
 
@@ -34,6 +36,7 @@ class User {
         foreach ($data as $property => $value) {
             if (array_key_exists($property, $this->properties)) {
                 $this->$property = $value;
+                //$this->properties[$property] = $value;
             }
         }
 

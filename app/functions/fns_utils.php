@@ -46,3 +46,27 @@ function my_base32_encode($input)
     }
     return $output;
 }
+
+/**
+ * Sanitizes input data according to the specified type.
+ *
+ * @param mixed $data The input data to be sanitized.
+ * @param string $type (optional) The type of data to be sanitized. Defaults to 'string'.
+ *                     Possible values are: 'email', 'url', 'int', 'float', 'string'.
+ * @return mixed The sanitized input data.
+ */
+function sanitizeInput($data, $type = 'string') {
+    switch ($type) {
+        case 'email':
+            return filter_var($data, FILTER_SANITIZE_EMAIL);
+        case 'url':
+            return filter_var($data, FILTER_SANITIZE_URL);
+        case 'int':
+            return filter_var($data, FILTER_SANITIZE_NUMBER_INT);
+        case 'float':
+            return filter_var($data, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+        case 'string':
+        default:
+            return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
+    }
+}

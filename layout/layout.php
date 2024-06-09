@@ -60,6 +60,9 @@
                         echo '</div>';
                     }
                     ?>
+                    <?php if($FLASH) {
+                        FlashMessage::read();
+                    } ?>
                 </div>
 
                 <div class="col-12 view-wrap">
@@ -71,7 +74,6 @@
                     } else {
                         include_once(VIEWS_DIR . DS . "no-view-file.php");
                     }
-
                     ?>
                 </div>
             </div>
@@ -84,6 +86,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+
+
+<?php
+if(isset($jsfilesExternal)) {
+    foreach ($jsfilesExternal as $file) {
+        echo '<script src="' . $file . '"></script>';
+        }
+}
+?>
+
 <script src="<?php echo JS_DIR; ?>/login.js"></script>
 <?php
 if (isset($jsfiles)) {

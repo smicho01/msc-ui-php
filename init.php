@@ -3,6 +3,7 @@ define("ENV", getenv("ACADEMICHAIN_ENV"));
 define("USER_SERVICE_URI" , getenv("USER_SERVICE_URI"));
 define("ITEM_SERVICE_URI" , getenv("ITEM_SERVICE_URI"));
 define("CORE_SERVICE_URI" , getenv("CORE_SERVICE_URI"));
+define("KEYCLOAK_AUTH_URL" , getenv("KEYCLOAK_AUTH_URL"));
 define("REDIS_URL", getenv("REDIS_URL"));
 // PHP settings
 date_default_timezone_set('Europe/Amsterdam');
@@ -13,22 +14,11 @@ ini_set('log_errors', 1);
 ini_set('session.save_handler', 'redis'); // Session handler set to Redis
 ini_set('session.save_path', REDIS_URL);
 
+$FLASH = true; // toggle display flash messages
+
 session_start();
 
 $session_id = session_id();
-
-//setcookie(
-//    'accesstoken',
-//    $session_id,
-//    [
-//        'expires' => time() + 3600,
-//        'path' => '/',
-//        'domain' => 'localhost',
-//        'secure' => false, // Not using HTTPS
-//        'httponly' => true,
-//        'samesite' => 'Lax' // or 'Strict'
-//    ]
-//);
 
 $APPLICATION_NAME = "AcademiChain";
 
@@ -81,5 +71,5 @@ include_once('fns_login.php');
 include_once('fns_db.php');
 include_once('fns_user.php');
 include_once('fns_service.php');
-include_once 'fns_crypto.php';
-?>
+include_once('fns_crypto.php');
+include_once('fns_flash.php');

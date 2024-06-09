@@ -1,7 +1,7 @@
 body {
     font-family: "IBM Plex Sans", sans-serif;
     font-weight: 300;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 hr {
@@ -153,6 +153,164 @@ img.small-token {
 }
 .icon-card:hover {
     border: 1px solid #999;
+}
+
+/* Question card */
+.one-half {
+    width: 49%;
+    display: inline-block;
+    margin-right: 1%;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.one-half-last {
+    width: 49%;
+    display: inline-block;
+}
+
+.question-card {
+    margin-bottom: 10px;
+}
+.question-card .card-header {
+    font-size: 0.8em;
+    font-weight: 400;
+}
+
+.question-card .card-title a {
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+span.status {
+    padding: 0px 10px;
+    color: #fff;
+    border-radius: 5%;
+}
+span.badge.status-pending {
+    background-color: #ffc107 !important;
+
+}
+
+span.badge.status-rejected {
+    background-color: #dc3545;
+}
+
+span.badge.status-active {
+    background-color: #198754;
+}
+
+span.badge.status-scam {
+    background-color:  #dc3545;
+}
+
+span.badge.status-duplicated {
+    background-color: #0dcaf0;
+}
+
+.question-summary-box {
+    font-size: 0.7em;
+}
+.question-summary-box .entry {
+    margin-right: 40px;
+}
+
+.light-txt {
+    color: #727272;
+}
+
+.font-small {
+    font-size: 0.75em;
+}
+
+.breadcrumb {
+    font-size: 0.9em;
+}
+.breadcrumb a {
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+}
+
+.rounded-pill {
+    font-weight: 300;
+}
+
+/* recent questions sidebar */
+.recent-questions-sidebar {
+    font-size: 0.8em;
+}
+.recent-questions-sidebar h5 {
+    font-size: 1.3em;
+}
+
+.ask-small a {
+    font-size: 0.8em;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+label.error {
+    color: #dc3545;
+    display: block;
+    margin-top: 10px;
+}
+
+#tagsContainer {
+    margin: 10px 0;
+}
+span.tag.badge.rounded-pill  {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+
+/* AUTOCOMPLETE */
+.autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+    display: inline-block;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+    /*when hovering an item:*/
+    background-color: #e9e9e9;
+}
+.autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+}
+
+/* Sidebar */
+
+#sidebarMenu {}
+
+#sidebarMenu .nav-item:hover {
+    background-color: #b0bdbd;
+}
+
+#sidebarMenu .nav-item:hover a {
+    color: #fff;
 }
 
 @media screen and (max-height: 450px) {

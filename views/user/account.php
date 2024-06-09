@@ -8,7 +8,7 @@
         </nav>
 
     </div>
-    <h1>Your Account</h1>
+    <h3>Your Account</h3>
 </div>
 
 <div class="row">

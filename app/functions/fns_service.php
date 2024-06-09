@@ -1,21 +1,6 @@
 <?php
 
-//function service_user_healthcheck()
-//{
-//    return rest_call('GET',
-//        USER_SERVICE_URI . "/healthcheck");
-//}
-//
-//function service_user_status_code() {
-//    $response = service_user_healthcheck();
-//    if(isset($response['status_code'])) {
-//        return $response['status_code'];
-//    }
-//    return 404;
-//}
-
 class Service {
-
     private $name;
     private $serviceUri;
     private $healthcheckEndpoint = '/healthcheck';

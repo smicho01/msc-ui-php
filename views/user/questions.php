@@ -38,7 +38,9 @@
                         <div class="card-header">
                             <div class="one-half">
                                 <?php echo trim($question['moduleName']); ?> - <span class="date">2024-02-12</span>
-                                - <span class="status status-<?php echo  strtolower($question['status']); ?>"><?php echo $question['status']; ?></span>
+                                - <span class="badge   status-<?php echo  strtolower($question['status']); ?>">
+                                    <?php echo $question['status']; ?>
+                                </span>
                             </div>
                             <div class="one-half-last text-right">
                                 20 answers

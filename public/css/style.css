@@ -189,12 +189,25 @@ span.status {
     color: #fff;
     border-radius: 5%;
 }
-span.status.status-pending {
-    background-color: darkorange;
+span.badge.status-pending {
+    background-color: #ffc107 !important;
+
 }
 
-span.status.status-rejected {
-    background-color: red;
+span.badge.status-rejected {
+    background-color: #dc3545;
+}
+
+span.badge.status-active {
+    background-color: #198754;
+}
+
+span.badge.status-scam {
+    background-color:  #dc3545;
+}
+
+span.badge.status-duplicated {
+    background-color: #0dcaf0;
 }
 
 .question-summary-box {
@@ -288,6 +301,17 @@ span.tag.badge.rounded-pill  {
     color: #ffffff;
 }
 
+/* Sidebar */
+
+#sidebarMenu {}
+
+#sidebarMenu .nav-item:hover {
+    background-color: #b0bdbd;
+}
+
+#sidebarMenu .nav-item:hover a {
+    color: #fff;
+}
 
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}

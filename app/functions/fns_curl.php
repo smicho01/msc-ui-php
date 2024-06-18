@@ -59,6 +59,20 @@ function get_data_from_api($uri) {
     return $data;
 }
 
+function apiGetRequest($uri) {
+    $foundUserResponse = rest_call('GET', $uri, $data = false, 'application/json',
+        "Bearer " . $_SESSION['token']);
+    $responseBody = $foundUserResponse['body'];
+    if(!$responseBody) {
+        return false;
+    }
+    $data = json_decode($responseBody, true);
+    if (count($data) == 0) {
+        return false;
+    }
+    return ["data" => $data, "status" => $foundUserResponse['status_code']];
+}
+
 
 /**
  * Sends HTTP request using cURL.

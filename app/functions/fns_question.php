@@ -102,5 +102,19 @@ class QuestionService {
 
         return curl_post(ITEM_SERVICE_URI . "/question", $data, "Bearer " . $_SESSION['token']);
     }
+
+
+    public function getQuestionById($questionId) {
+        $url = ITEM_SERVICE_URI . '/question/'. $questionId;
+        $result = apiGetRequest($url);
+        if($result['status'] == 200) {
+            return $result['data'];
+        }
+        return null;
+    }
+
+    public function isUserQuestion($userId, $question) {
+        return $question['userId'] == $userId;
+    }
 }
 

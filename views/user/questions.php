@@ -38,7 +38,7 @@
                         <div class="card-header">
                             <div class="one-half">
                                 <?php echo trim($question['moduleName']); ?> - <span class="date">2024-02-12</span>
-                                - <span class="badge   status-<?php echo  strtolower($question['status']); ?>">
+                                - <span class="badge  status-<?php echo  strtolower($question['status']); ?>">
                                     <?php echo $question['status']; ?>
                                 </span>
                             </div>
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title"><a href="/index.php?c=questions&v=show&id=1">
+                            <h5 class="card-title"><a href="/index.php?c=questions&v=show&id=<?php echo $question['id']; ?>">
                                     <?php echo trimString($question['title'], 50); ?>
                                 </a></h5>
                             <p class="card-text">

@@ -313,6 +313,22 @@ span.tag.badge.rounded-pill  {
     color: #444;
 }
 
+/* Question Details */
+.question-user-options {
+    margin-bottom: 20px;
+}
+.tags-wrapper, .divider {
+    border-bottom: 1px solid #d6d6d6;
+    padding-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+.divider {
+    display: block;
+    height: 2px;
+    margin-bottom: 20px;
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
 }

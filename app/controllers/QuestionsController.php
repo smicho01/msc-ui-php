@@ -2,9 +2,11 @@
 include_once 'fns_curl.php';
 include_once 'fns_module_college.php';
 include_once 'fns_question.php';
-include_once  'fns_flash.php';
+include_once 'fns_flash.php';
 
 $VIEW = isset($VIEW) ? $VIEW : 'index';
+
+$QUESTION_SERVICE = new QuestionService();
 
 switch ($VIEW) {
     case 'index':
@@ -41,7 +43,7 @@ switch ($VIEW) {
         /* Insert question */
         $question = new Question();
         $question->fromPostData($_POST);
-        $QUESTION_SERVICE = new QuestionService();
+
         $insertResult  = $QUESTION_SERVICE->insertQuestion($question);
 
         if($insertResult['status_code'] == 201) {
@@ -56,7 +58,11 @@ switch ($VIEW) {
         break;
 
     case 'show':
-        $question = [];
+        $isLoggedInUserQuestion = false;
+        $questionId = $_GET['id'];
+        $question = $QUESTION_SERVICE->getQuestionById($questionId);
+        // Check if question belongs to logged-in user to use different question details HTML template etc.
+        $isLoggedInUserQuestion = $QUESTION_SERVICE->isUserQuestion($_SESSION['user']['id'], $question);
         break;
 
     default:

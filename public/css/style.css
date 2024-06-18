@@ -306,11 +306,11 @@ span.tag.badge.rounded-pill  {
 #sidebarMenu {}
 
 #sidebarMenu .nav-item:hover {
-    background-color: #b0bdbd;
+    background-color: #e9ebf5;
 }
 
 #sidebarMenu .nav-item:hover a {
-    color: #fff;
+    color: #444;
 }
 
 @media screen and (max-height: 450px) {

@@ -106,7 +106,7 @@ class QuestionService {
 
     public function getQuestionById($questionId) {
         $url = ITEM_SERVICE_URI . '/question/'. $questionId;
-        $result = apiGetRequest($url);
+        $result = apiGetRequest($url, true); // get without token; allowed for all
         if($result['status'] == 200) {
             return $result['data'];
         }

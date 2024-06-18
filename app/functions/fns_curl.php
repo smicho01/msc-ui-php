@@ -59,9 +59,15 @@ function get_data_from_api($uri) {
     return $data;
 }
 
-function apiGetRequest($uri) {
-    $foundUserResponse = rest_call('GET', $uri, $data = false, 'application/json',
-        "Bearer " . $_SESSION['token']);
+function apiGetRequest($uri, $noToken = false) {
+    if($noToken) {
+        $foundUserResponse = rest_call('GET', $uri, $data = false, 'application/json',
+            false);
+    } else {
+        $foundUserResponse = rest_call('GET', $uri, $data = false, 'application/json',
+            "Bearer " . $_SESSION['token']);
+    }
+
     $responseBody = $foundUserResponse['body'];
     if(!$responseBody) {
         return false;

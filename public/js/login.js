@@ -49,20 +49,6 @@ function login_user(uName, uPass, forma) {
 
 
 $(document).ready(function () {
-    // Used for async login without page reload
-    $('#loginform').submit(function (env) {
-        // console.log("Form submitted");
-        // env.preventDefault();
-        // const forma = this;
-        // const uName = $('#editUsername').val();
-        // const uPass = $('#editPassword').val();
-        // if (uName == '' || uPass == '') {
-        //     alert('Username and password are required');
-        //     return false;
-        // }
-        // login_user(uName, uPass, forma);
-    });
-
     // Logout user
     $('.btnLogout').on('click', function () {
         console.log('Logout');

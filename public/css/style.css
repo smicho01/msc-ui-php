@@ -329,6 +329,10 @@ span.tag.badge.rounded-pill  {
     margin-bottom: 20px;
 }
 
+#answer-form-wrapper {
+    display: none;
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
 }

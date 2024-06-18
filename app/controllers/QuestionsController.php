@@ -58,11 +58,18 @@ switch ($VIEW) {
         break;
 
     case 'show':
+        $jsfiles = ['question_details'];
         $isLoggedInUserQuestion = false;
         $questionId = $_GET['id'];
         $question = $QUESTION_SERVICE->getQuestionById($questionId);
         // Check if question belongs to logged-in user to use different question details HTML template etc.
-        $isLoggedInUserQuestion = $QUESTION_SERVICE->isUserQuestion($_SESSION['user']['id'], $question);
+        if(isset($_SESSION['user']['id'])) {
+            $isLoggedInUserQuestion = $QUESTION_SERVICE->isUserQuestion($_SESSION['user']['id'], $question);
+        }
+
+        // Add selected question ID to session data to have easy access in Answer form and avoid malicious behaviour
+        $_SESSION['currentQuestionId'] = $question['id'];
+
         break;
 
     default:

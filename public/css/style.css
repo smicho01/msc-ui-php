@@ -333,6 +333,11 @@ span.tag.badge.rounded-pill  {
     display: none;
 }
 
+#add-answer-status {
+    display: inline-block;
+    margin-left: 20px;
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
 }

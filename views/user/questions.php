@@ -37,7 +37,7 @@
                     <div class="card question-card">
                         <div class="card-header">
                             <div class="one-half">
-                                <?php echo trim($question['moduleName']); ?> - <span class="date">2024-02-12</span>
+                                <?php echo trim($question['moduleName']); ?> - <span class="date"><?php echo  format_date_from_java($question['dateCreated']); ?></span>
                                 - <span class="badge  status-<?php echo  strtolower($question['status']); ?>">
                                     <?php echo $question['status']; ?>
                                 </span>

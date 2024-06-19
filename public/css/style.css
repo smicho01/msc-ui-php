@@ -338,6 +338,12 @@ span.tag.badge.rounded-pill  {
     margin-left: 20px;
 }
 
+.form-error-red {
+    display: inline;
+    margin: 5px 0px;
+    color: darkred;
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
 }

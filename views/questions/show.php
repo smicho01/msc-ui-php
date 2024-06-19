@@ -39,14 +39,19 @@
 
             <div class="answer-form-wrapper" id="answer-form-wrapper">
                 <form id="answer-form">
+                    <div>
+                        Example answer: Nulla congue libero eget tellus porta maximus. Sed vel nibh malesuada, rhoncus eros quis, ornare justo. Proin ut sem nunc. Etiam quis porta neque. Duis sed augue non nisl molestie scelerisque at eget metus. Sed tempor dui sit amet risus consequat, sed egestas purus pretium. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                    </div>
                     <div class="mb-3">
                         <label for="form_answer_field" class="form-label">Your answer</label>
                         <textarea class="form-control" id="form_answer_field"
                                   name="form_answer_field" rows="12"></textarea>
+                        <div id="answer-error" class="form-error-red"></div>
                         <input type="hidden" name="question_id" id="question_id" value="" />
                         <input type="hidden" name="user_id" id="user_id" value="" />
                     </div>
                     <button type="submit" class="btn btn-primary" id="btn-submit-question">Submit answer</button>
+                    <button class="btn btn-danger" id="btn-close-form">Close</button>
                 </form>
             </div>
             <?php else:  ?>

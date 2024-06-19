@@ -15,8 +15,9 @@
             <a href="/index.php?c=questions&v=add" class="btn btn-primary">Ask Question</a>
         </div>
         <div class="col-12 question-summary-box">
-            <span class="entry"><span class="light-txt">Created:</span> 2024-05-10</span>
-            <span class="entry"><span class="light-txt">Modified:</span> 2024-05-10</span>
+            <span class="entry"><span class="light-txt">Created:</span> <?php echo format_date_from_java($question['dateCreated']); ?></span>
+            <span class="entry"><span class="light-txt">Modified:</span> <?php echo  format_date_from_java($question['dateModified']); ?></span>
         </div>
     </div>
 </div>
+

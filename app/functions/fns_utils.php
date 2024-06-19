@@ -72,6 +72,13 @@ function sanitizeInput($data, $type = 'string') {
 }
 
 
+/**
+ * Trims a string to a specified maximum length and adds ellipsis if necessary.
+ *
+ * @param string $string The string to be trimmed.
+ * @param int $maxLength The maximum length of the trimmed string.
+ * @return string The trimmed string with ellipsis if necessary.
+ */
 function trimString($string, $maxLength) {
     $truncatedString = substr($string, 0, $maxLength);
 
@@ -80,4 +87,15 @@ function trimString($string, $maxLength) {
     }
 
     echo $truncatedString;
+}
+
+/**
+ * Formats a date string from the Java format to the specified format.
+ *
+ * @param string $source The date string to be formatted.
+ * @return string The formatted date string in the specified format.
+ */
+function format_date_from_java($source, $format = 'Y-m-d') {
+    $date = date_create_from_format('Y-m-d\TH:i:s.u', $source);
+    return date_format($date, $format);
 }

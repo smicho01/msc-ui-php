@@ -21,7 +21,7 @@ switch ($VIEW) {
 
     case 'questions':
         $userQuestions = UserService::user_get_questions_short($_SESSION['user']['id']);
-        //$userQuestions  = $_SESSION['user']['questions'];
+
         break;
 
     default:

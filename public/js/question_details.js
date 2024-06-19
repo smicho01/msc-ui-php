@@ -41,7 +41,7 @@ $(document).ready(function () {
             setTimeout(function (){
                 $.post("/php_js/question.php", {
                     urlCommand: 'insertAnswer',
-                    answerText: answerText,
+                    content: answerText,
                     userId: $('#question_id').val(),
                     questionId: $('#question_id').val()
                 }).done(function (data) {

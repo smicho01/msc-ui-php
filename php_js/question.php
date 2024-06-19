@@ -1,5 +1,6 @@
 <?php
 include_once('../init.php');
+include_once ('fns_answer.php');
 
 
 if(isset($_POST['urlCommand'])) {
@@ -18,6 +19,13 @@ if(isset($_POST['urlCommand'])) {
 
         case 'insertAnswer':
             $response =  $_POST;
+            $response['content'] = trim($response['content']);
+
+            $Answer = new Answer();
+            $Answer->fromPostData($response);
+
+            //$insertResponse = AnswerService::insertAnswer($Answer);
+
             echo json_encode($response);
             break;
 

@@ -11,6 +11,7 @@ $QUESTION_SERVICE = new QuestionService();
 
 switch ($VIEW) {
     case 'index':
+        $questions = QuestionService::getLatestQuestions("active", 40);
 
         break;
 
@@ -61,8 +62,23 @@ switch ($VIEW) {
     case 'show':
         $jsfiles = ['question_details'];
         $isLoggedInUserQuestion = false;
-        $questionId = $_GET['id'];
+
+        $questionId = isset($_GET['id']) ? $_GET['id'] : null;
+        if($questionId == null) {
+            insertDbLogData('ERROR', $CONTROLLER.":".$VIEW, "Missing URL param",
+                "id");
+            header("Location: index.php?c=error&v=404");
+        }
+
         $question = $QUESTION_SERVICE->getQuestionById($questionId);
+        if($question) {
+            // Add selected question ID to session data to have easy access in Answer form and avoid malicious behaviour
+            $_SESSION['currentQuestionId'] = $question['id'];
+        } else {
+            insertDbLogData('ERROR', $CONTROLLER.":".$VIEW, 'Not exists',
+                "Question ID: " . $questionId);
+            header("Location: index.php?c=error&v=404");
+        }
         $answers = [];
 
         // Check if question belongs to logged-in user to use different question details HTML template etc.
@@ -90,9 +106,6 @@ switch ($VIEW) {
             }
 
         }
-
-        // Add selected question ID to session data to have easy access in Answer form and avoid malicious behaviour
-        $_SESSION['currentQuestionId'] = $question['id'];
 
 
         break;

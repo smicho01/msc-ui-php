@@ -6,14 +6,16 @@ class Answer {
     private $id;
     private $questionId;
     private $userId;
+    private $userName;
     private $content;
 
     public function __construct() { }
 
-    public function fromPostData($postData) {
-        $this->questionId = $postData['questionId'];
-        $this->userId = $postData['userId'];
-        $this->content = $postData['content'];
+    public function createUser($data) {
+        $this->questionId = $data['questionId'];
+        $this->userId = $data['userId'];
+        $this->userName = $data['userName'];
+        $this->content = $data['content'];
     }
 
     /**
@@ -80,6 +82,23 @@ class Answer {
         $this->content = $content;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUserName()
+    {
+        return $this->userName;
+    }
+
+    /**
+     * @param mixed $userName
+     */
+    public function setUserName($userName)
+    {
+        $this->userName = $userName;
+    }
+
+
 
 }
 
@@ -90,6 +109,7 @@ class AnswerService {
         $data = [
             'questionId' => $input->getQuestionId(),
             'userId' => $input->getUserId(),
+            'userName' => $input->getUserName(),
             'content' => $input->getContent()
         ];
 

@@ -20,9 +20,10 @@ if(isset($_POST['urlCommand'])) {
         case 'insertAnswer':
             $response =  $_POST;
             $response['content'] = trim($response['content']);
+            $response['userName'] = $_SESSION['user']['visibleUsername'];
 
             $Answer = new Answer();
-            $Answer->fromPostData($response);
+            $Answer->createUser($response);
 
             $insertResponse = AnswerService::insertAnswer($Answer);
 

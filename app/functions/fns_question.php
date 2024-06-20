@@ -103,12 +103,24 @@ class QuestionService {
         return curl_post(ITEM_SERVICE_URI . "/question", $data, "Bearer " . $_SESSION['token']);
     }
 
+    public static function getLatestQuestions($status, $limit = 20) {
+        $url = ITEM_SERVICE_URI . "/question/short?status={$status}&limit={$limit}";
+        $result = apiGetRequest($url, true); // get without token; allowed for all
+        if($result){
+            if($result['status'] == 200) {
+                return $result['data'];
+            }
+        }
+        return null;
+    }
 
-    public function getQuestionById($questionId) {
+    public static function getQuestionById($questionId) {
         $url = ITEM_SERVICE_URI . '/question/'. $questionId;
         $result = apiGetRequest($url, true); // get without token; allowed for all
-        if($result['status'] == 200) {
-            return $result['data'];
+        if($result){
+            if($result['status'] == 200) {
+                return $result['data'];
+            }
         }
         return null;
     }

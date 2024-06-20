@@ -66,6 +66,16 @@
             <h4>Answers (<?php echo count($answers); ?>)</h4>
         </div>
 
+        <?php if (count($answers) > 0): ?>
+            <?php foreach ($answers as $answer): ?>
+                <?php include('modules/answer.php'); ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No answers yet</p>
+        <?php endif; ?>
+
+
+
     </div>
     <?php include("_sidebar_right.php"); ?>
 </div>

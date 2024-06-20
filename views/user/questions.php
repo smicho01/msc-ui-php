@@ -29,9 +29,9 @@
 
         <!-- questions -->
         <div class="row">
-            <?php if(!empty($userQuestions)): ?>
+            <?php if(!empty($questions)): ?>
 
-                <?php foreach($userQuestions as $question): ?>
+                <?php foreach($questions as $question): ?>
                 <!-- question box -->
                 <div class="col-12">
                     <div class="card question-card">
@@ -66,8 +66,6 @@
             <?php endif; ?>
         </div>
         <!-- /questions -->
-
-
 
 
     </div>

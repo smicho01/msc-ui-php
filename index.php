@@ -34,7 +34,8 @@ include_once(CTRL_DIR . DS . $ControllerName . ".php");
 /* Select different layouts for selected controllers */
 switch ($ControllerName) {
     case 'ErrorController':
-        include_once(LAYOUT_DIR . DS . "404.php");
+        //include_once(LAYOUT_DIR . DS . "404.php");
+        include_once(LAYOUT_DIR . DS . "layout.php");
         break;
     case 'LoginController':
         include_once(LAYOUT_DIR . DS . "login_layout.php");

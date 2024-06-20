@@ -74,7 +74,7 @@ $(document).ready(function () {
 
 
         setTimeout(function(){
-            $('#add-answer-button').removeClass('btn-success').addClass('btn-primary').text("Add answer");
+            $('#add-answer-button').removeClass('btn-success').removeClass('btn-danger').addClass('btn-primary').text("Add answer");
         }, 3000)
     });
 

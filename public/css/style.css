@@ -157,25 +157,27 @@ img.small-token {
 
 /* Question card */
 .one-half {
-    width: 49%;
+    width: 70%;
     display: inline-block;
     margin-right: 1%;
+}
+
+.one-half-last {
+    width: 28%;
+    display: inline-block;
 }
 
 .text-right {
     text-align: right;
 }
 
-.one-half-last {
-    width: 49%;
-    display: inline-block;
-}
+
 
 .question-card {
     margin-bottom: 10px;
 }
 .question-card .card-header {
-    font-size: 0.8em;
+    font-size: 1em;
     font-weight: 400;
 }
 
@@ -183,6 +185,16 @@ img.small-token {
     text-decoration: none;
     font-size: 0.9em;
 }
+
+.question-card .user-name, .question-card .module-name, .card.answer .user-name {
+    font-weight: 700;
+}
+
+.question-card .module-name {
+    font-style: italic;
+    color: #727272;
+}
+
 
 span.status {
     padding: 0px 10px;
@@ -343,6 +355,30 @@ span.tag.badge.rounded-pill  {
     margin: 5px 0px;
     color: darkred;
 }
+
+.card.answer {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.card.answer .answer-owner {
+    position: absolute;
+    padding: 4px 10px;
+    background-color: rgba(0,0,0,.125);
+    color: #333;
+    right: 0px;
+    top: -33px;
+    border-radius: 5px 5px 0px 0px;
+}
+.card.answer div.card-header.owner {
+    background-color: rgba(0,0,0,.125);
+    color: #333;
+    border-radius: 5px 0px 0px 0px;
+}
+.card.top-badge {
+    margin-top:50px;
+}
+
 
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}

@@ -43,7 +43,7 @@
 
                                 </div>
                                 <div class="one-half-last text-right">
-                                    20 answers
+                                    <?php echo $question['answersCount']; ?> <?php echo $question['answersCount'] == 1 ? 'answer' : 'answers'; ?>
                                 </div>
                             </div>
                             <div class="card-body">

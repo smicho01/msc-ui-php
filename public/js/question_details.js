@@ -34,6 +34,7 @@ $(document).ready(function () {
         // Prepare answer txt
         let answerText = $('#form_answer_field').val();
         const answerSanitized = sanitize(answerText);
+        // Submit answer if it has a min length
         if(answerSanitized.length > minimalAnswerLength) {
             console.log("Sending answer ...")
             $(this).prop("disabled", true);
@@ -42,13 +43,22 @@ $(document).ready(function () {
                 $.post("/php_js/question.php", {
                     urlCommand: 'insertAnswer',
                     content: answerText,
-                    userId: $('#question_id').val(),
+                    userId: $('#user_id').val(),
                     questionId: $('#question_id').val()
                 }).done(function (data) {
-                    let parsedResponse = JSON.parse(data)
-                    console.log(parsedResponse)
+                    const parsedResponse = JSON.parse(data)
+                    //console.log(parsedResponse)
+                    const responseStatusCode =  parsedResponse['status_code']
+                    switch (responseStatusCode) {
+                        case '201':
+                            $('#add-answer-button').removeClass('btn-primary').addClass('btn-success').text("Answer submitted with status PENDING.");
+                            break;
 
-                    $('#add-answer-button').removeClass('btn-primary').addClass('btn-success').text("Answer submitted");
+                        default:
+                            console.log('Add answer response code: ',responseStatusCode )
+                            $('#add-answer-button').removeClass('btn-primary').addClass('btn-danger').text("Couldn't add answer");
+                    }
+
 
                 });
 

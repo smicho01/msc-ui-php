@@ -61,6 +61,11 @@
             <p><b>Answers disabled.</b> Question must be in 'ACTIVE' status to add answers</p>
         <?php endif; ?>
 
+        <div class="divider"></div>
+        <div class="col-12">
+            <h4>Answers (<?php echo count($answers); ?>)</h4>
+        </div>
+
     </div>
     <?php include("_sidebar_right.php"); ?>
 </div>

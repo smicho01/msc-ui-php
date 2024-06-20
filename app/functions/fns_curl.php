@@ -59,6 +59,7 @@ function get_data_from_api($uri) {
     return $data;
 }
 
+// $noToken - do not use token. By default is set tu 'false' - so it will use JWT Token
 function apiGetRequest($uri, $noToken = false) {
     if($noToken) {
         $foundUserResponse = rest_call('GET', $uri, $data = false, 'application/json',

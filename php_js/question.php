@@ -24,9 +24,9 @@ if(isset($_POST['urlCommand'])) {
             $Answer = new Answer();
             $Answer->fromPostData($response);
 
-            //$insertResponse = AnswerService::insertAnswer($Answer);
+            $insertResponse = AnswerService::insertAnswer($Answer);
 
-            echo json_encode($response);
+            echo json_encode($insertResponse);
             break;
 
     }

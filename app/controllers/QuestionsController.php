@@ -2,6 +2,7 @@
 include_once 'fns_curl.php';
 include_once 'fns_module_college.php';
 include_once 'fns_question.php';
+include_once 'fns_answer.php';
 include_once 'fns_flash.php';
 
 $VIEW = isset($VIEW) ? $VIEW : 'index';
@@ -62,13 +63,37 @@ switch ($VIEW) {
         $isLoggedInUserQuestion = false;
         $questionId = $_GET['id'];
         $question = $QUESTION_SERVICE->getQuestionById($questionId);
+        $answers = [];
+
         // Check if question belongs to logged-in user to use different question details HTML template etc.
         if(isset($_SESSION['user']['id'])) {
+            $userId = $_SESSION['user']['id'];
             $isLoggedInUserQuestion = $QUESTION_SERVICE->isUserQuestion($_SESSION['user']['id'], $question);
+            /* Answers for authenticated user */
+            $response = AnswerService::getAllActiveAnswersOrAllStatusesForUserId($questionId, $userId);
+            if($response != null) {
+                if($response['status'] == 200) {
+                    $answers = $response['data'];
+                }
+                //$answers = $response['data'];
+            }
+
+        } else {
+            // user is not logged in.
+            // Show only ACTIVE answers
+            $response = AnswerService::getAllAnswersForQuestionIdWithStatus($questionId, 'ACTIVE');
+            if($response != null){
+                if($response['status'] == 200) {
+                    $answers = $response['data'];
+                }
+                //$answers = $response['data'];
+            }
+
         }
 
         // Add selected question ID to session data to have easy access in Answer form and avoid malicious behaviour
         $_SESSION['currentQuestionId'] = $question['id'];
+
 
         break;
 

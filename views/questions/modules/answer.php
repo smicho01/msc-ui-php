@@ -48,6 +48,7 @@ if (isset($_SESSION['user'])) {
                                     QuestionService::isQuestionAuthorLoggedInUser($question) &&
                                     !AnswerService::isAnswerLoggedInUserAnswer($answer)): ?>
                         <div class="col-2"><span class="answer-like-count"><i
+                                        data-id="<?php echo $answer['id']; ?>"
                                         class="ikonka ikonka-select-best pointer hoverable-green fa-solid fa-check-double"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -59,5 +60,28 @@ if (isset($_SESSION['user'])) {
     </div>
 </div>
 <div class="divider mb20"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="selectBestModal" tabindex="-1" aria-labelledby="selectBestModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="selectBestModalLabel">Selecting the best answer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                You are going to choose the best answer. This process cannot be reversed.
+                The author of the answer will receive a reward in the form of tokens.
+                Make sure you choose a good answer. Your choice will be suggested by other
+                users looking for an answer to your question.
+                Thank you on behalf of the author of the answer.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="select-bes-answer-btn">Select answer</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 

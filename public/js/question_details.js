@@ -78,6 +78,23 @@ $(document).ready(function () {
         }, 3000)
     });
 
+
+
+    /* SELECTING BEST ANSWER */
+
+    var modalWindow = new bootstrap.Modal(document.getElementById('selectBestModal'), {
+        keyboard: false
+    })
+    let bestAnswerId = null;
+    $('.ikonka-select-best').on('click', function(event) {
+        bestAnswerId = $(this).attr("data-id")
+        modalWindow.show()
+    })
+
+    $('#select-bes-answer-btn').on('click', function(event){
+        modalWindow.hide();
+    })
+
 });
 
 /**

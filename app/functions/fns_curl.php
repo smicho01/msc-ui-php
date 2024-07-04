@@ -59,6 +59,27 @@ function get_data_from_api($uri) {
     return $data;
 }
 
+// $noToken - do not use token. By default is set tu 'false' - so it will use JWT Token
+function apiGetRequest($uri, $noToken = false) {
+    if($noToken) {
+        $foundUserResponse = rest_call('GET', $uri, $data = false, 'application/json',
+            false);
+    } else {
+        $foundUserResponse = rest_call('GET', $uri, $data = false, 'application/json',
+            "Bearer " . $_SESSION['token']);
+    }
+
+    $responseBody = $foundUserResponse['body'];
+    if(!$responseBody) {
+        return false;
+    }
+    $data = json_decode($responseBody, true);
+    if (count($data) == 0) {
+        return false;
+    }
+    return ["data" => $data, "status" => $foundUserResponse['status_code']];
+}
+
 
 /**
  * Sends HTTP request using cURL.

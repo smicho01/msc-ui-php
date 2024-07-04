@@ -26,6 +26,7 @@ if(isUserLoggedIn() && isset($_SESSION['user']['visibleUsername'])) {
     }
     // Re-write User data to session data to improve speed and avoid calls to API
     $USER_SERVICE->user_data_to_session($MAIN_USER);
+    $MAIN_USER->createUserFromSession();
 }
 
 /* Include controller file */
@@ -34,7 +35,8 @@ include_once(CTRL_DIR . DS . $ControllerName . ".php");
 /* Select different layouts for selected controllers */
 switch ($ControllerName) {
     case 'ErrorController':
-        include_once(LAYOUT_DIR . DS . "404.php");
+        //include_once(LAYOUT_DIR . DS . "404.php");
+        include_once(LAYOUT_DIR . DS . "layout.php");
         break;
     case 'LoginController':
         include_once(LAYOUT_DIR . DS . "login_layout.php");

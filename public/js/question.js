@@ -43,7 +43,7 @@ $(document).ready(function () {
             },
             form_question_module: {
                 required: true,
-                minlength: 5
+                minlength: 2
             },
             sel_mod: {
                 required:true,

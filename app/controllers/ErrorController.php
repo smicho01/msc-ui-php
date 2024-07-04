@@ -12,6 +12,10 @@ switch ($VIEW) {
         $message = error_service("Reference Error", $_SESSION['errorMessage']);
         break;
 
+    case '404':
+
+        break;
+
     default:
         $message = error_service("Service Error",  "Please try again later.");
         break;

@@ -23,6 +23,7 @@
 
         <!-- form -->
         <form id="form-ask-question" method="post" action="index.php?c=questions&v=process">
+            <div id="form-errors"></div>
             <div class="mb-3">
                 <label for="form-question-title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="form_question_title" name="form_question_title"
@@ -64,7 +65,7 @@
                         autocomplete="off"/> <div id="selected_module"></div>
             </div>
 
-            <div id="form-errors"></div>
+            <br />
 
             <button type="submit" class="btn btn-primary" id="btn-submit-question">Submit question</button>
         </form>

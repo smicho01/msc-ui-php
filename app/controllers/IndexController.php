@@ -40,6 +40,7 @@ switch ($VIEW) {
                 } else {
                     $_SESSION['user']['visibleUsername'] = $userExists['visibleUsername'];
                     $_SESSION['user']['id'] = $userExists['id'];
+                    $_SESSION['user']['tokens'] = $userExists['tokens'];
                 }
 
                 $MAIN_USER = new User();
@@ -47,6 +48,8 @@ switch ($VIEW) {
                 $MAIN_USER->tokens = $userExists['tokens'];
                 $MAIN_USER->college  = $userExists['college'];
                 $MAIN_USER->collegeId = $userExists['collegeid'];
+
+
 
                 $_SESSION['user']['collegeId'] = $userExists['collegeid'];
 

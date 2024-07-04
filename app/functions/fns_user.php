@@ -112,8 +112,9 @@ class UserService {
     }
 
     static function user_get_answers($userId) {
-        $uri = ITEM_SERVICE_URI . "/answer/user/" . $userId;
-        return get_data_from_api($uri);
+        $uri = ITEM_SERVICE_URI . "/answer/user/" . $userId . "/short";
+        $resposne =  get_data_from_api($uri);
+        return $resposne;
     }
 
     static function user_get_keys($userId) {

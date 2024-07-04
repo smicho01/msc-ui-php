@@ -26,6 +26,7 @@ if(isUserLoggedIn() && isset($_SESSION['user']['visibleUsername'])) {
     }
     // Re-write User data to session data to improve speed and avoid calls to API
     $USER_SERVICE->user_data_to_session($MAIN_USER);
+    $MAIN_USER->createUserFromSession();
 }
 
 /* Include controller file */

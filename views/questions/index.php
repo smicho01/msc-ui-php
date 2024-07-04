@@ -48,10 +48,10 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/index.php?c=questions&v=show&id=<?php echo $question['id']; ?>">
-                                        <?php echo trimString($question['title'], 50); ?>
+                                        <?php echo trimString($question['title'], 50) . "</code>"; ?>
                                     </a></h5>
                                 <p class="card-text">
-                                    <?php echo trimString($question['content'], 100); ?>
+                                    <?php echo trimString($question['content'], 100) . "</code>"; ?>
                                 </p>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                     <!-- /question-box -->
                 <?php endforeach; ?>
 
-
+            <?php //print_r($_SESSION['user']); ?>
 
             <?php else: ?>
                 <p>No questions yet</p>

@@ -202,18 +202,22 @@ img.small-token {
 
 .answer-like-bar .hoverable-red:hover  {
     color:  #dc3545;
-    cursor: pointer;
 }
 
 .answer-like-bar .hoverable-green:hover  {
     color: #198754;
-    cursor: pointer;
 }
 
 .ikonka-winner {
     color: #198754;
 }
+.pointer {
+    cursor: pointer;
+}
 
+.ikonka-select-best {
+    color: lightgray;
+}
 
 
 span.status {

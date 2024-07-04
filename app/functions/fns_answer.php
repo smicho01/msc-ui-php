@@ -139,4 +139,9 @@ class AnswerService {
         $url = ITEM_SERVICE_URI . "/answer/" . $questionId . '/user/' . $userId;
         return $response = apiGetRequest($url, false);
     }
+
+    public static function isAnswerLoggedInUserAnswer($answer) {
+        return $answer['userId'] == $_SESSION['user']['id'];
+    }
+
 }

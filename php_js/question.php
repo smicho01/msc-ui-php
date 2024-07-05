@@ -23,13 +23,18 @@ if(isset($_POST['urlCommand'])) {
             $response['userName'] = $_SESSION['user']['visibleUsername'];
 
             $Answer = new Answer();
-            $Answer->createUser($response);
+            $Answer->createAnswerFromData($response);
 
             $insertResponse = AnswerService::insertAnswer($Answer);
 
             echo json_encode($insertResponse);
             break;
 
+        case 'selectBestAnswer':
+            $answerId = $_POST['answerId'];
+            $response = AnswerService::setBestAnswer($answerId, true);
+            echo json_encode($response);
+            break;
     }
 }
 

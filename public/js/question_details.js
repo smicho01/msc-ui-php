@@ -81,7 +81,6 @@ $(document).ready(function () {
 
 
     /* SELECTING BEST ANSWER */
-
     var modalWindow = new bootstrap.Modal(document.getElementById('selectBestModal'), {
         keyboard: false
     })
@@ -92,7 +91,14 @@ $(document).ready(function () {
     })
 
     $('#select-bes-answer-btn').on('click', function(event){
+        $.post("/php_js/question.php", { urlCommand: 'selectBestAnswer', answerId: bestAnswerId })
+            .done(function (data) {
+                let parsedResponse = JSON.parse(data)
+                console.log(parsedResponse)
+            });
+
         modalWindow.hide();
+        location.reload();
     })
 
 });

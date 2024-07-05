@@ -116,7 +116,6 @@ switch ($VIEW) {
                 }
             }
         }
-
         break;
 
     default:

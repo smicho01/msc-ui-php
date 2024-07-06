@@ -81,11 +81,12 @@ $(document).ready(function () {
 
 
     /* SELECTING BEST ANSWER */
-    var modalWindow = new bootstrap.Modal(document.getElementById('selectBestModal'), {
-        keyboard: false
-    })
+    var modalWindow = null;
     let bestAnswerId = null;
     $('.ikonka-select-best').on('click', function(event) {
+        modalWindow = new bootstrap.Modal(document.getElementById('selectBestModal'), {
+            keyboard: false
+        })
         bestAnswerId = $(this).attr("data-id")
         modalWindow.show()
     })

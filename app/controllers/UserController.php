@@ -26,13 +26,12 @@ switch ($VIEW) {
     case 'transactions':
             $allUserTransactions = UserService::get_user_transactions($_SESSION['user']['id']);
             $userTransactions = [];
-            if(count($userTransactions) > 0){
+            if(count($allUserTransactions) > 0){
                 foreach ($allUserTransactions as $transaction) {
                     $currentTransaction = create_transaction_array_entry($transaction);
                     array_push($userTransactions, $currentTransaction);
                 }
             }
-
         break;
 
     default:

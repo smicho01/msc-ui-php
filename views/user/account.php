@@ -18,7 +18,7 @@
         <div class="card icon-card" style="width: 18rem;">
             <img src="/public/img/question-icon.webp"  class="card-img-top img-fluid" alt="Encryption icon">
             <div class="card-body d-grid gap-2">
-                <h5 class="card-title">Your Questions</h5>
+                <h5 class="card-title">Questions</h5>
                 <p class="card-text">Questions you asked</p>
                 <a href="?c=user&v=questions" class="btn btn-primary">Explore</a>
             </div>
@@ -31,8 +31,8 @@
         <div class="card icon-card" style="width: 18rem;">
             <img src="/public/img/encryption-icon.webp" class="card-img-top" alt="Encryption icon">
             <div class="card-body d-grid gap-2">
-                <h5 class="card-title">Your Wallet keys</h5>
-                <p class="card-text">In case you need to transfer them</p>
+                <h5 class="card-title">Wallet</h5>
+                <p class="card-text">In case you need to transfer wallet keys</p>
                 <a href="?c=user&v=walletkeys" class="btn btn-primary">Explore</a>
             </div>
         </div>
@@ -44,7 +44,7 @@
         <div class="card icon-card" style="width: 18rem;">
             <img src="/public/img/transaction-icon.webp" class="card-img-top" alt="Encryption icon">
             <div class="card-body d-grid gap-2">
-                <h5 class="card-title">Your Transactions</h5>
+                <h5 class="card-title">Transactions</h5>
                 <p class="card-text">How you made your tokens</p>
                 <a href="?c=user&v=transactions" class="btn btn-primary">Explore</a>
             </div>

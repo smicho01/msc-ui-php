@@ -38,4 +38,18 @@
         </div>
         <!-- /box -->
     </div>
+
+    <div class="col-xs-6 col-sm-4 col-lg-3 col-xl-2">
+        <!-- box -->
+        <div class="card icon-card" style="width: 18rem;">
+            <img src="/public/img/transaction-icon.webp" class="card-img-top" alt="Encryption icon">
+            <div class="card-body d-grid gap-2">
+                <h5 class="card-title">Your Transactions</h5>
+                <p class="card-text">How you made your tokens</p>
+                <a href="?c=user&v=transactions" class="btn btn-primary">Explore</a>
+            </div>
+        </div>
+        <!-- /box -->
+    </div>
+
 </div>

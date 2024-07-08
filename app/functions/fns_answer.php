@@ -4,14 +4,20 @@ include_once 'fns_curl.php';
 class Answer {
 
     private $id;
-    private $questionId;
-    private $userId;
-    private $userName;
     private $content;
+    private $userId;
+    private $questionId;
+
+    private $userName;
+    private $status;
+    private $best = false;
+    private $dateCreated;
+    private $dateModified;
+
 
     public function __construct() { }
 
-    public function createUser($data) {
+    public function createAnswerFromData($data) {
         $this->questionId = $data['questionId'];
         $this->userId = $data['userId'];
         $this->userName = $data['userName'];
@@ -98,6 +104,71 @@ class Answer {
         $this->userName = $userName;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
+    }
+
+    /**
+     * @param mixed $dateCreated
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateModified()
+    {
+        return $this->dateModified;
+    }
+
+    /**
+     * @param mixed $dateModified
+     */
+    public function setDateModified($dateModified)
+    {
+        $this->dateModified = $dateModified;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isBest()
+    {
+        return $this->best;
+    }
+
+    /**
+     * @param bool $best
+     */
+    public function setBest($best)
+    {
+        $this->best = $best;
+    }
+
+
 
 
 }
@@ -126,7 +197,7 @@ class AnswerService {
      * @return array An array of answer objects for the given question ID.
      */
     public static function getAllAnswersForQuestionId($questionId) {
-        $url = ITEM_SERVICE_URI . "/answer/" . $questionId;
+        $url = ITEM_SERVICE_URI . "/answer/question/" . $questionId;
         return get_data_from_api($url);
     }
 
@@ -138,5 +209,15 @@ class AnswerService {
     public static function getAllActiveAnswersOrAllStatusesForUserId($questionId, $userId) {
         $url = ITEM_SERVICE_URI . "/answer/" . $questionId . '/user/' . $userId;
         return $response = apiGetRequest($url, false);
+    }
+
+    public static function isAnswerLoggedInUserAnswer($answer) {
+        return $answer['userId'] == $_SESSION['user']['id'];
+    }
+
+    public static function setBestAnswer($answerId, $value) {
+        $url = ITEM_SERVICE_URI . "/answer/best/" . $answerId . "?best=" . $value;
+        $response = curl_put($url, $data = [], "Bearer " . $_SESSION['token']);
+        return $response;
     }
 }

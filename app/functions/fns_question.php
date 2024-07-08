@@ -128,5 +128,9 @@ class QuestionService {
     public function isUserQuestion($userId, $question) {
         return $question['userId'] == $userId;
     }
+
+    public static function isQuestionAuthorLoggedInUser($question) {
+        return $question['userId'] == $_SESSION['user']['id'];
+    }
 }
 

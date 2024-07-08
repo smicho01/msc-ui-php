@@ -195,6 +195,30 @@ img.small-token {
     color: #727272;
 }
 
+.answer-like-bar {}
+.answer-like-bar .ikonka {
+    font-size: 25px;
+}
+
+.answer-like-bar .hoverable-red:hover  {
+    color:  #dc3545;
+}
+
+.answer-like-bar .hoverable-green:hover  {
+    color: #198754;
+}
+
+.ikonka-winner {
+    color: #198754;
+}
+.pointer {
+    cursor: pointer;
+}
+
+.ikonka-select-best {
+    color: lightgray;
+}
+
 
 span.status {
     padding: 0px 10px;

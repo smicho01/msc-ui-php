@@ -107,7 +107,15 @@ switch ($VIEW) {
 
         }
 
-
+        // Check if question has bes answer already selected
+        $hasBestAnswerSelected = false;
+        if(count($answers) > 0) {
+            foreach ($answers as $answer) {
+                if($answer['best'] == 1) {
+                    $hasBestAnswerSelected = true;
+                }
+            }
+        }
         break;
 
     default:

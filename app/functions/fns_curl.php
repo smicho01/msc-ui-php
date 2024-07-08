@@ -4,9 +4,9 @@
  * Send a POST request using cURL.
  *
  * @param string $url The URL to send the request to.
- * @param array $data The data to be sent with the request.
- * @param string $token The authorization token.
- * @return array An associative array containing the response header, body, and status code.
+ * @param array $data The data to send as the request payload.
+ * @param string $token The authorization token to include in the request header.
+ * @return array The response from the server, including the header, body, and status code.
  */
 
 function curl_post($url, $data, $token)
@@ -41,6 +41,36 @@ function curl_post($url, $data, $token)
 
     return array('header' => $header, 'body' => $body, 'status_code' => $status_code);
 }
+
+function curl_put($url, $data, $token)
+{
+    // JSON encode the data
+    $jsonData = json_encode($data);
+    //print_r($jsonData);
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json',
+        'Authorization: ' . $token
+    ));
+    // Set PUT method
+    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+    // Set the post data as JSON
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonData);
+    // Tell cURL that we want to try to return the resulting payload
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HEADER, 1);
+
+    // Execute the PUT request
+    $response = curl_exec($curl);
+    $header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
+    $header = substr($response, 0, $header_size);
+    $body = substr($response, $header_size);
+    $status_line = strtok($response, "\n");    // this extracts the first line
+    list($version, $status_code, $status_text) = explode(' ', $status_line, 3);
+    curl_close($curl);
+    return array('header' => $header, 'body' => $body, 'status_code' => $status_code);
+}
+
 
 /*
 * GET data form API endpoint give in $uri param using GET request
@@ -119,6 +149,14 @@ function rest_call($method, $url, $data = false, $contentType = false, $token = 
             break;
         case "PUT":
             curl_setopt($curl, CURLOPT_PUT, 1);
+            if ($data) {
+                if ($contentType) {
+                    curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+                        'Content-Type: ' . $contentType
+                    ));
+                }
+                curl_setopt($curl, CURLOPT_PUT, $data);
+            }
             break;
         default:
             if ($data)

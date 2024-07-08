@@ -78,6 +78,30 @@ $(document).ready(function () {
         }, 3000)
     });
 
+
+
+    /* SELECTING BEST ANSWER */
+    var modalWindow = null;
+    let bestAnswerId = null;
+    $('.ikonka-select-best').on('click', function(event) {
+        modalWindow = new bootstrap.Modal(document.getElementById('selectBestModal'), {
+            keyboard: false
+        })
+        bestAnswerId = $(this).attr("data-id")
+        modalWindow.show()
+    })
+
+    $('#select-bes-answer-btn').on('click', function(event){
+        $.post("/php_js/question.php", { urlCommand: 'selectBestAnswer', answerId: bestAnswerId })
+            .done(function (data) {
+                let parsedResponse = JSON.parse(data)
+                console.log(parsedResponse)
+            });
+
+        modalWindow.hide();
+        location.reload();
+    })
+
 });
 
 /**

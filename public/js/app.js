@@ -1,3 +1,6 @@
+
+
+
 /** COOKIES **/
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
@@ -47,5 +50,9 @@ function show_spinner() {
 
 /** jQUERY **/
 $(document).ready(function() {
-  	
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+
 });

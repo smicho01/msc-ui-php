@@ -130,5 +130,27 @@ class UserService {
         $_SESSION['user']['user_data_rewritten'] = true; // Set to true if user data has been rewritten to Session. So no API call is required next time
     }
 
+    static function get_user_transactions($userId) {
+        $encryptionKey =  getenv("ENCRYPTION_KEY");
+        $userKeys = self::user_get_keys($userId);
+        $userPublicEncryptedKey = $userKeys['publicKeyEncrypted'];
+        $userDecryptedPublicKey = CryptoUtil::decrypt($userPublicEncryptedKey, $encryptionKey);
+
+        $uri = CORE_SERVICE_URI . "/transaction/wallet/" . $userDecryptedPublicKey;
+        $response =  get_data_from_api($uri);
+        if($response)
+        for ($i=0; $i<count($response); $i++) {
+            $type = '';
+            if($response[$i]['walletFrom'] == $userDecryptedPublicKey) {
+                $type = 'out';
+            } else if ($response[$i]['walletTo'] == $userDecryptedPublicKey) {
+                $type = 'in';
+            }
+            $response[$i]['inout'] = $type;
+        }
+
+        return $response;
+    }
+
 }
 

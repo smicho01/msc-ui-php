@@ -32,14 +32,9 @@
                   <span data-feather="plus-circle"></span>
               </a>
           </h6>
+
+
           <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                  <a class="nav-link" href="index.php?c=user&v=account">
-                      <span data-feather="yaccount"></span>
-                      <i class="fa-solid fa-gears"></i>
-                      Your Account
-                  </a>
-              </li>
               <li class="nav-item">
                   <a class="nav-link" href="index.php?c=user&v=questions">
                       <span data-feather="yquestions"></span>
@@ -47,8 +42,20 @@
                       Your Questions
                   </a>
               </li>
-
-
+              <li class="nav-item">
+                  <a class="nav-link" href="index.php?c=user&v=transactions">
+                      <span data-feather="yquestions"></span>
+                      <i class="fa-solid fa-money-bill-transfer"></i>
+                      Your Transactions
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="index.php?c=user&v=account">
+                      <span data-feather="yaccount"></span>
+                      <i class="fa-solid fa-gears"></i>
+                      Your Account
+                  </a>
+              </li>
           </ul>
 
 

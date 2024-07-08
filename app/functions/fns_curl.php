@@ -84,7 +84,7 @@ function get_data_from_api($uri) {
     }
     $data = json_decode($responseBody, true);
     if (count($data) == 0) {
-        return false;
+        return [];
     }
     return $data;
 }

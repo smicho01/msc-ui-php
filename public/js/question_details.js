@@ -95,7 +95,6 @@ $(document).ready(function () {
         $.post("/php_js/question.php", { urlCommand: 'selectBestAnswer', answerId: bestAnswerId })
             .done(function (data) {
                 let parsedResponse = JSON.parse(data)
-                console.log(parsedResponse)
             });
 
         modalWindow.hide();

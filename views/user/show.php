@@ -21,7 +21,7 @@
                     Remove connection
                 </span></span>
         <?php else: ?>
-                <span><span class="btn btn-primary btn-sm" data-user="<?php echo $foundUser['visibleUsername']; ?>" id="btn-add-friend">
+                <span><span class="btn btn-primary btn-sm" data-ui="<?php echo $foundUser['id']; ?>" id="btn-add-friend">
                     <i class="fa-solid fa-user"></i>
                     Connect
                 </span></span>
@@ -30,6 +30,4 @@
         <div class="heading"></div>
     </div>
 
-
-    <div class="col-12"><?php print_r($foundUser); ?></div>
 </div>

@@ -9,10 +9,17 @@ if(isset($_POST['urlcommand'])) {
 
         case 'getUserCollegeModules':
             // Get user college modules saved in the session
-            $collegeModuless = isset($_SESSION['user']['college_modules']) ? $_SESSION['user']['college_modules'] : [];
-            //print_r($collegeModuless);
-            echo json_encode($collegeModuless);
+            $collegeModules = isset($_SESSION['user']['college_modules']) ? $_SESSION['user']['college_modules'] : [];
+            echo json_encode($collegeModules);
         break;
+
+        case 'sendFriendRequest':
+            $requestingUserId = $_SESSION['user']['id'];
+            $requestedUserId = $_POST['userId'];
+
+            $response = UserService::user_send_friend_request($requestingUserId, $requestedUserId);
+            echo json_encode($response);
+            break;
 
     }
 }

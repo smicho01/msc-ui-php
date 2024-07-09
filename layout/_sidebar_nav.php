@@ -49,6 +49,15 @@
                       Your Transactions
                   </a>
               </li>
+
+              <li class="nav-item">
+                  <a class="nav-link" href="index.php?c=user&v=friends">
+                      <span data-feather="yquestions"></span>
+                      <i class="fa-solid fa-user"></i>
+                      Your Connections
+                  </a>
+              </li>
+
               <li class="nav-item">
                   <a class="nav-link" href="index.php?c=user&v=account">
                       <span data-feather="yaccount"></span>

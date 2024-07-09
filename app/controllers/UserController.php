@@ -49,14 +49,18 @@ switch ($VIEW) {
                 header("Location: index.php");
             }
 
-            $allMainUserFriends = UserService::user_get_all_friends($_SESSION['user']['id']);
             // Check if displayed user is already a friend.
             $isFriendWithDisplayedUser = false;
-            foreach ($allMainUserFriends as $friend){
+            foreach ($_SESSION['user']['friends'] as $friend){
                 if($friend['id'] == $foundUser['id']) {
                     $isFriendWithDisplayedUser = true;
                 }
             }
+        break;
+
+
+    case 'friends':
+            $friends = isset($_SESSION['user']['friends']) ? $_SESSION['user']['friends'] : [];
         break;
 
     default:

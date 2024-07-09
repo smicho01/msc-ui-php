@@ -349,6 +349,12 @@ span.tag.badge.rounded-pill  {
     color: #444;
 }
 
+#sidebarMenu a i {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
 /* Question Details */
 .question-user-options {
     margin-bottom: 20px;
@@ -412,6 +418,22 @@ span.tag.badge.rounded-pill  {
 .user-page-header span {
     display: inline-block;
     margin-right: 50px;
+}
+
+/* FRIENDS PAGE */
+.friend-row {}
+
+.friend-row .friend-icon-wrapper {
+    width: 100%;
+    height: 100%;
+}
+.friend-row .friend-icon-wrapper .friend-icon {
+  font-size: 30px;
+}
+
+.friend-link {
+    text-decoration: none;
+    color: inherit;
 }
 
 @media screen and (max-height: 450px) {

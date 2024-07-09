@@ -40,6 +40,7 @@ switch ($VIEW) {
 
 
     case 'show':
+            $jsfiles = ['user'];
             if(isset($_GET['un']) && $_GET['un'] != '') {
                 $username = $_GET['un'];
                 $foundUser = UserService::getUser('visibleusername', $username);
@@ -48,6 +49,14 @@ switch ($VIEW) {
                 header("Location: index.php");
             }
 
+            $allMainUserFriends = UserService::user_get_all_friends($_SESSION['user']['id']);
+            // Check if displayed user is already a friend.
+            $isFriendWithDisplayedUser = false;
+            foreach ($allMainUserFriends as $friend){
+                if($friend['id'] == $foundUser['id']) {
+                    $isFriendWithDisplayedUser = true;
+                }
+            }
         break;
 
     default:

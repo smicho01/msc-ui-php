@@ -152,5 +152,10 @@ class UserService {
         return $response;
     }
 
+    static function user_get_all_friends($userId) {
+        $uri = USER_SERVICE_URI . "/friends/" . $userId;
+        return  get_data_from_api($uri);
+    }
+
 }
 

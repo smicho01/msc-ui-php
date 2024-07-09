@@ -73,6 +73,9 @@ switch ($VIEW) {
 
                 $_SESSION['user']['college_modules'] = modules_get_by_college_id($_SESSION['user']['collegeId']);
 
+                // Get all user friends
+                $allMainUserFriends = UserService::user_get_all_friends($MAIN_USER->id);
+                $_SESSION['user']['friends'] = $allMainUserFriends;
             }
 	break;
 

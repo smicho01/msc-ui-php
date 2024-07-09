@@ -404,6 +404,16 @@ span.tag.badge.rounded-pill  {
 }
 
 
+/* USER DETAILS PAGE */
+.user-page-header {}
+.user-page-header b {
+    font-weight: 900;
+}
+.user-page-header span {
+    display: inline-block;
+    margin-right: 50px;
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
 }

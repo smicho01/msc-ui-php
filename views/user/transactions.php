@@ -13,8 +13,10 @@
 <div class="row">
     <div class="col-12">
         <h3 class="heading">Your Transactions</h3>
+        <p>Your token count: <?php echo $foundUser['tokens']; ?></p>
     </div>
 
+    <div class="col-12">
     <?php if(count($userTransactions) == 0) : ?>
         <p>No transactions</p>
     <?php else: ?>
@@ -43,5 +45,6 @@
         </tbody>
     </table>
     <?php endif; ?>
+    </div>
 
 </div>

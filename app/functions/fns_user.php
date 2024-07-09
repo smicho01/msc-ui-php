@@ -59,7 +59,7 @@ class User {
 
 class UserService {
 
-    function getUser($field , $value) {
+    static function getUser($field , $value) {
         $uri = USER_SERVICE_URI . "/user?field=".$field ."&value=" . $value;
         return get_data_from_api($uri);
     }

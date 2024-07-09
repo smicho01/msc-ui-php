@@ -2,6 +2,7 @@
 include_once 'fns_curl.php';
 include_once 'fns_flash.php';
 include_once 'fns_utils.php';
+include_once 'fns_user.php';
 
 $VIEW = isset($VIEW) ? $VIEW : 'index';
 require_login ();
@@ -24,6 +25,9 @@ switch ($VIEW) {
         break;
 
     case 'transactions':
+            $foundUser = UserService::getUser('id', $_SESSION['user']['id']);
+            $_SESSION['user']['tokens'] = $foundUser['tokens'];
+
             $allUserTransactions = UserService::get_user_transactions($_SESSION['user']['id']);
             $userTransactions = [];
             if( $allUserTransactions != false || count($allUserTransactions) > 0){
@@ -32,6 +36,18 @@ switch ($VIEW) {
                     array_push($userTransactions, $currentTransaction);
                 }
             }
+        break;
+
+
+    case 'show':
+            if(isset($_GET['un']) && $_GET['un'] != '') {
+                $username = $_GET['un'];
+                $foundUser = UserService::getUser('visibleusername', $username);
+
+            } else {
+                header("Location: index.php");
+            }
+
         break;
 
     default:

@@ -178,5 +178,14 @@ class UserService {
         return get_data_from_api($uri);
     }
 
+    public static function user_accept_friend_request($requestingUserId, $requestedUserId) {
+        $data = [
+            'requestingUserId' => $requestingUserId,
+            'requestedUserId' => $requestedUserId
+        ];
+        $uri = USER_SERVICE_URI . "/friends/request/accept";
+        return curl_put($uri, $data, "Bearer " . $_SESSION['token']);
+    }
+
 }
 

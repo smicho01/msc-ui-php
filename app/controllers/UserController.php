@@ -65,7 +65,6 @@ switch ($VIEW) {
         $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
         $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
 
-
         break;
 
     default:

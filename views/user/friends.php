@@ -28,7 +28,8 @@
             <?php if(count($friendRequestsSent) > 0): ?>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 <?php echo count($friendRequestsSent); ?>
-            <span class="visually-hidden">unread messages</span>
+                <span class="visually-hidden">unread messages</span>
+            </span>
            <?php endif; ?>
         </button>
     </li>
@@ -38,10 +39,14 @@
             <?php if(count($friendRequestsReceived) > 0): ?>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 <?php echo count($friendRequestsReceived); ?>
-            <span class="visually-hidden">unread messages</span>
-           <?php endif; ?>
-  </span>
+                <span class="visually-hidden">unread messages</span>
+            </span>
+            <?php endif; ?>
         </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link position-relative" id="pills-reload-tab" data-bs-toggle="pill"  type="button" role="tab" >
+            <i class="fa-solid fa-arrows-rotate"></i></button>
     </li>
 </ul>
 <div class="tab-content" id="pills-tabContent">

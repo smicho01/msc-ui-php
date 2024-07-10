@@ -166,5 +166,17 @@ class UserService {
         return curl_post($url, $data, "Bearer " . $_SESSION['token']);
     }
 
+    /* Friend requests user get */
+    static function user_get_friend_request_received($userId) {
+        $uri = USER_SERVICE_URI . "/friends/requests/received/" . $userId;
+        return get_data_from_api($uri);
+    }
+
+    /* Friend requests user sent */
+    static function user_get_friend_request_sent($userId) {
+        $uri = USER_SERVICE_URI . "/friends/requests/sent/" . $userId;
+        return get_data_from_api($uri);
+    }
+
 }
 

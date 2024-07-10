@@ -436,6 +436,15 @@ span.tag.badge.rounded-pill  {
     color: inherit;
 }
 
+#friends-tab {
+
+}
+
+#friends-tab .nav-link {
+    margin-right: 30px;
+    border: 1px solid #efefef;
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
 }

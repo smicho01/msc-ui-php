@@ -10,6 +10,20 @@ $(document).ready(function () {
         console.log("Removing connection with:", userVisibleName)
     });
 
+
+    /** Accept Friend Request btn click */
+    $('.btn-accept-friend-request').on('click', function (event) {
+        const userId = $(this).attr('data-id');
+        console.log("Accept req from user:", userId)
+    });
+
+    /** Cancel Friend Request btn click */
+    $('.btn-cancel-friend-request').on('click', function (event) {
+        const userId = $(this).attr('data-id');
+        console.log("Cancel req to user:", userId)
+    });
+
+
 });
 
 function sendFriendRequest(userId) {

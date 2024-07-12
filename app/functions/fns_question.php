@@ -132,5 +132,10 @@ class QuestionService {
     public static function isQuestionAuthorLoggedInUser($question) {
         return $question['userId'] == $_SESSION['user']['id'];
     }
+
+    public static function get_by_title_like($searchTerm) {
+        $uri = ITEM_SERVICE_URI . "/question/like/" . $searchTerm;
+        return get_data_from_api($uri);
+    }
 }
 

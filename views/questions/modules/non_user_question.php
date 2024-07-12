@@ -1,9 +1,9 @@
 <div class="question-details-wrapper">
     <div class="row heading">
-        <div class="col-10">
+        <div class="col-9">
             <h3><?php echo $question['title']; ?></h3>
         </div>
-        <div class="col-2 bd-highlight">
+        <div class="col-3 bd-highlight text-right">
             <a href="/index.php?c=questions&v=add" class="btn btn-primary">Ask Question</a>
         </div>
         <div class="col-12 question-summary-box">

@@ -196,5 +196,10 @@ class UserService {
         return curl_put($uri, $data, "Bearer " . $_SESSION['token']);
     }
 
+    public static function user_get_by_username_like($likeUsername) {
+        $uri = USER_SERVICE_URI . "/user/username/like/" . $likeUsername;
+        return get_data_from_api($uri);
+    }
+
 }
 

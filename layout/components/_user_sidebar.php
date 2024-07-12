@@ -17,10 +17,8 @@
     </div>
     <div class="list-group-item">
         <div class="row">
-            <div class="col-2">
-                <img src="public/img/academi-token.webp" width="40"  />
-            </div>
-            <div class="col-8 position-relative">
+            <div class="col-10 position-relative user-tokens-row">
+                <img src="public/img/academi-token.webp" id="token-icon-sidebar" />
                 <span class="token-qty">
                     <span class="span-tokens-count"><?php echo $MAIN_USER->tokens; ?></span> tokens
                 </span>

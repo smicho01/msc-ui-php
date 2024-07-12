@@ -68,15 +68,25 @@
                 </div>
 
                 <div class="col-12 view-wrap">
-                    <?php
-                    // include view file if present , otherwise fallback view file
-                    $viewFilePath = VIEWS_DIR . DS . $CONTROLLER . DS . $VIEW . ".php";
-                    if(file_exists($viewFilePath)) {
-                        include_once(VIEWS_DIR . DS . $CONTROLLER . DS . $VIEW . ".php");
-                    } else {
-                        include_once(VIEWS_DIR . DS . "no-view-file.php");
-                    }
-                    ?>
+                    <div class="row">
+                        <div class="col-xl-9 col-lg-9">
+                            <!-- USER SIDEBAR -->
+                            <?php if(isUserLoggedIn()):?>
+                                <?php include("searchbar.php"); ?>
+                            <?php endif; ?>
+                            <!-- //USER_SIDEBAR -->
+                            <?php
+                            // include view file if present , otherwise fallback view file
+                            $viewFilePath = VIEWS_DIR . DS . $CONTROLLER . DS . $VIEW . ".php";
+                            if(file_exists($viewFilePath)) {
+                                include_once(VIEWS_DIR . DS . $CONTROLLER . DS . $VIEW . ".php");
+                            } else {
+                                include_once(VIEWS_DIR . DS . "no-view-file.php");
+                            }
+                            ?>
+                        </div>
+                        <?php include("_sidebar_right.php"); ?>
+
                 </div>
             </div>
 
@@ -99,6 +109,7 @@ if(isset($jsfilesExternal)) {
 ?>
 
 <script src="<?php echo JS_DIR; ?>/login.js"></script>
+<script src="<?php echo JS_DIR; ?>/search.js"></script>
 <?php
 if (isset($jsfiles)) {
     foreach ($jsfiles as $file) {

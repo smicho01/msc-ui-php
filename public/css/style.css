@@ -14,6 +14,10 @@ h1,h2,h3,h4,h5,h6 {
     font-style: normal;
 }
 
+a {
+    color: #212529;
+}
+
 #page {
     margin-top: 10px;
 }
@@ -132,7 +136,7 @@ img.small-token {
 }
 
 .token-qty {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     position: absolute;
     top: 5px;
@@ -412,6 +416,12 @@ span.tag.badge.rounded-pill  {
 }
 
 
+#token-icon-sidebar {
+    width: 35px;
+    margin-right: 10px;
+}
+
+
 /* USER DETAILS PAGE */
 .user-page-header {}
 .user-page-header b {
@@ -459,10 +469,42 @@ span.tag.badge.rounded-pill  {
     position: absolute;
     top:5px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 18px;
 }
 
+/* searchbar */
 
+.top-searchbar-input {
+    padding: 10px;
+}
+
+/* Search results */
+#search-results a {
+    text-decoration: none;
+}
+
+.search-results-box {
+    margin-bottom: 30px;
+}
+.search-result {
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #efefef;
+    margin-bottom: 10px;
+}
+
+.search-result span.link {
+    display: block;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+.search-result-post span.college {
+    display: block;
+}
+
+.show-more-results {
+    font-weight: 700;
+}
 
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
@@ -472,18 +514,27 @@ span.tag.badge.rounded-pill  {
     body {
         font-size: 14px !important;
     }
+    .user-tokens-row {
+        font-size: 10px;
+    }
 }
 
 @media screen and (max-width:1380px) {
     #details h1 {
         font-size: 1.7rem;
     }
+    #token-icon-sidebar {
+        width: 35px;
+    }
+
 }
+
 
 @media screen and (max-width:1200px) {
     #sidebarMenu {
         font-size: 14px !important;
     }
+
 }
 
 @media screen and (max-width: 450px) {
@@ -500,7 +551,6 @@ span.tag.badge.rounded-pill  {
     .main {
         margin-left: 40%;
     }
-
     .sidenav{
         width: 40%;
         position: fixed;

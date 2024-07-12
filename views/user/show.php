@@ -16,7 +16,7 @@
         <span>School: <b><?php echo $foundUser['college']; ?></b></span>
         <span>Rank: <b><?php echo $foundUser['rank']; ?></b></span>
         <?php if ($isFriendWithDisplayedUser): ?>
-            <span><span class="btn btn-secondary btn-sm" data-user="<?php echo $foundUser['visibleUsername']; ?>"
+            <span><span class="btn btn-secondary btn-sm" data-ui="<?php echo $foundUser['id']; ?>"
                         id="btn-remove-friend">
                     <i class="fa-solid fa-user"></i>
                     Remove connection

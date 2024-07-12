@@ -49,6 +49,11 @@ switch ($VIEW) {
             header("Location: index.php");
         }
 
+        $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
+        $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
+        $_SESSION['user']['request-sent'] = $friendRequestsSent;
+        $_SESSION['user']['request-received'] = $friendRequestsReceived;
+
         // Check if displayed user is already a friend.
         $isFriendWithDisplayedUser = false;
         foreach ($_SESSION['user']['friends'] as $friend) {
@@ -69,10 +74,11 @@ switch ($VIEW) {
 
     case 'friends':
         $jsfiles = ['user'];
+
         $friends = isset($_SESSION['user']['friends']) ? $_SESSION['user']['friends'] : [];
+
         $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
         $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
-
         $_SESSION['user']['request-sent'] = $friendRequestsSent;
         $_SESSION['user']['request-received'] = $friendRequestsReceived;
 

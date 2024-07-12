@@ -460,6 +460,11 @@ span.tag.badge.rounded-pill  {
     font-size: 20px;
 }
 
+.token-qty {
+    position: absolute;
+    top: 2px;
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
 }

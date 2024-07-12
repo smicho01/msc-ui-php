@@ -104,7 +104,7 @@
                             <?php echo $friend['college']; ?>
                         </div>
                         <div class="col-1">
-                            <button class="btn btn-danger btn-sm btn-cancel-friend-request" data-id="<?php echo $friend['id']; ?>">Cancel</button>
+                            <button class="btn btn-danger btn-sm btn-cancel-friend-request" data-ui="<?php echo $friend['id']; ?>">Cancel</button>
                         </div>
                     </div>
                 </div>

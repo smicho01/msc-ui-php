@@ -166,6 +166,15 @@ class UserService {
         return curl_post($url, $data, "Bearer " . $_SESSION['token']);
     }
 
+    static function user_delete_friend_request($requestingUserId, $requestedUserId) {
+        $url = USER_SERVICE_URI . "/friends/request";
+        $data = [
+            'requestingUserId' => $requestingUserId,
+            'requestedUserId' => $requestedUserId
+        ];
+        return curl_delete($url, $data, "Bearer " . $_SESSION['token']);
+    }
+
     /* Friend requests user get */
     static function user_get_friend_request_received($userId) {
         $uri = USER_SERVICE_URI . "/friends/requests/received/" . $userId;

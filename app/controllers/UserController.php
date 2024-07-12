@@ -56,6 +56,14 @@ switch ($VIEW) {
                 $isFriendWithDisplayedUser = true;
             }
         }
+
+        $friendRequestSentToUser = false;
+        foreach ($_SESSION['user']['request-sent'] as $request) {
+            if ($foundUser['id'] == $request['id']) {
+                $friendRequestSentToUser = true;
+            }
+        }
+
         break;
 
 
@@ -64,6 +72,9 @@ switch ($VIEW) {
         $friends = isset($_SESSION['user']['friends']) ? $_SESSION['user']['friends'] : [];
         $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
         $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
+
+        $_SESSION['user']['request-sent'] = $friendRequestsSent;
+        $_SESSION['user']['request-received'] = $friendRequestsReceived;
 
         break;
 

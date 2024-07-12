@@ -20,9 +20,10 @@
             <div class="col-2">
                 <img src="public/img/academi-token.webp" width="40"  />
             </div>
-            <div class="col-8">
+            <div class="col-8 position-relative">
                 <span class="token-qty">
-                <span class="span-tokens-count"><?php echo $MAIN_USER->tokens; ?></span> tokens</span>
+                    <span class="span-tokens-count"><?php echo $MAIN_USER->tokens; ?></span> tokens
+                </span>
             </div>
             <div class="col-2 position-relative">
                 <span class="reload-tokens">

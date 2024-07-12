@@ -20,6 +20,13 @@ if (isset($_POST['urlcommand'])) {
             // Get all user friends
             $allMainUserFriends = UserService::user_get_all_friends($_SESSION['user']['id']);
             $_SESSION['user']['friends'] = $allMainUserFriends;
+
+            $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
+            $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
+
+            $_SESSION['user']['request-sent'] = $friendRequestsSent;
+            $_SESSION['user']['request-received'] = $friendRequestsReceived;
+
             echo json_encode($response);
             break;
 
@@ -31,12 +38,42 @@ if (isset($_POST['urlcommand'])) {
             $allMainUserFriends = UserService::user_get_all_friends($_SESSION['user']['id']);
             $_SESSION['user']['friends'] = $allMainUserFriends;
 
+            $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
+            $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
+
+            $_SESSION['user']['request-sent'] = $friendRequestsSent;
+            $_SESSION['user']['request-received'] = $friendRequestsReceived;
+
+            echo json_encode($response);
+            break;
+
+        case 'deleteFriendRequest':
+            $requestingUserId = $_SESSION['user']['id'];
+            $requestedUserId = $_POST['userId'];
+            $response = UserService::user_delete_friend_request($requestingUserId, $requestedUserId);
+            // Get all user friends
+            $allMainUserFriends = UserService::user_get_all_friends($_SESSION['user']['id']);
+            $_SESSION['user']['friends'] = $allMainUserFriends;
+
+            $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
+            $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
+
+            $_SESSION['user']['request-sent'] = $friendRequestsSent;
+            $_SESSION['user']['request-received'] = $friendRequestsReceived;
+
             echo json_encode($response);
             break;
 
         case 'friendsPageReload':
             $allMainUserFriends = UserService::user_get_all_friends($_SESSION['user']['id']);
             $_SESSION['user']['friends'] = $allMainUserFriends;
+
+            $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
+            $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
+
+            $_SESSION['user']['request-sent'] = $friendRequestsSent;
+            $_SESSION['user']['request-received'] = $friendRequestsReceived;
+
             echo json_encode($allMainUserFriends);
             break;
 
@@ -72,6 +109,9 @@ if (isset($_POST['urlcommand'])) {
             }
             echo json_encode(["status" => 'ok']);
             break;
+
+
+
 
     }
 }

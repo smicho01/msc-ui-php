@@ -68,15 +68,12 @@ switch ($VIEW) {
                 $friendRequestSentToUser = true;
             }
         }
-
         break;
 
 
     case 'friends':
         $jsfiles = ['user'];
-
-        $friends = isset($_SESSION['user']['friends']) ? $_SESSION['user']['friends'] : [];
-
+        $friends = UserService::user_get_all_friends($_SESSION['user']['id']);
         $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
         $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
         $_SESSION['user']['request-sent'] = $friendRequestsSent;

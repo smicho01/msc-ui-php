@@ -17,16 +17,7 @@ if (isset($_POST['urlcommand'])) {
             $requestingUserId = $_SESSION['user']['id'];
             $requestedUserId = $_POST['userId'];
             $response = UserService::user_send_friend_request($requestingUserId, $requestedUserId);
-            // Get all user friends
-            $allMainUserFriends = UserService::user_get_all_friends($_SESSION['user']['id']);
-            $_SESSION['user']['friends'] = $allMainUserFriends;
-
-            $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
-            $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
-
-            $_SESSION['user']['request-sent'] = $friendRequestsSent;
-            $_SESSION['user']['request-received'] = $friendRequestsReceived;
-
+            fetchUserFriendData();
             echo json_encode($response);
             break;
 
@@ -34,16 +25,7 @@ if (isset($_POST['urlcommand'])) {
             $requestingUserId = $_SESSION['user']['id'];
             $requestedUserId = $_POST['userId'];
             $response = UserService::user_accept_friend_request($requestingUserId, $requestedUserId);
-            // Get all user friends
-            $allMainUserFriends = UserService::user_get_all_friends($_SESSION['user']['id']);
-            $_SESSION['user']['friends'] = $allMainUserFriends;
-
-            $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
-            $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
-
-            $_SESSION['user']['request-sent'] = $friendRequestsSent;
-            $_SESSION['user']['request-received'] = $friendRequestsReceived;
-
+            fetchUserFriendData();
             echo json_encode($response);
             break;
 
@@ -51,30 +33,13 @@ if (isset($_POST['urlcommand'])) {
             $requestingUserId = $_SESSION['user']['id'];
             $requestedUserId = $_POST['userId'];
             $response = UserService::user_delete_friend_request($requestingUserId, $requestedUserId);
-            // Get all user friends
-            $allMainUserFriends = UserService::user_get_all_friends($_SESSION['user']['id']);
-            $_SESSION['user']['friends'] = $allMainUserFriends;
-
-            $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
-            $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
-
-            $_SESSION['user']['request-sent'] = $friendRequestsSent;
-            $_SESSION['user']['request-received'] = $friendRequestsReceived;
-
+            fetchUserFriendData();
             echo json_encode($response);
             break;
 
         case 'friendsPageReload':
-            $allMainUserFriends = UserService::user_get_all_friends($_SESSION['user']['id']);
-            $_SESSION['user']['friends'] = $allMainUserFriends;
-
-            $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
-            $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
-
-            $_SESSION['user']['request-sent'] = $friendRequestsSent;
-            $_SESSION['user']['request-received'] = $friendRequestsReceived;
-
-            echo json_encode($allMainUserFriends);
+            fetchUserFriendData();
+            echo json_encode($_SESSION['user']['friends']);
             break;
 
 
@@ -114,6 +79,16 @@ if (isset($_POST['urlcommand'])) {
 
 
     }
+}
+
+function fetchUserFriendData() {
+    $userId = $_SESSION['user']['id'];
+    $allMainUserFriends = UserService::user_get_all_friends($userId);
+    $_SESSION['user']['friends'] = $allMainUserFriends;
+    $friendRequestsReceived = UserService::user_get_friend_request_received($userId);
+    $friendRequestsSent = UserService::user_get_friend_request_sent($userId);
+    $_SESSION['user']['request-sent'] = $friendRequestsSent;
+    $_SESSION['user']['request-received'] = $friendRequestsReceived;
 }
 
 function reloadUserQuestionsAnswersToSession() {

@@ -34,7 +34,7 @@ $(document).ready(function () {
         console.log("Cancel req to user:", userId)
     });
 
-    /** Cancel Friend Request btn click */
+    /** Get friends list and Reload friends page */
     $('#pills-reload-tab').on('click', function (event) {
         console.log("Reload friends list")
         $.post("/php_js/user.php", { urlcommand: 'friendsPageReload' })

@@ -49,33 +49,26 @@ switch ($VIEW) {
                 $MAIN_USER->college  = $userExists['college'];
                 $MAIN_USER->collegeId = $userExists['collegeid'];
 
-
-
                 $_SESSION['user']['collegeId'] = $userExists['collegeid'];
 
                 // Get user questions and questions count
-                $_SESSION['user']['questions-size'] = 0;
-                $userQuestions = $USER_SERVICE->user_get_questions_short($MAIN_USER->id);
-                if(!is_null($userQuestions) && !empty($userQuestions) ) {
-                    $_SESSION['user']['questions-size'] = count($userQuestions);
-                    $_SESSION['user']['questions'] = $userQuestions;
-                }
-                $MAIN_USER->questions = $userQuestions;
+//                $_SESSION['user']['questions-size'] = 0;
+//                $userQuestions = $USER_SERVICE->user_get_questions_short($MAIN_USER->id);
+//                if(!is_null($userQuestions) && !empty($userQuestions) ) {
+//                    $_SESSION['user']['questions-size'] = count($userQuestions);
+//                    $_SESSION['user']['questions'] = $userQuestions;
+//                }
+                $MAIN_USER->questions = $_SESSION['user']['questions'];
 
-                // TODO: Get user answers count
-                $_SESSION['user']['answers-size'] = 0;
-                $userAnswers = $USER_SERVICE->user_get_answers($MAIN_USER->id);
-                if($userAnswers) {
-                    $_SESSION['user']['answers-size'] = count($userAnswers);
-                    $_SESSION['user']['answers'] = $userAnswers;
-                }
-                $MAIN_USER->answers  = $userAnswers;
+//                $_SESSION['user']['answers-size'] = 0;
+//                $userAnswers = $USER_SERVICE->user_get_answers($MAIN_USER->id);
+//                if($userAnswers) {
+//                    $_SESSION['user']['answers-size'] = count($userAnswers);
+//                    $_SESSION['user']['answers'] = $userAnswers;
+//                }
+                $MAIN_USER->answers  = $_SESSION['user']['answers'];
+                //$_SESSION['user']['college_modules'] = modules_get_by_college_id($_SESSION['user']['collegeId']);
 
-                $_SESSION['user']['college_modules'] = modules_get_by_college_id($_SESSION['user']['collegeId']);
-
-                // Get all user friends
-                $allMainUserFriends = UserService::user_get_all_friends($MAIN_USER->id);
-                $_SESSION['user']['friends'] = $allMainUserFriends;
             }
 	break;
 

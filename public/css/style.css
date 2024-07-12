@@ -134,6 +134,8 @@ img.small-token {
 .token-qty {
     font-size: 20px;
     font-weight: bold;
+    position: absolute;
+    top: 5px;
 }
 
 .sidebar-list-group {
@@ -460,10 +462,7 @@ span.tag.badge.rounded-pill  {
     font-size: 20px;
 }
 
-.token-qty {
-    position: absolute;
-    top: 2px;
-}
+
 
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}

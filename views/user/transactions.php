@@ -24,7 +24,7 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">Value</th>
+            <th scope="col">Value [Tokens]</th>
             <th scope="col">In/Out</th>
             <th scope="col">Event Type</th>
             <th scope="col">Transaction ID</th>
@@ -34,7 +34,7 @@
         <tbody>
         <?php foreach ($userTransactions as $transaction): ?>
             <tr>
-                <td><?php echo $transaction['amount']; ?></td>
+                <td><img src="public/img/academi-token.webp" width="30"  /> <?php echo $transaction['amount']; ?></td>
                 <td><?php echo ucwords($transaction['type']); ?></td>
                 <td><?php echo $transaction['event']; ?></td>
                 <td ><?php echo $transaction['id']; ?></td>

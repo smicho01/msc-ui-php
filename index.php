@@ -23,10 +23,30 @@ if(isUserLoggedIn() && isset($_SESSION['user']['visibleUsername'])) {
     if (!isset($_SESSION['user']['user_data_rewritten']) || $_SESSION['user']['user_data_rewritten'] != true) {
         // Get user from Database and set its properties
         $MAIN_USER->createUserDatabaseData($foundLoggedInUser);
+        // Get all user friends
+        $allMainUserFriends = UserService::user_get_all_friends($_SESSION['user']['id']);
+        $_SESSION['user']['friends'] = $allMainUserFriends;
+        $_SESSION['user']['college_modules'] = modules_get_by_college_id($foundLoggedInUser['collegeid']);
+
+        $_SESSION['user']['questions-size'] = 0;
+        $_SESSION['user']['questions'] = [];
+        $userQuestions = $USER_SERVICE->user_get_questions_short($_SESSION['user']['id']);
+        if(!is_null($userQuestions) && !empty($userQuestions) ) {
+            $_SESSION['user']['questions-size'] = count($userQuestions);
+            $_SESSION['user']['questions'] = $userQuestions;
+        }
+
+        $_SESSION['user']['answers-size'] = 0;
+        $userAnswers = $USER_SERVICE->user_get_answers($_SESSION['user']['id']);
+        if($userAnswers) {
+            $_SESSION['user']['answers-size'] = count($userAnswers);
+            $_SESSION['user']['answers'] = $userAnswers;
+        }
     }
     // Re-write User data to session data to improve speed and avoid calls to API
     $USER_SERVICE->user_data_to_session($MAIN_USER);
     $MAIN_USER->createUserFromSession();
+
 }
 
 /* Include controller file */

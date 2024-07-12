@@ -30,6 +30,10 @@ switch ($VIEW) {
             $_SESSION['user']['roles'] = $decodedToken->realm_access->roles;
             $_SESSION['tokenexpiry'] = $decodedToken->exp;
             $_SESSION['user']['college'] = $decodedToken->college;
+            $_SESSION['user']['questions'] = [];
+            $_SESSION['user']['questions-size'] = 0;
+            $_SESSION['user']['answers'] = [];
+            $_SESSION['user']['answers-size'] = 0;
             $_SESSION['justLoggedIn'] = 1;
             header("Location: index.php");
         } else {

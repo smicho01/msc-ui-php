@@ -73,3 +73,4 @@ include_once('fns_user.php');
 include_once('fns_service.php');
 include_once('fns_crypto.php');
 include_once('fns_flash.php');
+include_once('fns_module_college.php');

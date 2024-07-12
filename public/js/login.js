@@ -1,57 +1,6 @@
-function set_php_session_token(jwtToken) {
-    // var host = window.location.protocol + "//" + window.location.host;
-    //
-    // $.ajax({
-    //     type: 'POST',
-    //     url: host + "/php_js/login.php",
-    //     data: {
-    //         urlcommand: 'setSessionToken',
-    //         token: jwtToken
-    //     },
-    //     cache: false
-    // }).done(function(data) {
-    //
-    // }).fail(function(error){
-    //
-    // });
-}
-
-function login_user(uName, uPass, forma) {
-    // $.ajax({
-    //     url: 'http://sever3d.synology.me:7080/auth/realms/academichain/protocol/openid-connect/token',
-    //     type: 'POST',
-    //     data: {
-    //         username: uName,
-    //         password: uPass,
-    //         grant_type: 'password',
-    //         client_id: 'academichain_ui'
-    //     },
-    //     headers: {
-    //         'Content-Type': 'application/x-www-form-urlencoded'
-    //     },
-    //     dataType: 'json',
-    //
-    // }). done (function (data) {
-    //     if (data.access_token != null) {
-    //         document.cookie = "accesstoken=" + data.access_token;
-    //         set_php_session_token(data.access_token);
-    //     } else {
-    //         console.log('Missing JWT Token');
-    //     }
-    //     $(forma).unbind('submit').submit(); // send form
-    // })
-    //     .fail(function (data) {
-    //     const err = data.responseJSON.error_description
-    //     alert(err);
-    //     return false;
-    // });
-}
-
-
 $(document).ready(function () {
     // Logout user
-    $('.btnLogout').on('click', function () {
-        console.log('Logout');
+    $('.btnLogout').on('click', function (e) {
         $.post(
             "/php_js/login.php",
             {
@@ -59,7 +8,6 @@ $(document).ready(function () {
             }
         )
             .done(function (data) {
-                console.log('User log out');
                 document.cookie = "accesstoken=";
                 window.location = "index.php"
             })
@@ -68,5 +16,63 @@ $(document).ready(function () {
             });
 
     });
+
+    /* Update user token and questions */
+    $.ajax({
+        url: "/php_js/user.php",
+        method: "POST",
+        data: {
+            urlcommand: 'updateTokenAndQuestions'
+        },
+        success: function (data) {
+            let parsedData = JSON.parse(data)
+
+            if(parsedData['answersSize']) {
+                $('.span-answers-size').text(parsedData['answersSize']);
+            }
+            if(parsedData['questionsSize']) {
+                $('.span-questions-size').text(parsedData['questionsSize']);
+            }
+            if(parsedData['tokens']) {
+                $('.span-tokens-count').text(parsedData['tokens'])
+            }
+        },
+        error: function (data) {
+            console.log('Fail when updating user token and questions');
+        }
+    });
+
+
+    $('.reload-tokens').on('click', function(e){
+
+        const arrowReloadIcon = '<i class="fa-solid fa-arrow-rotate-right"></i>';
+        $('.span-answers-size').html(arrowReloadIcon)
+        $('.span-questions-size').html(arrowReloadIcon)
+        $('.span-tokens-count').html(arrowReloadIcon)
+
+        $.ajax({
+            url: "/php_js/user.php",
+            method: "POST",
+            data: {
+                urlcommand: 'reloadUserDetails'
+            },
+            success: function (data) {
+                let parsedData = JSON.parse(data)
+
+                if(parsedData['answersSize']) {
+                    $('.span-answers-size').text(parsedData['answersSize']);
+                }
+                if(parsedData['questionsSize']) {
+                    $('.span-questions-size').text(parsedData['questionsSize']);
+                }
+                if(parsedData['tokens']) {
+                    $('.span-tokens-count').text(parsedData['tokens'])
+                }
+            },
+            error: function (data) {
+                console.log('Fail when updating user token and questions');
+            }
+        });
+    })
 
 });

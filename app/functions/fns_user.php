@@ -59,7 +59,7 @@ class User {
 
 class UserService {
 
-    function getUser($field , $value) {
+    static function getUser($field , $value) {
         $uri = USER_SERVICE_URI . "/user?field=".$field ."&value=" . $value;
         return get_data_from_api($uri);
     }
@@ -150,6 +150,50 @@ class UserService {
         }
 
         return $response;
+    }
+
+    static function user_get_all_friends($userId) {
+        $uri = USER_SERVICE_URI . "/friends/" . $userId;
+        return  get_data_from_api($uri);
+    }
+
+    static function user_send_friend_request($requestingUserId, $requestedUserId) {
+        $url = USER_SERVICE_URI . "/friends/request";
+        $data = [
+            'requestingUserId' => $requestingUserId,
+            'requestedUserId' => $requestedUserId
+        ];
+        return curl_post($url, $data, "Bearer " . $_SESSION['token']);
+    }
+
+    static function user_delete_friend_request($requestingUserId, $requestedUserId) {
+        $url = USER_SERVICE_URI . "/friends/request";
+        $data = [
+            'requestingUserId' => $requestingUserId,
+            'requestedUserId' => $requestedUserId
+        ];
+        return curl_delete($url, $data, "Bearer " . $_SESSION['token']);
+    }
+
+    /* Friend requests user get */
+    static function user_get_friend_request_received($userId) {
+        $uri = USER_SERVICE_URI . "/friends/requests/received/" . $userId;
+        return get_data_from_api($uri);
+    }
+
+    /* Friend requests user sent */
+    static function user_get_friend_request_sent($userId) {
+        $uri = USER_SERVICE_URI . "/friends/requests/sent/" . $userId;
+        return get_data_from_api($uri);
+    }
+
+    public static function user_accept_friend_request($requestingUserId, $requestedUserId) {
+        $data = [
+            'requestingUserId' => $requestingUserId,
+            'requestedUserId' => $requestedUserId
+        ];
+        $uri = USER_SERVICE_URI . "/friends/request/accept";
+        return curl_put($uri, $data, "Bearer " . $_SESSION['token']);
     }
 
 }

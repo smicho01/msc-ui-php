@@ -19,7 +19,14 @@ if (isset($_SESSION['user'])) {
     <div class="card-header <?php echo $isCardOwner ? 'owner' : ''; ?>">
         <span class="entry"><span
                     class="light-txt">Answered:</span> <?php echo format_date_from_java($answer['dateCreated']); ?></span>
-        by: <span class="user-name"><?php echo $answer['userName']; ?></span>
+        by: <span class="user-name">
+            <?php if($isCardOwner): ?>
+                <?php echo $answer['userName']; ?>
+            <?php else: ?>
+                <a href="/index.php?c=user&v=show&un=<?php echo $answer['userName']; ?>" ><?php echo $answer['userName']; ?></a>
+            <?php endif; ?>
+
+            </span>
     </div>
     <div class="card-body">
         <div class="row">

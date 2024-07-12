@@ -2,9 +2,10 @@
 include_once 'fns_curl.php';
 include_once 'fns_flash.php';
 include_once 'fns_utils.php';
+include_once 'fns_user.php';
 
 $VIEW = isset($VIEW) ? $VIEW : 'index';
-require_login ();
+require_login();
 switch ($VIEW) {
     case 'updatedata':
         // Attach js files to the footer
@@ -13,25 +14,74 @@ switch ($VIEW) {
             USER_SERVICE_URI . "/generatenames?count=80", $data = false, 'application/json',
             "Bearer " . $_SESSION['token']);
         $generatedUserNames = json_decode($foundUserResponse['body'], true);
-    break;
+        break;
 
     case 'walletkeys':
         $jsfiles = ['keys'];
-    break;
+        break;
 
     case 'questions':
         $questions = UserService::user_get_questions_short($_SESSION['user']['id']);
         break;
 
     case 'transactions':
-            $allUserTransactions = UserService::get_user_transactions($_SESSION['user']['id']);
-            $userTransactions = [];
-            if( $allUserTransactions != false || count($allUserTransactions) > 0){
-                foreach ($allUserTransactions as $transaction) {
-                    $currentTransaction = create_transaction_array_entry($transaction);
-                    array_push($userTransactions, $currentTransaction);
-                }
+        $foundUser = UserService::getUser('id', $_SESSION['user']['id']);
+        $_SESSION['user']['tokens'] = $foundUser['tokens'];
+
+        $allUserTransactions = UserService::get_user_transactions($_SESSION['user']['id']);
+        $userTransactions = [];
+        if ($allUserTransactions != false || count($allUserTransactions) > 0) {
+            foreach ($allUserTransactions as $transaction) {
+                $currentTransaction = create_transaction_array_entry($transaction);
+                array_push($userTransactions, $currentTransaction);
             }
+        }
+        break;
+
+
+    case 'show':
+        $jsfiles = ['user'];
+        if (isset($_GET['un']) && $_GET['un'] != '') {
+            $username = $_GET['un'];
+            $foundUser = UserService::getUser('visibleusername', $username);
+
+        } else {
+            header("Location: index.php");
+        }
+
+        $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
+        $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
+        $_SESSION['user']['request-sent'] = $friendRequestsSent;
+        $_SESSION['user']['request-received'] = $friendRequestsReceived;
+
+        // Check if displayed user is already a friend.
+        $isFriendWithDisplayedUser = false;
+        foreach ($_SESSION['user']['friends'] as $friend) {
+            if ($friend['id'] == $foundUser['id']) {
+                $isFriendWithDisplayedUser = true;
+            }
+        }
+
+        $friendRequestSentToUser = false;
+        foreach ($_SESSION['user']['request-sent'] as $request) {
+            if ($foundUser['id'] == $request['id']) {
+                $friendRequestSentToUser = true;
+            }
+        }
+
+        break;
+
+
+    case 'friends':
+        $jsfiles = ['user'];
+
+        $friends = isset($_SESSION['user']['friends']) ? $_SESSION['user']['friends'] : [];
+
+        $friendRequestsReceived = UserService::user_get_friend_request_received($_SESSION['user']['id']);
+        $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
+        $_SESSION['user']['request-sent'] = $friendRequestsSent;
+        $_SESSION['user']['request-received'] = $friendRequestsReceived;
+
         break;
 
     default:
@@ -39,7 +89,8 @@ switch ($VIEW) {
         break;
 }
 
-function create_transaction_array_entry($transaction) {
+function create_transaction_array_entry($transaction)
+{
     $datetime = new DateTime($transaction['timestamp']);
     $output = [
         'id' => $transaction['id'],
@@ -51,7 +102,8 @@ function create_transaction_array_entry($transaction) {
     return $output;
 }
 
-function map_event_type_to_readable_string($type){
+function map_event_type_to_readable_string($type)
+{
     switch ($type) {
         case 'EVENT_BEST_ANSWER':
             return 'Best Answer';

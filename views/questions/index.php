@@ -1,7 +1,5 @@
 <div class="row">
 
-    <div class="col-xl-9 col-lg-9">
-
         <div class="row">
             <div class="col-12">
                 <nav aria-label="breadcrumb">
@@ -14,7 +12,7 @@
             </div>
         </div>
 
-        <div class="row heading">
+        <div class="row ">
             <div class="col-8">
                 <h3>Questions</h3>
             </div>
@@ -23,8 +21,7 @@
             </div>
         </div>
 
-
-
+    <div class="divider"></div>
 
 
         <!-- questions -->
@@ -67,12 +64,6 @@
         </div>
         <!-- /questions -->
 
-
-
-
-
-    </div>
-    <?php include("_sidebar_right.php"); ?>
 </div>
 
 

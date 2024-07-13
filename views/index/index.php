@@ -1,5 +1,5 @@
 <div class="row">
-    <div class=" col-xl-9 col-lg-9 ">
+    <div class="col-12">
         <h3>Welcome to AcademiChain</h3>
         <p>
             A place where you can ask questions, provide answers and earn cryptocurrency tokens!
@@ -44,5 +44,5 @@
 
     </div>
 
-    <?php include("_sidebar_right.php"); ?>
+
 </div>

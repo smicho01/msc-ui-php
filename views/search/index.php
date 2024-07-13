@@ -12,11 +12,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Users (<?php echo $displayResults; ?> out of <?php echo  $foundUsersCount; ?> )</h5>
+                        <h5>Users (<?php echo $displayUserResults; ?> out of <?php echo $foundUsersCount; ?> )</h5>
                     </div>
                     <div class="card-body">
 
-                        <?php for ($i=0; $i< $displayUserResults ; $i++): $user = $foundUsers[$i]; ?>
+                        <?php for ($i = 0; $i < $displayUserResults; $i++): $user = $foundUsers[$i]; ?>
                             <!-- user -->
                             <div class="search-result search-result-user">
                                 <div class="row">
@@ -37,7 +37,8 @@
 
                     </div>
                     <?php if ($foundUsersCount > $displayResults) : ?>
-                        <a href="index.php?c=search&v=all&entity=users&term=<?php echo $_SESSION['searchTerm']; ?>" class="card-footer  show-more-results">
+                        <a href="index.php?c=search&v=all&entity=users&term=<?php echo $_SESSION['searchTerm']; ?>"
+                           class="card-footer  show-more-results">
                             <div class="text-center">See all found users</div>
                         </a>
                     <?php else: ?>
@@ -55,52 +56,54 @@
 
 
     <?php if ($foundQuestionsCount > 0): ?>
-    <!-- QUESTIONS -->
-    <div class="row search-results-box">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5>Questions (<?php echo $displayResults; ?> out of <?php echo  $foundQuestionsCount; ?> )</h5>
-                </div>
-                <div class="card-body">
-                    <?php $displayQuestionsResults = ($displayResults <= $foundQuestionsCount) ? $displayResults : $foundQuestionsCount; ?>
-                    <?php for ($i=0; $i< $displayQuestionsResults ; $i++): $question = $foundQuestions[$i]; ?>
-                    <!-- question -->
-                    <div class="search-result search-result-post">
-                        <div class="row">
-                            <div class="col-12">
+        <?php $displayQuestionsResults = ($displayResults <= $foundQuestionsCount) ? $displayResults : $foundQuestionsCount; ?>
+        <!-- QUESTIONS -->
+        <div class="row search-results-box">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Questions (<?php echo $displayQuestionsResults; ?> out
+                            of <?php echo $foundQuestionsCount; ?> )</h5>
+                    </div>
+                    <div class="card-body">
+                        <?php for ($i = 0; $i < $displayQuestionsResults; $i++): $question = $foundQuestions[$i]; ?>
+                            <!-- question -->
+                            <div class="search-result search-result-post">
+                                <div class="row">
+                                    <div class="col-12">
                                 <span class="link">
                                     <a href="index.php?c=questions&v=show&id=<?php echo $question['id']; ?>">
                                         <?php echo $question['title']; ?>
                                     </a>
                                 </span>
-                                <span class="user">By <?php echo $question['userName']; ?> on
+                                        <span class="user">By <?php echo $question['userName']; ?> on
                                     <span class="rank"><?php echo format_date_from_java($question['dateCreated']); ?></span>
                                 </span>
-                                <span class="college"><?php echo $question['collegeName']; ?> -
+                                        <span class="college"><?php echo $question['collegeName']; ?> -
                                     <span class="module"><?php echo $question['moduleName']; ?></span>
                                 </span>
+                                    </div>
+                                </div>
                             </div>
+                            <!-- /question -->
+                        <?php endfor; ?>
+
+
+                    </div>
+                    <?php if ($foundQuestionsCount > $displayResults) : ?>
+                        <a href="index.php?c=search&v=all&entity=question&term=<?php echo $_SESSION['searchTerm']; ?>"
+                           class="card-footer  show-more-results">
+                            <div class="text-center">See all found questions</div>
+                        </a>
+                    <?php else: ?>
+                        <div class="card-footer  show-more-results">
+                            <div class="text-center">Showing all <?php echo $foundQuestionsCount; ?> results found</div>
                         </div>
-                    </div>
-                    <!-- /question -->
-                    <?php endfor; ?>
-
-
+                    <?php endif; ?>
                 </div>
-                <?php if ($foundQuestionsCount > $displayResults) : ?>
-                    <a href="index.php?c=search&v=all&entity=question&term=<?php echo $_SESSION['searchTerm']; ?>" class="card-footer  show-more-results">
-                        <div class="text-center">See all found questions</div>
-                    </a>
-                <?php else: ?>
-                    <div class="card-footer  show-more-results">
-                        <div class="text-center">Showing all <?php echo $foundQuestionsCount; ?> results found</div>
-                    </div>
-                <?php endif; ?>
             </div>
         </div>
-    </div>
-    <!-- /QUESTIONS -->
+        <!-- /QUESTIONS -->
     <?php endif; ?>
 
 

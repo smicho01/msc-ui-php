@@ -27,7 +27,6 @@
         <!-- questions -->
         <div class="row">
             <?php if(!empty($questions)): ?>
-
                 <?php foreach($questions as $question): ?>
                     <!-- question box -->
                     <div class="col-12">

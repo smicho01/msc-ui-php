@@ -14,7 +14,7 @@ switch ($VIEW) {
         } else {
             header("Location: index.php");
         }
-        $displayResults = 10; // how many first results to display
+        $displayResults = 5; // how many first results to display
         $foundUsers = UserService::user_get_by_username_like($searchTerm);
         $foundUsersCount = count($foundUsers);
         $foundQuestions = QuestionService::get_by_title_like($searchTerm);

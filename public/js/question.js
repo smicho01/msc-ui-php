@@ -6,7 +6,6 @@ $(document).ready(function () {
     $.post("/php_js/user.php", { urlcommand: 'getUserCollegeModules'})
         .done(function (data) {
             userCollegeModules = JSON.parse(data)
-            console.log("User college modules count: " + userCollegeModules.length)
             autocomplete(document.getElementById("form_question_module"), userCollegeModules);
         })
         .fail(function (data) {
@@ -15,7 +14,7 @@ $(document).ready(function () {
 
 
     /* Add custom validation method to check if entered text is a valid English text. */
-    $.validator.addMethod("isValidEnglishText", function (value, element, params) {
+    $.validator.addMethod("isValidEnglishText", function (value) {
         // Parse the sentence with Compromise
         const doc = nlp(value);
         // Check for the presence of a subject (noun) and a predicate (verb)
@@ -62,9 +61,6 @@ $(document).ready(function () {
             }
         },
         submitHandler: function (form) {
-
-            // Final validation that was hard to impl. with $.validator
-            // Relates mostly to dynamic or 'outside-form' elements
             let otherErrors = []
             // Validate min number of question tags
             let count = $('input[type="hidden"][name="tags[]"]').length;
@@ -83,8 +79,38 @@ $(document).ready(function () {
                 return false;
             }
 
+            // ADD custom title and text validation with use of NLP service
+            let questionTitle = $('#form_question_title').val();
+            let questionBody = $('textarea#form_question_problem').val();
+            $.post("/php_js/question.php", {
+                urlcommand: 'validateQuestionWithNLP',
+                title: questionTitle,
+                body: questionBody
+            }).done(function (data) {
+                let parsedData = JSON.parse(data)
+                let response = JSON.parse(parsedData['body'])
+
+                var modalWindow = null;
+                let bestAnswerId = null;
+
+                let isValidTitleAndBody = true;
+                if(!response['valid_english_body'] || !response['valid_english_title'] ||
+                    response['toxicity_score_body'] > 0.35 || response['toxicity_score_title'] > 0.35 ) {
+                    isValidTitleAndBody = false;
+                    modalWindow = new bootstrap.Modal(document.getElementById('validateQuestionModal'), {
+                        keyboard: false
+                    })
+                    modalWindow.show()
+                } else {
+                    form.submit();
+                }
+                console.log("is valid title and body ? : " , isValidTitleAndBody)
+                }).fail(function (xhr, status, error) {
+                console.log("validateQuestionWithNLP error ... : ", error)
+            });
+            return false;
             // Submit form if no errors
-            form.submit();
+            //form.submit();
         }
     })
 

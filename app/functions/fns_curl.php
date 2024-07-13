@@ -9,14 +9,24 @@
  * @return array The response from the server, including the header, body, and status code.
  */
 
-function curl_post($url, $data, $token)
-{
+function curl_post($url, $data, $token) {
+    $header = 'Authorization: ' . $token;
+    return curl_post_with_headers($url, $data, $header);
+}
+
+function curl_post_nlp($url, $data) {
+    $nlpHeaderToken = getenv("NLP_SERVICE_TOKEN");
+    $header = "x-access-tokens: " . $nlpHeaderToken;
+    return curl_post_with_headers($url, $data, $header);
+}
+
+function curl_post_with_headers($url, $data, $token){
     // JSON encode the data
     $jsonData = json_encode($data);
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_HTTPHEADER, array(
         'Content-Type: application/json',
-        'Authorization: ' . $token
+        $token
     ));
     // Set POST method
     curl_setopt($curl, CURLOPT_POST, 1);

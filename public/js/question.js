@@ -83,16 +83,14 @@ $(document).ready(function () {
             let questionTitle = $('#form_question_title').val();
             let questionBody = $('textarea#form_question_problem').val();
             $.post("/php_js/question.php", {
-                urlcommand: 'validateQuestionWithNLP',
+                urlCommand: 'validateQuestionWithNLP',
                 title: questionTitle,
                 body: questionBody
             }).done(function (data) {
                 let parsedData = JSON.parse(data)
                 let response = JSON.parse(parsedData['body'])
 
-                var modalWindow = null;
-                let bestAnswerId = null;
-
+                let modalWindow = null;
                 let isValidTitleAndBody = true;
                 if(!response['valid_english_body'] || !response['valid_english_title'] ||
                     response['toxicity_score_body'] > 0.35 || response['toxicity_score_title'] > 0.35 ) {
@@ -102,11 +100,10 @@ $(document).ready(function () {
                     })
                     modalWindow.show()
                 } else {
-                    form.submit();
+                    form.submit(); // Last point of validation. Submit form.
                 }
-                console.log("is valid title and body ? : " , isValidTitleAndBody)
                 }).fail(function (xhr, status, error) {
-                console.log("validateQuestionWithNLP error ... : ", error)
+                console.log("validateQuestionWithNLP error ... : ")
             });
             return false;
             // Submit form if no errors

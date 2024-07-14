@@ -93,8 +93,9 @@ $(document).ready(function () {
 
     $('#select-bes-answer-btn').on('click', function(event){
         $.post("/php_js/question.php", { urlCommand: 'selectBestAnswer', answerId: bestAnswerId })
+        //console.log("Klik select best answer confirm")
             .done(function (data) {
-                let parsedResponse = JSON.parse(data)
+                //slet parsedResponse = JSON.parse(data)
             });
 
         modalWindow.hide();

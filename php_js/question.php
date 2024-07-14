@@ -3,8 +3,8 @@ include_once('../init.php');
 include_once('fns_answer.php');
 include_once('fns_nlp.php');
 
-if(isset($_POST['urlcommand'])) {
-    $UrlCommand = $_POST['urlcommand'];
+if(isset($_POST['urlCommand'])) {
+    $UrlCommand = $_POST['urlCommand'];
 
     switch($UrlCommand){
 

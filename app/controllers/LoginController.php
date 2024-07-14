@@ -8,8 +8,6 @@ switch ($VIEW) {
             unset($_SESSION['user']);
         }
 
-        print_r($_POST);
-
         try {
             $responseData = $USER_SERVICE->user_login($_POST['username'], $_POST['password']);
         } catch(ErrorException $e) {

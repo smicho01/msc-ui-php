@@ -1,3 +1,5 @@
+# docker buildx build --platform linux/amd64,linux/arm64 -t sever3d/academichain-ui --push .
+
 # Use an official PHP runtime as a parent image
 FROM php:8.0-apache
 

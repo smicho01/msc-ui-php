@@ -1,26 +1,32 @@
 version: '3.8'
 
 services:
-  phpui:
-    build: .
-    container_name: php-ui
+  academi-ui:
+    image: sever3d/academichain-ui
+    pull_policy: always
     ports:
       - "80:80"
     environment:
-      - POSTGRESHOST=postgres
-      - POSTGRESPORT=5432
-      - POSTGRESDBNAME=mscstudents
-      - POSTGRESUSER=student
-      - POSTGRESPASSWORD=password
-      - USER_SERVICE_URI=http://user-service:9091/api/v1
-      - ITEM_SERVICE_URI=http://localhost:9092/api/v1
-      - REDIS_URL=tcp://sever3d.synology.me:6379?auth=password
-      #SetEnv REDIS_URL tcp://localhost:6379
-      - ACADEMICHAIN_ENV=dev
+      - ACADEMICHAIN_ENV=${ACADEMICHAIN_ENV}
+      - POSTGRESHOST=${POSTGRESHOST}
+      - POSTGRESPORT=${POSTGRESPORT}
+      - POSTGRESDBNAME=${POSTGRESDBNAME}
+      - POSTGRESUSER=${POSTGRESUSER}
+      - POSTGRESPASSWORD=${POSTGRESPASSWORD}
+      - CORE_SERVICE_URI=${CORE_SERVICE_URI}
+      - USER_SERVICE_URI=${USER_SERVICE_URI}
+      - ITEM_SERVICE_URI=${ITEM_SERVICE_URI}
+      - NLP_SERVICE_URI=${NLP_SERVICE_URI}
+      - NLP_SERVICE_TOKEN=${NLP_SERVICE_TOKEN}
+      - REDIS_URL=${REDIS_URL}
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY}
+      - KEYCLOAK_AUTH_URL=${KEYCLOAK_AUTH_URL}
+    depends_on:
+      - ui-database-migrations
     networks:
       - msc
 
-  users-database-migrations:
+  ui-database-migrations:
     image: "liquibase/liquibase:4.15.0"
     volumes:
       - ./db/changelog:/liquibase/changelog

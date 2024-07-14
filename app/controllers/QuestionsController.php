@@ -12,7 +12,6 @@ $QUESTION_SERVICE = new QuestionService();
 switch ($VIEW) {
     case 'index':
         $questions = QuestionService::getLatestQuestions("active", 40);
-
         break;
 
     case 'add':
@@ -22,12 +21,7 @@ switch ($VIEW) {
             'https://unpkg.com/compromise@13.11.0/builds/compromise.min.js'
         ];
         $jsfiles = ['question']; // will add corresponding *.js files from `/public/js` dir
-
-        // Get college modules
-        // $ALL_MODULES = module_get_all(); // get all modules
-
         $USER_COLLEGE_MODULES = modules_get_by_college_id($_SESSION['user']['collegeId']);
-
         break;
 
     case 'process':

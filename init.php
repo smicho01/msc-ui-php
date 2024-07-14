@@ -3,6 +3,7 @@ define("ENV", getenv("ACADEMICHAIN_ENV"));
 define("USER_SERVICE_URI" , getenv("USER_SERVICE_URI"));
 define("ITEM_SERVICE_URI" , getenv("ITEM_SERVICE_URI"));
 define("CORE_SERVICE_URI" , getenv("CORE_SERVICE_URI"));
+define("NLP_SERVICE_URI" , getenv("NLP_SERVICE_URI"));
 define("KEYCLOAK_AUTH_URL" , getenv("KEYCLOAK_AUTH_URL"));
 define("REDIS_URL", getenv("REDIS_URL"));
 // PHP settings
@@ -74,3 +75,4 @@ include_once('fns_service.php');
 include_once('fns_crypto.php');
 include_once('fns_flash.php');
 include_once('fns_module_college.php');
+include_once('fns_nlp.php');

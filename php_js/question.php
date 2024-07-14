@@ -1,7 +1,7 @@
 <?php
 include_once('../init.php');
-include_once ('fns_answer.php');
-
+include_once('fns_answer.php');
+include_once('fns_nlp.php');
 
 if(isset($_POST['urlCommand'])) {
     $UrlCommand = $_POST['urlCommand'];
@@ -33,6 +33,13 @@ if(isset($_POST['urlCommand'])) {
         case 'selectBestAnswer':
             $answerId = $_POST['answerId'];
             $response = AnswerService::setBestAnswer($answerId, true);
+            echo json_encode($response);
+            break;
+
+        case 'validateQuestionWithNLP':
+            $title = $_POST['title'];
+            $body = $_POST['body'];
+            $response = NlpService::validate_question($title, $body);
             echo json_encode($response);
             break;
     }

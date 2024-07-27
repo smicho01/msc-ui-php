@@ -32,8 +32,17 @@
                 </span>
             <?php endif; ?>
         <?php endif; ?>
-
-
         <div class="heading"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h5>Send message</h5>
+        <div id="send-msg-response-wrapper"></div>
+        <div class="input-group">
+        <input type="text" class="form-control" id="message-body" placeholder="Type your message to <?php echo $_GET['un']; ?>">
+        <button class="btn btn-primary" id="send-message" data-to="<?php echo $foundUser['id']; ?>">Send</button>
+        </div>
     </div>
 </div>

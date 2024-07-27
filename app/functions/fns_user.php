@@ -157,6 +157,11 @@ class UserService {
         return  get_data_from_api($uri);
     }
 
+    static function user_get_all_messages($userId) {
+        $uri = USER_SERVICE_URI . "/message/" . $userId;
+        return  get_data_from_api($uri);
+    }
+
     static function user_send_friend_request($requestingUserId, $requestedUserId) {
         $url = USER_SERVICE_URI . "/friends/request";
         $data = [

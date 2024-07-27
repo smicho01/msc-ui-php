@@ -3,6 +3,7 @@ include_once 'fns_curl.php';
 include_once 'fns_flash.php';
 include_once 'fns_utils.php';
 include_once 'fns_user.php';
+include_once 'fns_message.php';
 
 $VIEW = isset($VIEW) ? $VIEW : 'index';
 require_login();
@@ -40,7 +41,7 @@ switch ($VIEW) {
 
 
     case 'show':
-        $jsfiles = ['user'];
+        $jsfiles = ['user','message'];
         if (isset($_GET['un']) && $_GET['un'] != '') {
             $username = $_GET['un'];
             $foundUser = UserService::getUser('visibleusername', $username);
@@ -70,7 +71,6 @@ switch ($VIEW) {
         }
         break;
 
-
     case 'friends':
         $jsfiles = ['user'];
         $friends = UserService::user_get_all_friends($_SESSION['user']['id']);
@@ -78,6 +78,21 @@ switch ($VIEW) {
         $friendRequestsSent = UserService::user_get_friend_request_sent($_SESSION['user']['id']);
         $_SESSION['user']['request-sent'] = $friendRequestsSent;
         $_SESSION['user']['request-received'] = $friendRequestsReceived;
+
+        break;
+
+    case 'messages':
+        $jsfiles = ['message'];
+        $messages = UserService::user_get_all_messages($_SESSION['user']['id']);
+        if($messages != null && count($messages) > 0) {
+            if(isset($_GET['with']) && $_GET['with'] != '') {
+                $selectedMessage = $messages[$_GET['with']];
+            } else {
+                $selectedMessage = reset($messages); // Get 1st messages list
+            }
+
+            MessageService::message_set_all_messages_read_from_to($selectedMessage['user']['id'], $_SESSION['user']['id']);
+        }
 
         break;
 

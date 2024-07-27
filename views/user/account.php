@@ -56,9 +56,22 @@
         <div class="card icon-card" style="width: 18rem;">
             <img src="/public/img/friends-icon.webp" class="card-img-top" alt="Encryption icon">
             <div class="card-body d-grid gap-2">
-                <h5 class="card-title">Connections & Friends</h5>
+                <h5 class="card-title">Connections</h5>
                 <p class="card-text">Your connections and friends</p>
                 <a href="?c=user&v=friends" class="btn btn-primary">Explore</a>
+            </div>
+        </div>
+        <!-- /box -->
+    </div>
+
+    <div class="col-xs-6 col-sm-4 col-lg-3 col-xl-2">
+        <!-- box -->
+        <div class="card icon-card" style="width: 18rem;">
+            <img src="/public/img/messages-icon.webp" class="card-img-top" alt="Encryption icon">
+            <div class="card-body d-grid gap-2">
+                <h5 class="card-title">Messages</h5>
+                <p class="card-text">Talk to people and make friends</p>
+                <a href="?c=user&v=messages" class="btn btn-primary">Explore</a>
             </div>
         </div>
         <!-- /box -->

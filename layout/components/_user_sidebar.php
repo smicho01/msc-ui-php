@@ -2,7 +2,8 @@
     <div class="list-group-item user-box">
         <div>
             <div class="user-icon-wrapper">
-                <i class="fa-regular fa-circle-user fa-6x large-user-icon"></i>
+                <img src="/public/img/avatars/<?php echo $_SESSION['user']['imageid']; ?>.jpg" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+
                 <h5><?php echo $MAIN_USER->visibleUsername; ?></h5>
                 <p class="font-small" ><?php echo $MAIN_USER->college; ?></p>
                 <p>

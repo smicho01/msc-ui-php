@@ -27,7 +27,7 @@
           </ul>
 
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Quick View</span>
+              <span>Your Links</span>
               <a class="link-secondary" href="#" aria-label="Add a new report">
                   <span data-feather="plus-circle"></span>
               </a>
@@ -39,22 +39,28 @@
                   <a class="nav-link" href="index.php?c=user&v=questions">
                       <span data-feather="yquestions"></span>
                       <i class="fa-solid fa-clipboard-question"></i>
-                      Your Questions
+                      Questions
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="index.php?c=user&v=messages">
+                      <span data-feather="yquestions"></span>
+                      <i class="fa-solid fa-envelope-open-text"></i>
+                      Messages
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="index.php?c=user&v=friends">
+                      <span data-feather="yquestions"></span>
+                      <i class="fa-solid fa-user"></i>
+                      Connections
                   </a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="index.php?c=user&v=transactions">
                       <span data-feather="yquestions"></span>
                       <i class="fa-solid fa-money-bill-transfer"></i>
-                      Your Transactions
-                  </a>
-              </li>
-
-              <li class="nav-item">
-                  <a class="nav-link" href="index.php?c=user&v=friends">
-                      <span data-feather="yquestions"></span>
-                      <i class="fa-solid fa-user"></i>
-                      Your Connections
+                      Transactions
                   </a>
               </li>
 
@@ -62,7 +68,7 @@
                   <a class="nav-link" href="index.php?c=user&v=account">
                       <span data-feather="yaccount"></span>
                       <i class="fa-solid fa-gears"></i>
-                      Your Account
+                      Account
                   </a>
               </li>
           </ul>

@@ -59,13 +59,13 @@ $(document).ready(function () {
             success: function (data) {
                 let parsedData = JSON.parse(data)
 
-                if(parsedData['answersSize']) {
+                if(parsedData['answersSize'] >= 0) {
                     $('.span-answers-size').text(parsedData['answersSize']);
                 }
-                if(parsedData['questionsSize']) {
+                if(parsedData['questionsSize'] >= 0) {
                     $('.span-questions-size').text(parsedData['questionsSize']);
                 }
-                if(parsedData['tokens']) {
+                if(parsedData['tokens'] >= 0) {
                     $('.span-tokens-count').text(parsedData['tokens'])
                 }
             },

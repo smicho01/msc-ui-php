@@ -33,6 +33,7 @@ switch ($VIEW) {
             $_SESSION['user']['answers'] = [];
             $_SESSION['user']['answers-size'] = 0;
             $_SESSION['justLoggedIn'] = 1;
+            $_SESSION['user']['imageid'] = 1;
             header("Location: index.php");
         } else {
             header("Location: index.php?c=login&msg=Login failed");

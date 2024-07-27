@@ -33,7 +33,9 @@
                         <div class="card question-card">
                             <div class="card-header">
                                 <div class="one-half">
-                                    <span class="user-name"><?php echo trim($question['userName']); ?></span>  in
+                                    <a href="index.php?c=user&v=show&un=<?php echo trim($question['userName']); ?>" class="user-name">
+                                        <?php echo trim($question['userName']); ?>
+                                    </a>  in
                                     <span class="module-name"><?php echo trim($question['moduleName']); ?></span>
                                             - <span class="date"><?php echo  format_date_from_java($question['dateCreated']); ?></span>
 

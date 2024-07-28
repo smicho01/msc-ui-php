@@ -21,6 +21,7 @@ if(isUserLoggedIn() && isset($_SESSION['user']['visibleUsername'])) {
 
     // If user db data hasn't been written to SESSION for fast access, then read user data from DB
     if (!isset($_SESSION['user']['user_data_rewritten']) || $_SESSION['user']['user_data_rewritten'] != true) {
+        //$USER_SERVICE->getUser('username', $_SESSION['user']['username'], "kuku"); // Update tokens according to blockchain state
         // Get user from Database and set its properties
         $MAIN_USER->createUserDatabaseData($foundLoggedInUser);
         // Get all user friends

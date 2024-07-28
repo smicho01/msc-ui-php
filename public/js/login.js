@@ -54,7 +54,8 @@ $(document).ready(function () {
             url: "/php_js/user.php",
             method: "POST",
             data: {
-                urlcommand: 'reloadUserDetails'
+                urlcommand: 'reloadUserDetails',
+                updateTokens: true,
             },
             success: function (data) {
                 let parsedData = JSON.parse(data)

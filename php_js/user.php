@@ -66,8 +66,9 @@ if (isset($_POST['urlcommand'])) {
             break;
 
         case 'reloadUserDetails':
+            $updateTokens = isset($_POST['updateTokens']) ? $_POST['updateTokens'] : false; // Update tokens from blockchain.
             if (isset($_SESSION['user'])) {
-                reloadUserTokensToSession();
+                reloadUserTokensToSession($updateTokens);
                 reloadUserQuestionsAnswersToSession();
 
                 echo json_encode([
@@ -113,7 +114,18 @@ function reloadUserQuestionsAnswersToSession() {
     }
 }
 
-function reloadUserTokensToSession(){
-    $user = UserService::getUser("id", $_SESSION['user']['id']);
+/**
+ * Reloads the user tokens to the session.
+ *
+ * @param bool $updateTokens (optional) Set to true to update the user tokens by getting last update from Blockchain
+ *
+ * @return void
+ */
+function reloadUserTokensToSession($updateTokens = false){
+    if(!$updateTokens) {
+        $user = UserService::getUser("id", $_SESSION['user']['id']);
+    } else {
+        $user = UserService::getUser("id", $_SESSION['user']['id'], "updateTokens");
+    }
     $_SESSION['user']['tokens'] = $user['tokens'];
 }

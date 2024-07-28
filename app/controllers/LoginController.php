@@ -13,8 +13,6 @@ switch ($VIEW) {
         } catch(ErrorException $e) {
             print_r($e);
         }
-
-
         // If user was logged in
         if (isset($responseData['access_token'])) {
             $_SESSION['user'] = array();

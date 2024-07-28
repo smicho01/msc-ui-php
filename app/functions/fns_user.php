@@ -36,10 +36,8 @@ class User {
         foreach ($data as $property => $value) {
             if (array_key_exists($property, $this->properties)) {
                 $this->$property = $value;
-                //$this->properties[$property] = $value;
             }
         }
-
         // Special Cases
         $this->name = $data['firstName'] . " " . $data['lastName'];
         $this->questions = $this->USER_SERVICE->user_get_questions_short($data['id']);

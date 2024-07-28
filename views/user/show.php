@@ -12,7 +12,7 @@
 </div>
 <div class="row">
     <div class="col-12 user-page-header">
-        <h3><?php echo $foundUser['visibleUsername']; ?> <small>(user)</small></h3>
+        <h3 class="mb-4">User: <?php echo $foundUser['visibleUsername']; ?> <small>(user)</small></h3>
         <span>School: <b><?php echo $foundUser['college']; ?></b></span>
         <span>Rank: <b><?php echo $foundUser['rank']; ?></b></span>
         <?php if ($isFriendWithDisplayedUser): ?>
@@ -46,3 +46,46 @@
         </div>
     </div>
 </div>
+
+<!-- USER QUESTIONS -->
+<div class="row mt-3">
+    <div class="col-12">
+        <h5>User Questions</h5>
+    </div>
+    <div class="col-12">
+        <?php if(count($userQuestions) > 0) : ?>
+            <?php foreach ($userQuestions as $question): ?>
+                <!-- question box -->
+                <div class="col-12">
+                    <div class="card question-card">
+                        <div class="card-header">
+                            <div class="one-half">
+                                <?php echo trim($question['moduleName']); ?> - <span
+                                        class="date"><?php echo format_date_from_java($question['dateCreated']); ?></span>
+                                - <span class="badge  status-<?php echo strtolower($question['status']); ?>">
+                                    <?php echo $question['status']; ?>
+                                </span>
+                            </div>
+                            <div class="one-half-last text-right">
+                                <?php echo $question['answersCount']; ?><?php echo $question['answersCount'] == 1 ? ' answer' : ' answers'; ?>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><a
+                                        href="/index.php?c=questions&v=show&id=<?php echo $question['id']; ?>">
+                                    <?php echo trimString($question['title'], 50) . "</code>"; ?>
+                                </a></h5>
+                            <p class="card-text">
+                                <?php echo trimString($question['content'], 100) . "</code>"; ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- /question-box -->
+            <?php endforeach; ?>
+        <?php else: ?>
+        <p>The user does not have any questions yet</p>
+        <?php endif; ?>
+    </div>
+</div>
+<!-- /end USER QUESTIONS -->

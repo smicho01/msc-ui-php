@@ -69,6 +69,9 @@ switch ($VIEW) {
                 $friendRequestSentToUser = true;
             }
         }
+
+        $userQuestions =  UserService::user_get_questions_short($foundUser['id']);
+
         break;
 
     case 'friends':

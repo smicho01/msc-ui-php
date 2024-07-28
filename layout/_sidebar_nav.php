@@ -5,7 +5,7 @@
                   <a class="nav-link" aria-current="page" href="/">
                       <span data-feather="home"></span>
                       <i class="fa-solid fa-gauge"></i>
-                      Dashboard</a>
+                      Home</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="/index.php?c=questions">
@@ -28,9 +28,6 @@
 
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Your Links</span>
-              <a class="link-secondary" href="#" aria-label="Add a new report">
-                  <span data-feather="plus-circle"></span>
-              </a>
           </h6>
 
 
@@ -73,9 +70,33 @@
               </li>
           </ul>
 
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Related Apps</span>
+          </h6>
+
+
+          <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                  <a class="nav-link" href="http://sever3d.synology.me:90">
+                      <span data-feather="yquestions"></span>
+                      <i class="fa-solid fa-wallet"></i>
+                      Wallet transactions
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="http://sever3d.synology.me:4001">
+                      <span data-feather="yquestions"></span>
+                      <i class="fa-solid fa-right-left"></i>
+                      Item Exchange
+                  </a>
+              </li>
+
+
+          </ul>
+
 
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Door</span>
+              <span>Doors</span>
               <a class="link-secondary" href="#" aria-label="Add a new report">
                   <span data-feather="plus-circle"></span>
               </a>

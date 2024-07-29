@@ -15,10 +15,9 @@ $ControllerName = ucfirst($CONTROLLER) . "Controller";
 $MAIN_USER = new User();
 $USER_SERVICE = new UserService();
 
-if(isUserLoggedIn() && isset($_SESSION['user']['visibleUsername'])) {
-    // Get user from DB by username
-    //$foundLoggedInUser = $USER_SERVICE->getUser('username', $_SESSION['user']['username']);
+QuestionService::loadLatestQuestionsEveryGivenMinutes(5, 20);
 
+if(isUserLoggedIn() && isset($_SESSION['user']['visibleUsername'])) {
     // If user db data hasn't been written to SESSION for fast access, then read user data from DB
     if (!isset($_SESSION['user']['user_data_rewritten']) || $_SESSION['user']['user_data_rewritten'] != true) {
         $foundLoggedInUser = $USER_SERVICE->getUser('username', $_SESSION['user']['username'], "updateTokens"); // Update tokens according to blockchain state
@@ -47,7 +46,6 @@ if(isUserLoggedIn() && isset($_SESSION['user']['visibleUsername'])) {
     // Re-write User data to session data to improve speed and avoid calls to API
     $USER_SERVICE->user_data_to_session($MAIN_USER);
     $MAIN_USER->createUserFromSession();
-
 }
 
 /* Include controller file */

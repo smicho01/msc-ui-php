@@ -137,5 +137,22 @@ class QuestionService {
         $uri = ITEM_SERVICE_URI . "/question/like/" . $searchTerm;
         return get_data_from_api($uri);
     }
+
+    public static function loadLatestQuestionsEveryGivenMinutes($minutes, $limit) {
+        // Load data for not logged-in users. Example: 3 latest questions. Load them once to session and do not make API calls each time
+        if (!isset($_SESSION['loadedOnce']) || !$_SESSION['loadedOnce']) {
+            $_SESSION['loadedOnce'] = true;
+            $_SESSION['latestQuestions']['questions'] = self::getLatestQuestions('ACTIVE', $limit);
+            $_SESSION['latestQuestions']['lastLoad'] = date('Y-m-d H:i:s');
+        }
+        // Check if last load of recent questions was before given time and load data again in true
+        $dateTimestamp = strtotime($_SESSION['latestQuestions']['lastLoad']);
+        $currentTimestamp = time();
+        $fiveMinutesAgoTimestamp = $currentTimestamp - $minutes * 60; // 5 minutes times 60 seconds
+        if ($dateTimestamp <= $fiveMinutesAgoTimestamp) {
+            unset($_SESSION['loadedOnce']);
+            unset($_SESSION['latestQuestions']);
+        }
+    }
 }
 

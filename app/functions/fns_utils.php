@@ -99,3 +99,35 @@ function format_date_from_java($source, $format = 'Y-m-d') {
     $date = date_create_from_format('Y-m-d\TH:i:s.u', $source);
     return date_format($date, $format);
 }
+
+function format_timestamp_to_days_ago($timestamp) {
+    $date = DateTime::createFromFormat('Y-m-d\TH:i:s.u', $timestamp);
+    $now = new DateTime();
+    $interval = $now->diff($date);
+    $days = $interval->days;
+    $hours = $interval->h;
+    $minutes = $interval->i;
+    $seconds = $interval->s;
+
+    if ($days > 0) {
+        if($days == 1) {
+            return $days . ' day ago';
+        } else {
+            return $days . ' days ago';
+        }
+    } else if ($hours > 0) {
+        if ($hours == 1) {
+            return $hours . ' hour ago';
+        } else {
+            return $hours . ' hours ago';
+        }
+    } else if ($minutes > 0) {
+        if($minutes == 1) {
+            return $minutes . ' minute ago';
+        } else {
+            return $minutes . ' minutes ago';
+        }
+    } else {
+        return $seconds . ' seconds ago';
+    }
+}

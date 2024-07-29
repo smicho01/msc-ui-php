@@ -76,3 +76,4 @@ include_once('fns_crypto.php');
 include_once('fns_flash.php');
 include_once('fns_module_college.php');
 include_once('fns_nlp.php');
+include_once('fns_question.php');

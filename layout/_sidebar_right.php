@@ -11,41 +11,20 @@
     <?php endif; ?>
     <!-- //USER_SIDEBAR -->
 
-    <ul class="list-group sidebar-list-group">
-        <a class="list-group-item list-group-item-action" href="/index.php?c=questions&v=show&id=1">
-            How to train RNN
-        </a>
-        <li class="list-group-item">How to train RNN</li>
-        <li class="list-group-item">Help with B+ Trees indexes</li>
-    </ul>
-
+    <?php if(isset($_SESSION['latestQuestions']['questions']) && count($_SESSION['latestQuestions']['questions'])>0) : ?>
     <h4>Recent questions</h4>
     <div class="list-group recent-questions-sidebar">
-        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+        <?php foreach ($_SESSION['latestQuestions']['questions'] as $question): ?>
+        <a href="index.php?c=questions&v=show&id=<?php echo $question['id']; ?>" class="list-group-item list-group-item-action" aria-current="true">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">How to set weight for RNN and LSTM ?</h5>
-                <small>3 days ago</small>
+                <h5 class="mb-1"><?php echo $question['title'] ?></h5>
             </div>
-            <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur dignissimos expedita, laudantium magni placeat quisquam repudiandae sapiente? At, commodi.</p>
-            <small>Machine Learning</small>
+            <small><?php echo  trimString($question['collegeName'], 30); ?></small> |
+            <small><?php echo  trimString($question['moduleName'], 30); ?></small>
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-                <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Some placeholder content in a paragraph.</p>
-            <small class="text-muted">And some muted small print.</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-                <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Some placeholder content in a paragraph.</p>
-            <small class="text-muted">And some muted small print.</small>
-        </a>
+        <?php endforeach; ?>
     </div>
+    <?php endif; ?>
 
 </div>
 <!-- //SIDEBAR RIGHT -->

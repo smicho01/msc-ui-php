@@ -91,7 +91,7 @@
 
                     </div>
                     <?php if ($foundQuestionsCount > $displayResults) : ?>
-                        <a href="index.php?c=search&v=all&entity=question&term=<?php echo $_SESSION['searchTerm']; ?>"
+                        <a href="index.php?c=search&v=all&entity=question&term=<?php echo $_SESSION['search']['searchTerm']; ?>"
                            class="card-footer  show-more-results">
                             <div class="text-center">See all found questions</div>
                         </a>

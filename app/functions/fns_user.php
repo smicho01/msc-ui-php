@@ -203,10 +203,16 @@ class UserService {
         return curl_put($uri, $data, "Bearer " . $_SESSION['token']);
     }
 
-    public static function user_get_by_username_like($likeUsername) {
+    public static function user_get_by_username_like($likeUsername, $onlyCollege) {
         $uri = USER_SERVICE_URI . "/user/username/like/" . $likeUsername;
+        if($onlyCollege) {
+            $collegeId =  $_SESSION['user']['collegeId'];
+            $uri = USER_SERVICE_URI . "/user/username/like/{$likeUsername}?collegeId={$collegeId}";
+        }
         return get_data_from_api($uri);
     }
+
+
 
 }
 

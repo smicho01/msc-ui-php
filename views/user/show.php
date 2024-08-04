@@ -15,6 +15,7 @@
         <h3 class="mb-4">User: <?php echo $foundUser['visibleUsername']; ?> <small>(user)</small></h3>
         <span>School: <b><?php echo $foundUser['college']; ?></b></span>
         <span>Rank: <b><?php echo $foundUser['rank']; ?></b></span>
+        <?php if($foundUser['id'] != $_SESSION['user']['id']): ?>
         <?php if ($isFriendWithDisplayedUser): ?>
             <span><span class="btn btn-secondary btn-sm" data-ui="<?php echo $foundUser['id']; ?>"
                         id="btn-remove-friend">
@@ -31,6 +32,7 @@
                         <i class="fa-solid fa-user"></i> Connect
                 </span>
             <?php endif; ?>
+        <?php endif; ?>
         <?php endif; ?>
         <div class="heading"></div>
     </div>

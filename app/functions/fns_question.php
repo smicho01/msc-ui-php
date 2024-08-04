@@ -133,8 +133,12 @@ class QuestionService {
         return $question['userId'] == $_SESSION['user']['id'];
     }
 
-    public static function get_by_title_like($searchTerm) {
+    public static function get_by_title_like($searchTerm, $onlyCollege) {
         $uri = ITEM_SERVICE_URI . "/question/like/" . $searchTerm;
+        if($onlyCollege) {
+            $collegeId =  $_SESSION['user']['collegeId'];
+            $uri = ITEM_SERVICE_URI . "/question/like/" . $searchTerm . "?collegeId=" . $collegeId;
+        }
         return get_data_from_api($uri);
     }
 

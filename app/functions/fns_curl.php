@@ -120,7 +120,7 @@ function get_data_from_api($uri) {
         return false;
     }
     $data = json_decode($responseBody, true);
-    if (count($data) == 0) {
+    if ($data != null && count($data) == 0) {
         return [];
     }
     return $data;

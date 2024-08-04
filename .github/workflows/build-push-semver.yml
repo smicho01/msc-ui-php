@@ -1,6 +1,7 @@
 name: Semver Build and Publish DockerHub
 # Action will add tag depending on the Pull Request label (major, minor, patch , skip-release)
-# Will push image to docker hub (master branch)
+# Will push image to docker hub (master branch) and produce tags: `latest` and tag e.g. `0.0.1`
+# Images will be produced both for AMD and ARM chips
 on:
   pull_request:
     types: [ closed ]
@@ -9,7 +10,7 @@ jobs:
   semver_push_dockerhub:
     permissions:
       contents: write
-    name: Semver repo tagging
+    name: Semver tag and push AMD and ARM to GitHub
     if: |
       github.event.pull_request.merged == true &&
       contains(github.event.pull_request.labels.*.name, 'skip-release') == false

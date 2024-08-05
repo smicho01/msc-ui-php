@@ -53,4 +53,17 @@ jobs:
           tag_latest: ${{ github.base_ref == 'master' }}
           image: sever3d/academichain-ui
 
+      # Will create image tags `latest` and TAG from semver tagging for db migrations repository
+      - name: Build and Push DB MIGRATION
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./db/Dockerfile
+          push: true
+          tags: |
+            docker.io/sever3d/academichain-ui-database:${{ steps.calculate.outputs.version }}
+            docker.io/sever3d/academichain-ui-database:latest
+          platforms: linux/amd64,linux/arm64
+
+
 

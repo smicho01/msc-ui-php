@@ -15,7 +15,7 @@ $ControllerName = ucfirst($CONTROLLER) . "Controller";
 $MAIN_USER = new User();
 $USER_SERVICE = new UserService();
 
-QuestionService::loadLatestQuestionsEveryGivenMinutes(5, 20);
+QuestionService::loadLatestQuestionsEveryGivenMinutes(3, 6);
 
 if(isUserLoggedIn() && isset($_SESSION['user']['visibleUsername'])) {
     // If user db data hasn't been written to SESSION for fast access, then read user data from DB

@@ -93,13 +93,19 @@ $(document).ready(function () {
 
     $('#select-bes-answer-btn').on('click', function(event){
         $.post("/php_js/question.php", { urlCommand: 'selectBestAnswer', answerId: bestAnswerId })
-        //console.log("Klik select best answer confirm")
             .done(function (data) {
-                //slet parsedResponse = JSON.parse(data)
-            });
+                let parsedResponse = JSON.parse(data)
+                const responseCode = parsedResponse.status_code;
 
-        modalWindow.hide();
-        location.reload();
+                // Code 409 (CONFLICT) will be treated as malicious behaviour
+                if(responseCode == 409) {
+                    $('#add-answer-button').removeClass('btn-primary').addClass('btn-danger').text("Malicious behaviour reported. DO NOT SELECT BEST ANSWER AGAIN !!");
+                    modalWindow.hide();
+                } else {
+                    modalWindow.hide()
+                    location.reload();
+                }
+            });
     })
 
 });

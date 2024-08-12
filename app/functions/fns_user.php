@@ -66,7 +66,7 @@ class UserService {
         return get_data_from_api($uri);
     }
 
-    function user_insert_from_session() {
+    static function user_insert_from_session() {
         $sessionUser = $_SESSION['user'];
         $explodeUserName = explode(" ", $sessionUser['name']);
         $data = [
@@ -79,7 +79,7 @@ class UserService {
         return curl_post(USER_SERVICE_URI . "/user", $data, "Bearer " . $_SESSION['token']);
     }
 
-    function user_login($username, $password) {
+    static function user_login($username, $password) {
         $url = KEYCLOAK_AUTH_URL;
         $data = [
             'grant_type' => 'password',
@@ -101,6 +101,24 @@ class UserService {
         }
         curl_close($ch);
         return json_decode($response, true);
+    }
+
+    static function hasRole($roleName, $token) {
+        $decodedToken = decodeJwtToken($token);
+        return in_array('ADMIN', $decodedToken->realm_access->roles);
+    }
+
+    static function isAdmin() {
+        if(isset($_SESSION['token'])){
+            return self::hasRole('ADMIN', $_SESSION['token']);
+        }
+        return false;
+    }
+
+    static function requireAdmin(){
+        if(!self::isAdmin() || self::isAdmin() == null) {
+            header("Location: index.php?c=login");
+        }
     }
 
     static function user_get_questions($userId) {

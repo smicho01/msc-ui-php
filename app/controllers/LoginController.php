@@ -27,7 +27,6 @@ switch ($VIEW) {
                     if ($findUserDb['active'] != 1) {
                         $_SESSION['message'] = "<p class='alert alert-danger'>Inactive account</p>";
                         header("Location: index.php?c=login");
-                        exit();
                     }
                 }
             } catch (Exception $e) {
@@ -46,6 +45,8 @@ switch ($VIEW) {
             $_SESSION['user']['answers-size'] = 0;
             $_SESSION['justLoggedIn'] = 1;
             $_SESSION['user']['imageid'] = 1;
+            $_SESSION['user']['isAdmim'] = in_array('ADMIN', $decodedToken->realm_access->roles);
+
             header("Location: index.php");
         } else {
             header("Location: index.php?c=login&msg=Login failed");

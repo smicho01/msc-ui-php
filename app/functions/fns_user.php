@@ -117,7 +117,7 @@ class UserService {
 
     static function requireAdmin(){
         if(!self::isAdmin() || self::isAdmin() == null) {
-            header("Location: index.php?c=login");
+            header("Location: /index.php?c=login");
         }
     }
 

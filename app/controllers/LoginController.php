@@ -4,21 +4,35 @@ $VIEW = isset($VIEW) ? $VIEW : 'index';
 switch ($VIEW) {
 
     case 'process':
-        if(isset($_SESSION['user'])) {
+        unset($_SESSION['message']);
+        if (isset($_SESSION['user'])) {
             unset($_SESSION['user']);
         }
 
         try {
-            $responseData = $USER_SERVICE->user_login($_POST['username'], $_POST['password']);
-        } catch(ErrorException $e) {
+            $keycloakUserData = $USER_SERVICE->user_login($_POST['username'], $_POST['password']);
+        } catch (ErrorException $e) {
             print_r($e);
         }
         // If user was logged in
-        if (isset($responseData['access_token'])) {
-            $_SESSION['user'] = array();
+        if (isset($keycloakUserData['access_token'])) {
 
-            $_SESSION['token'] = $responseData['access_token'];
-            $decodedToken = decodeJwtToken($responseData['access_token']);
+            $_SESSION['user'] = array();
+            $_SESSION['token'] = $keycloakUserData['access_token'];
+            $decodedToken = decodeJwtToken($keycloakUserData['access_token']);
+
+            try {
+                $findUserDb = $USER_SERVICE->getUser('username', $decodedToken->preferred_username);
+                if ($findUserDb) {
+                    if ($findUserDb['active'] != 1) {
+                        $_SESSION['message'] = "<p class='alert alert-danger'>Inactive account</p>";
+                        header("Location: index.php?c=login");
+                        exit();
+                    }
+                }
+            } catch (Exception $e) {
+                // log exception
+            }
 
             $_SESSION['user']['name'] = $decodedToken->given_name . " " . $decodedToken->family_name;
             $_SESSION['user']['username'] = $decodedToken->preferred_username;
@@ -39,6 +53,6 @@ switch ($VIEW) {
         break;
 
     default:
-		// code...
-	break;
+        // code...
+        break;
 }

@@ -102,7 +102,7 @@
               </h6>
               <ul class="nav flex-column">
                   <li class="nav-item">
-                      <a class="nav-link" aria-current="page" href="/">
+                      <a class="nav-link" aria-current="page" href="/admin/index.php">
                           <span data-feather="home"></span>
                           <i class="fa-solid fa-gauge"></i>
                           Admin Dashboard</a>

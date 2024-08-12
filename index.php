@@ -64,3 +64,6 @@ switch ($ControllerName) {
         include_once(LAYOUT_DIR . DS . "layout.php");
         break;
 }
+
+// Unset session alert message
+unset($_SESSION['message']);

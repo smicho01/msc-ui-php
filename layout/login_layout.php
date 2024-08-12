@@ -27,6 +27,9 @@
           if(isset($_GET['msg'])) {
               echo $_GET['msg'];
           }
+          if(isset($_SESSION['message'])) {
+              echo  $_SESSION['message'];
+          }
           ?>
          <form id="loginforms" action="index.php?c=login&v=process" method="post">
             <div class="form-group">

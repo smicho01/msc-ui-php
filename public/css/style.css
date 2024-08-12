@@ -6,7 +6,7 @@ body {
 
 hr {
     border-bottom: 1px dashed #dedede;
- 
+
 }
 h1,h2,h3,h4,h5,h6 {
     font-family: "IBM Plex Sans Condensed", sans-serif;
@@ -30,7 +30,7 @@ a {
 .main-head{
     height: 150px;
     background: #FFF;
-   
+
 }
 
 .app-name {
@@ -444,7 +444,7 @@ span.tag.badge.rounded-pill  {
     height: 100%;
 }
 .friend-row .friend-icon-wrapper .friend-icon {
-  font-size: 30px;
+    font-size: 30px;
 }
 
 .friend-link {
@@ -560,13 +560,13 @@ span.tag.badge.rounded-pill  {
     }
 
     .login-form{
-        margin-top: 80%;
+        margin-top: 20%;
     }
 
     .register-form{
         margin-top: 20%;
     }
-    
+
 }
 
 @media screen and (max-width:767px){

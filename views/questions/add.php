@@ -35,6 +35,12 @@
             <textarea class="form-control" id="form_question_problem" name="form_question_problem" rows="12">I need help with B+Tree indexing. I understand how to add new entries, but I don't exactly understand how removing works.
             </textarea>
         </div>
+
+        <div class="mb-3" id="related-questions">
+            <h5>Related questions</h5>
+            <div id="related-questions-list"></div>
+        </div>
+
         <div class="mb-3">
             <label for="form_question_tags_input" class="form-label">Tags</label>
             <input type="text" class="form-control" id="form_question_tags_input"

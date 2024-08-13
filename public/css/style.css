@@ -506,6 +506,30 @@ span.tag.badge.rounded-pill  {
     font-weight: 700;
 }
 
+/* Related Questions */
+
+#related-questions {
+    /* opacity: 0.6; */
+    display: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px dashed #efefef;
+    border-bottom: 1px dashed #efefef;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #000;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
 }

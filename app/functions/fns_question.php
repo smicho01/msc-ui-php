@@ -158,5 +158,13 @@ class QuestionService {
             unset($_SESSION['latestQuestions']);
         }
     }
+
+    public static function getSimilarQuestionByEmbeddings($questionTitle, $limit) {
+        $uri = ITEM_SERVICE_URI . "/question/similar?limit=" . $limit;
+        $data = [
+            'question' => $questionTitle
+        ];
+        return curl_post( $uri, $data, "Bearer " . $_SESSION['token']);
+    }
 }
 

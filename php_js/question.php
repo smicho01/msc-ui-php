@@ -42,6 +42,13 @@ if(isset($_POST['urlCommand'])) {
             $response = NlpService::validate_question($title, $body);
             echo json_encode($response);
             break;
+
+        case 'getSimilarQuestions':
+            $questionTitle = $_POST['questionTitle'];
+            $limit = $_POST['limit'];
+            $response = QuestionService::getSimilarQuestionByEmbeddings($questionTitle, $limit);
+            echo json_encode($response);
+            break;
     }
 }
 

@@ -76,8 +76,12 @@
         <p><b>Answers disabled.</b> Question must be in 'ACTIVE' status to add answers</p>
     <?php endif; ?>
 
-    <div class="divider"></div>
-    <div class="row">
+    <div class="mb-3" id="related-questions">
+        <h5>Related questions</h5>
+        <div id="related-questions-list"></div>
+    </div>
+
+    <div class="row mt-4">
     <div class="col-12">
         <h4>Answers (<?php echo count($answers); ?>)</h4>
     </div>

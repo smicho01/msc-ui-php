@@ -108,7 +108,51 @@ $(document).ready(function () {
             });
     })
 
+
+    /* RELATED QUESTIONS */
+
+    $('#related-questions').css('display', 'block');
+    let questionTitle = $('#question-title').html().trim();
+    if(questionTitle.length > 5) {
+        const containerWrapper = $('#related-questions');
+        containerWrapper.css('display', 'block');
+        // Add loader into the container
+        const container = $('#related-questions-list');
+        container.html(''); // clean container
+        container.append('<div class="spinner"></div>'); // add spinner
+
+        // Call API for similar questions
+        $.post("/php_js/question.php", {
+            urlCommand: 'getSimilarQuestions',
+            questionTitle: questionTitle,
+            limit: 10
+        }).done(function (data) {
+            let parsedData = JSON.parse(data)
+            let response = JSON.parse(parsedData['body'])
+            if(response != null) {
+                if(response.length > 0) {
+                    container.html(response.map(function (question) {
+                        return buildSimilarQuestionHtml(question)
+                    }).join(''));
+                }
+            }
+        }).fail(function (xhr, status, error) {
+
+        });
+    }
+
 });
+
+function buildSimilarQuestionHtml(question) {
+    let html = '<div class="row">';
+    html += '<div class="col-12">';
+    html += '<a href="index.php?c=questions&v=show&id=' + question.questionId +'">';
+    html += question.question;
+    html += '</a>';
+    html += '</div>';
+    html += '</div>';
+    return html;
+}
 
 /**
  * Represents the variable "text" which holds a string value.

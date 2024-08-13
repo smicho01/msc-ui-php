@@ -1,7 +1,7 @@
 <div class="question-details-wrapper">
     <div class="row heading">
         <div class="col-9">
-            <h3><?php echo $question['title']; ?></h3>
+            <h3 id="question-title"><?php echo $question['title']; ?></h3>
         </div>
         <div class="col-3 bd-highlight text-right">
             <a href="/index.php?c=questions&v=add" class="btn btn-primary">Ask Question</a>

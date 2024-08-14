@@ -164,7 +164,7 @@ class QuestionService {
         $data = [
             'question' => $questionTitle
         ];
-        return curl_post( $uri, $data, "Bearer " . $_SESSION['token']);
+        return curl_post( $uri, $data, null);
     }
 }
 

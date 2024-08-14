@@ -26,7 +26,7 @@ function curl_post_with_headers($url, $data, $token){
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_HTTPHEADER, array(
         'Content-Type: application/json',
-        $token
+        isset($token) ? $token : ''
     ));
     // Set POST method
     curl_setopt($curl, CURLOPT_POST, 1);

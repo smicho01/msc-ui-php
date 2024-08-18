@@ -11,6 +11,7 @@ switch ($VIEW) {
 
         try {
             $keycloakUserData = $USER_SERVICE->user_login($_POST['username'], $_POST['password']);
+            error_log("Login username: " . $_POST['username'], 4);
         } catch (ErrorException $e) {
             print_r($e);
         }
@@ -46,7 +47,7 @@ switch ($VIEW) {
             $_SESSION['justLoggedIn'] = 1;
             $_SESSION['user']['imageid'] = 1;
             $_SESSION['user']['isAdmim'] = in_array('ADMIN', $decodedToken->realm_access->roles);
-
+            error_log("User logged in", 4);
             header("Location: index.php");
         } else {
             header("Location: index.php?c=login&msg=Login failed");

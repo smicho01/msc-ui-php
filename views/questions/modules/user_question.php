@@ -12,7 +12,7 @@
             <h3 id="question-title"><?php echo $question['title']; ?></h3>
         </div>
         <div class="col-3 bd-highlight text-right">
-            <a href="/index.php?c=questions&v=add" class="btn btn-primary">Ask Question</a>
+            <a href="/index.php?c=questions&v=add" id="btn-ask-question-secondary" class="btn btn-primary">Ask Question</a>
         </div>
         <div class="col-12 question-summary-box">
             <span class="entry"><span class="light-txt">Created:</span> <?php echo format_date_from_java($question['dateCreated']); ?></span>

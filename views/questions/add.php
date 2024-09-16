@@ -25,15 +25,14 @@
         <div class="mb-3">
             <label for="form-question-title" class="form-label">Title</label>
             <input type="text" class="form-control" id="form_question_title" name="form_question_title"
-                   value="I need help with B+Tree indexing."/>
+                   value=""/>
             <div id="form-question-title-help" class="form-text">
                 Be specific as length matters. e.g. How to train Neural Network
             </div>
         </div>
         <div class="mb-3">
             <label for="form_question_problem" class="form-label">Specify your problem</label>
-            <textarea class="form-control" id="form_question_problem" name="form_question_problem" rows="12">I need help with B+Tree indexing. I understand how to add new entries, but I don't exactly understand how removing works.
-            </textarea>
+            <textarea class="form-control" id="form_question_problem" name="form_question_problem" rows="12"></textarea>
         </div>
 
         <div class="mb-3" id="related-questions">
@@ -43,8 +42,7 @@
 
         <div class="mb-3">
             <label for="form_question_tags_input" class="form-label">Tags</label>
-            <input type="text" class="form-control" id="form_question_tags_input"
-                   value="java"/>
+            <input type="text" class="form-control" id="form_question_tags_input" value=""/>
             <div id="form_question_tags_input-help" class="form-text">
                 Specify tags. Use coma (`,`) or space (` `) to separate tags. e.g. java,spring boot,rest,api <br/>
                 Click on tag to remove it from the list. For longer tags user hyphen (`-`) to separate words. e.g.

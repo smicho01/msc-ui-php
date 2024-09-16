@@ -34,11 +34,11 @@
          <form id="loginforms" action="index.php?c=login&v=process" method="post">
             <div class="form-group">
                <label>User Name</label>
-               <input id='editUsername' name="username" type="text" class="form-control" placeholder="User Name" value="smicho01">
+               <input id='editUsername' name="username" type="text" class="form-control" placeholder="User Name" value="">
             </div>
             <div class="form-group">
                <label>Password</label>
-               <input id='editPassword' name="password" type="password" class="form-control" placeholder="Password" value="password123">
+               <input id='editPassword' name="password" type="password" class="form-control" placeholder="Password" value="">
             </div>
             <div class="form-group d-grid gap-2 d-md-flex justify-content-md-end">
               <button id="btnLogins" class="btn btn-black" type="submit">Login</button>
